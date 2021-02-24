@@ -1,11 +1,11 @@
 {
   "name": "cadviewer-testapp-react-01",
-  "version": "0.1.0",
-  "private": true,
+  "version": "1.0.6",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",
     "@testing-library/user-event": "^12.7.1",
+    "cadviewer": "^6.4.20",
     "jquery": "^3.5.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
@@ -35,5 +35,34 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "author": "charnung",
+  "license": "TMS 1.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CADViewer/cadviewer-testapp-react-01"
+  },
+  "bugs": {
+    "url": "https://github.com/CADViewer"
+  },
+  "homepage": "https://cadviewer.com",
+  "keywords": [
+    "CAD",
+    "javascript",
+    "CAD Viewer",
+    "DWG",
+    "DXF",
+    "DWF",
+    "PDF",
+    "DGN",
+    "TIFF",
+    "Annotate",
+    "Redline",
+    "Space Management",
+    "CAFM",
+    "IOT",
+    "Asset Management"
+  ]
+
+
 }
