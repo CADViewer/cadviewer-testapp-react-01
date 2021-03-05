@@ -8,7 +8,7 @@ import { render } from '@testing-library/react';
 // We are only accessing the functional interface of CADViewer, not the canvas, so this import is sufficient
 import * as cadviewer from "cadviewer";
 
-
+import * as CV from "./CADViewer.js";
 
 
 // export to second helper component
@@ -145,6 +145,148 @@ function display_all_objects(){
 
 }
 
+//////////  DECORATE TEXT ON SPACES
+
+
+;
+
+///**
+// * Add multiple of text, individually formatted and styled, inside a Space Object
+// * @param {string} txtLayer - layer to apply the text
+// * @param {string} Id - Id of the graphical object in which to place the text
+// * @param {float} leftScale - distance from the left border of Space Object, value between 0 and 1
+// * @param {array} textStringArr - Array with the lines of text
+// * @param {array} textStyleArr - Array with textstyle of text lines, formattet as a java script object with css style elements, predefined is: text_style_arial_11pt_bold , text_style_arial_9pt_normal, text_style_dialog
+// * @param {array} scaleTextArr - Array with relative scale of text lines, value between 0 and 1
+// * @param {array} hexColorTextArr - Array of color of text lines in hex form, for example: #AA00AA
+// * @param {boolean} clipping - true if clipping of text inside of Space Object, false if text to cross Space Object borders
+// * @param {boolean} centering - true if centering of text inside of Space Object, false is default
+// */
+//
+// function cvjs_AddTextOnSpaceObject(txtLayer, Id, leftScale, textStringArr, textStyleArr, scaleTextArr, hexColorTextArr, clipping, centering){
+
+
+// This is the function that illustrates how to label text inside room polygons
+
+function customAddTextToSpaces(){
+
+  // I am making an API call to the function cvjs_getSpaceObjectIdList()
+  // this will give me an array with IDs of all Spaces in the drawing
+  var spaceObjectIds = cadviewer.cvjs_getSpaceObjectIdList();
+  var i=0;
+
+  
+  var textString ;
+  var textStyles ;
+  var scaleText ; 
+  var hexColorText; 
+
+
+
+  for (var spc in spaceObjectIds)
+  {
+      //console.log(spaceObjectIds[spc]+" "+i);
+  
+      if ((i % 3) ==0){
+          textString = new Array("Custom \u2728", "settings \u2728", "\u2764\u2728\u267B");
+          textStyles = new Array(text_style_arial_9pt_normal, text_style_arial_11pt_bold, text_style_dialog);
+          scaleText = new Array(0.15, 0.2, 0.15 );
+          hexColorText = new Array("#AB5500", "#66D200", "#0088DF");
+  
+          // here we clip the roomlables so they are inside the room polygon
+          cadviewer.cvjs_AddTextOnSpaceObject(CV.textLayer1, spaceObjectIds[spc],  0.05, textString, textStyles, scaleText, hexColorText, true, false);
+  
+      }
+      else{
+          if ((i % 3) == 1){
+  
+              textString = new Array('Unicode:\uf083\uf185\u2728', 'of custom text');
+              textStyles = new Array(FontAwesome_9pt_normal, text_style_dialog);
+              scaleText = new Array(0.15, 0.15 );
+              hexColorText = new Array("#00D2AA", "#AB0055");
+  
+              // here we clip the roomlables so they are inside the room polygon            
+              cadviewer.cvjs_AddTextOnSpaceObject(CV.textLayer1, spaceObjectIds[spc],  0.1, textString, textStyles, scaleText, hexColorText, true, false);
+  
+          }
+          else{
+  
+              textString = new Array("\uf028");
+              textStyles = new Array(FontAwesome_9pt_normal);
+              scaleText = new Array( "0.5" );
+              hexColorText = new Array("#AAAAAA");
+              //var hexColorText = new Array("#00AADF");
+  
+              // here we clip the roomlables so they are inside the room polygon, we center object
+              cadviewer.cvjs_AddTextOnSpaceObject(CV.textLayer1, spaceObjectIds[spc],  0, textString, textStyles, scaleText, hexColorText, true, true);
+          }
+      
+      }
+      i++;
+  }
+
+}
+
+/* text style for adding text into Space Objects */
+var text_style_arial_11pt_bold = {
+        'font-family': "Arial",
+        'font-size': "11pt",
+        'font-weight': "bold",
+        'font-style': "none",
+        'margin': 0,
+        'cursor': "pointer",
+        'text-align': "left",
+        'z-index': 1980,
+        'opacity': 0.5
+      };
+  
+  /* text style for adding text into Space Objects */
+  var text_style_arial_9pt_normal = {
+        'font-family': "Arial",
+        'font-size': "9pt",
+        'font-weight': "normal",
+        'font-style': "none",
+        'margin': 0,
+        'cursor': "pointer",
+        'text-align': "left",
+        'z-index': 1980,
+        'opacity': 1
+      };
+  
+  
+  var FontAwesome_9pt_normal = {
+        'font-family': "FontAwesome",
+        'font-size': "9pt",
+        'font-weight': "normal",
+        'font-style': "none",
+        'margin': 0,
+        'cursor': "pointer",
+        'text-align': "left",
+        'z-index': 1980,
+        'opacity': 1
+      };
+        
+  
+  /* text style for adding text into Space Objects */
+  var text_style_dialog = {
+        'font-family': "Dialog",
+        'font-size': "9pt",
+        'font-weight': "normal",
+        'font-style': "italic",
+        'margin': 0,
+        'cursor': "pointer",
+        'text-align': "left",
+        'z-index': 1980,
+        'opacity': 1
+      };
+  
+
+
+
+
+
+
+
 ////////// HIGHLIGHT METHODS START
 
 var selectedColor = "#0000FF";
@@ -245,6 +387,8 @@ function highlight_space_id(){
 function clear_space_highlight(){
 
 	cadviewer.cvjs_clearSpaceLayer();
+  
+  CV.clearTextLayer();
 
 }
 
@@ -1082,6 +1226,7 @@ class CADViewerHelperMethods extends Component {
 		<button className="w3-button demo" onClick={highlight_space_id}>Space ID</button>
     <button className="w3-button demo" onClick={clear_space_highlight}>Clear All</button>
     <button className="w3-button demo" onClick={display_all_objects}>All:(id,area)</button>
+    <button className="w3-button demo" onClick={customAddTextToSpaces}>Text on Spaces</button>
     <br/><strong>Custom Interactive Canvas Samples:&nbsp;</strong><canvas id="dummy" width="10" height="10"></canvas>
 		<button className="w3-button demo" onClick={cadviewerCanvasMethod01}>Canvas-DRAG (console)</button>
 		<button className="w3-button demo" onClick={cadviewerCanvasMethod02}>Canvas-CLICK (console)</button>

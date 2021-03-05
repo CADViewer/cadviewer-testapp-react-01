@@ -2,12 +2,17 @@
 
 ## CADViewer Install instructions - React JS
 
-Install CADViewer from: *npm i cadviewer* , see: https://www.npmjs.com/package/cadviewer
+1: Install a sample React App implementing CADViewer API and Canvas: *npm i cadviewer-testapp-react-01* 
 
-Install a React App implementing CADViewer: *npm i cadviewer-testapp-react-01* 
+As an alternative:
+
+2A: Install CADViewer from: *npm i cadviewer* , see: https://www.npmjs.com/package/cadviewer
+
+2B: There are some general image and XML configuration files that CADViewer needs during execution, please download [react_public_folder_cadviewer_6_4.zip](https://cadviewer.com/downloads/handlers/reactjs/react_public_folder_cadviewer_6_4.zip) and place in your React /public/ project folder. (These files are included in this download)   
 
 
-There are some general image and XML configuration files that CADViewer needs during execution, please download [react_public_folder_cadviewer_6_4.zip](https://cadviewer.com/downloads/handlers/reactjs/react_public_folder_cadviewer_6_4.zip) and place in your React /public/ project folder. (These files are included in this download)   
+For both methods 1: and 2: , then do the following:
+
 
 Download the Node JS CAD Conversion server (or alternatively PHP, .NET or Servlet implementations):  Go to:  https://cadviewer.com/download/, register and receive email and then download from **CADViewer Handler/Connector Scripts**.
 

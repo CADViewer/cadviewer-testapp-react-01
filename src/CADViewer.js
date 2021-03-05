@@ -11,7 +11,11 @@ import './CADViewer_component.css';
 
 import * as cadviewer from "cadviewer";
 
-var roomLayer1; 
+export var textLayer1; 
+
+export function clearTextLayer(){
+	textLayer1 = cadviewer.cvjs_clearLayer(textLayer1);
+}
 
 var  selected_handles = [];
 var  handle_selector = false;
@@ -40,7 +44,7 @@ function cvjs_OnLoadEnd(){
 	// cadviewer.cvjs_dragBackgroundToFront_SVG("floorPlan");					
 	//cvjs_initZeroWidthHandling("floorPlan", 1.0);			
 
-	roomLayer1 = cadviewer.cvjs_clearLayer(roomLayer1);
+	textLayer1 = cadviewer.cvjs_clearLayer(textLayer1);
 	
 	cadviewer.cvjs_LayerOff("EC1 Space Names");
 	cadviewer.cvjs_LayerOff("EC1 Space Status Descs");
@@ -314,9 +318,28 @@ class CADViewer extends Component {
 
 		window.addEventListener('resize', this._handleWindowResize);
 	
+
+		// connecting to Servlets Server
+		var ServerBackEndUrl = "http://localhost:8080/cadviewer/";
+		var ServerLocation = "c:/xampp/tomcat/webapps/cadviewer/";
+
+
+		// connecting to PHP Server
+		var ServerBackEndUrl = "http://localhost/cadviewer/";
+		var ServerLocation = "c:/xampp/htdocs/cadviewer/";
+
+		// Connecting to .NET Server
+		var ServerBackEndUrl = "http://localhost:53737/";
+		var ServerLocation = "c:/visualstudio/cadviewer/";
+
+
+		// Standard NodeJS Server
 		var ServerBackEndUrl = "http://localhost:3000/";
-		var ServerUrl = "http://localhost:8000/";
 		var ServerLocation = "c:/nodejs/cadviewerServer/";
+
+		var ServerUrl = "http://localhost:8000/";
+
+
 
 		//var FileName = ServerBackEndUrl+ "/content/drawings/dwg/LUXR-42-01-PID-005_0-Model.pdf";
 		//var FileName = ServerBackEndUrl + "/content/drawings/dwg/BRA_Alta Vila_02_CkIn_06082020.dwg";	
