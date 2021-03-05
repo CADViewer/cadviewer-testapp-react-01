@@ -1,6 +1,6 @@
 {
   "name": "cadviewer-testapp-react-01",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",

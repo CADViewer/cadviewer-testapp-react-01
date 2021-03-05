@@ -324,9 +324,6 @@ class CADViewer extends Component {
 		var ServerLocation = "c:/xampp/tomcat/webapps/cadviewer/";
 
 
-		// connecting to PHP Server
-		var ServerBackEndUrl = "http://localhost/cadviewer/";
-		var ServerLocation = "c:/xampp/htdocs/cadviewer/";
 
 		// Connecting to .NET Server
 		var ServerBackEndUrl = "http://localhost:53737/";
@@ -339,8 +336,7 @@ class CADViewer extends Component {
 
 		var ServerUrl = "http://localhost:8000/";
 
-
-
+		
 		//var FileName = ServerBackEndUrl+ "/content/drawings/dwg/LUXR-42-01-PID-005_0-Model.pdf";
 		//var FileName = ServerBackEndUrl + "/content/drawings/dwg/BRA_Alta Vila_02_CkIn_06082020.dwg";	
 		//var FileName = ServerBackEndUrl+ "/content/drawings/dwg/LUXR-42-01-PID-005_0-Model.pdf";
@@ -350,7 +346,19 @@ class CADViewer extends Component {
 		cadviewer.cvjs_debugMode(true);
 		cadviewer.cvjs_setServerLocationURL(ServerLocation, ServerUrl);
 		cadviewer.cvjs_setServerBackEndUrl(ServerBackEndUrl);
-		cadviewer.cvjs_setHandlerSettings('ReactJS', 'floorPlan');
+
+
+
+//		cadviewer.cvjs_setHandlerSettings('ReactJS', 'floorPlan'); // standard angular + nodejs
+
+
+      // USER Controlled - 
+      cadviewer.cvjs_setHandlers_FrontEnd('NodeJS', 'ReactJS','floorPlan');   // user controlled back-end
+      //cadviewer.cvjs_setHandlers_FrontEnd('PHP', 'ReactJS','floorPlan');
+      //cadviewer.cvjs_setHandlers_FrontEnd('dotNET', 'ReactJS','floorPlan');
+      //cadviewer.cvjs_setHandlers_FrontEnd('Servlets', 'ReactJS','floorPlan');
+
+
 
 		// PATH and FILE to be loaded, can be in formats DWG, DXF, DWF, SVG , JS, DGN, PCF, JPG, GIF, PNG
 		  //var FileName = ServerBackEndUrl+ "/content/drawings/dwg/hq17_.dwg";		
