@@ -249,6 +249,9 @@
 				<Text>Select two points in the drawing with the mouse first, then enter unit and distance and press OK</Text>
 				<TextObject>Select a path entity in the drawing with the mouse first, then enter unit and distance and press OK</TextObject>
 				<SelectPath>Select Path Entity</SelectPath>
+				<SelectPoints>Select Two Points</SelectPoints>
+				<Scalefac>Scale Factor:</Scalefac>
+				<TextScale>Enter unit and and Scale Factor and press OK</TextScale>
 			</CalibrateModal>
 			<SettingsModal>
 				<Header>CADViewer General Settings</Header>
@@ -769,6 +772,9 @@
 				<Text> Seleccione primero dos puntos en el dibujo con el mouse, luego ingrese la unidad y la distancia y presione OK </Text>
 				<TextObject>Seleccione una entidad de ruta en el dibujo con el mouse primero, luego ingrese la unidad y la distancia y presione OK</TextObject>
 				<SelectPath>Seleccionar ruta</SelectPath>
+				<SelectPoints>Seleccione dos puntos</SelectPoints>
+				<Scalefac>Factor de escala:</Scalefac>
+				<TextScale>Ingrese la unidad y el factor de escala y presione OK</TextScale>
 			</CalibrateModal>	
 			<SettingsModal>
 				<Header> Configuración general de CADViewer </Header>
@@ -1290,6 +1296,9 @@
 			<Text>首先用鼠标在图形中选择两个点，然后输入单位和距离，然后按确定</Text>
 				<TextObject>首先用鼠标在图形中选择一个路径实体，然后输入单位和距离，然后按OK。</TextObject>
 				<SelectPath>选择路径</SelectPath>
+				<SelectPoints>选择两点</SelectPoints>
+				<Scalefac>比例因子：</Scalefac>
+				<TextScale>输入单位和比例因子，然后按确定</TextScale>
 			</CalibrateModal>
 			<SettingsModal>
 			<Header> CADViewer常规设置</Header>
@@ -1811,6 +1820,9 @@
 			<Text>首先用鼠標在圖形中選擇兩個點，然後輸入單位和距離，然後按確定</Text>
 				<TextObject>首先用鼠標在圖形中選擇一個路徑實體，然後輸入單位和距離，然後按OK。</TextObject>
 				<SelectPath>選擇路徑</SelectPath>
+				<SelectPoints>選擇兩點</SelectPoints>
+				<Scalefac>比例因子：</Scalefac>
+				<TextScale>輸入單位和比例因子，然後按確定</TextScale>
 			</CalibrateModal>
 			<SettingsModal>
 			<Header> CADViewer常規設置</Header>
@@ -2332,6 +2344,9 @@
 			<Text> Selecione primeiro dois pontos do desenho com o mouse, depois insira a unidade e a distância e pressione OK </Text>
 				<TextObject>Selecione uma entidade de caminho no desenho com o mouse primeiro, insira a unidade e a distância e pressione OK</TextObject>
 				<SelectPath>Selecione o caminho</SelectPath>
+				<SelectPoints>Selecione dois pontos</SelectPoints>
+				<Scalefac>Fator de escala:</Scalefac>
+				<TextScale>Insira a unidade e o Fator de escala e pressione OK</TextScale>
 			</CalibrateModal>
 			<SettingsModal>
 			<Header> Configurações gerais do CADViewer </Header>
@@ -2853,6 +2868,9 @@
 			<Text> 먼저 마우스로 도면의 두 점을 선택한 다음 단위와 거리를 입력하고 확인을 누릅니다. </Text>
 				<TextObject>먼저 마우스로 도면에서 경로 엔티티를 선택한 다음 단위와 거리를 입력하고 확인을 누릅니다.</TextObject>
 				<SelectPath>경로 선택</SelectPath>
+				<SelectPoints>두 점 선택</SelectPoints>
+				<Scalefac>스케일 팩터 :</Scalefac>
+				<TextScale>단위와 배율을 입력하고 확인을 누릅니다.</TextScale>
 			</CalibrateModal>
 			<SettingsModal>
 			<Header> CADViewer 일반 설정 </Header>
@@ -3376,6 +3394,9 @@
 			<Text> Pilih dua titik pada gambar dengan mouse terlebih dahulu, kemudian masukkan satuan dan jarak dan tekan OK </Text>
 				<TextObject>Pilih entitas jalur pada gambar dengan mouse terlebih dahulu, lalu masukkan satuan dan jarak dan tekan OK</TextObject>
 				<SelectPath>Pilih Path</SelectPath>
+				<SelectPoints>Pilih Dua Titik</SelectPoints>
+				<Scalefac>Faktor skala:</Scalefac>
+				<TextScale>Masukkan satuan dan dan Faktor Skala dan tekan OK</TextScale>
 			</CalibrateModal>
 			<SettingsModal>
 			<Header> Pengaturan Umum CADViewer </Header>
@@ -3891,11 +3912,14 @@
 				<CalibrateModal>
 				<Header> Messung kalibrieren </Header>
 				<Unit> Einheit: </Unit>
-				<Entfernung> Entfernung: </Entfernung>
+				<Distance> Entfernung: </Distance>
 				<OK> OK </OK>
 				<Text> Wählen Sie zuerst mit der Maus zwei Punkte in der Zeichnung aus, geben Sie dann Einheit und Abstand ein und drücken Sie OK </Text>
 				<TextObject>Wählen Sie mit der Maus zuerst ein Pfadelement in der Zeichnung aus, geben Sie dann Einheit und Entfernung ein und drücken Sie OK</TextObject>
 				<SelectPath>Pfad Wählen</SelectPath>
+				<SelectPoints>Zwei Punkte Wählen</SelectPoints>
+				<Scalefac>Skalierungsfaktor:</Scalefac>
+				<TextScale>Einheit und den Skalierungsfaktor eingeben und OK drücken</TextScale>
 				</CalibrateModal>
 			<SettingsModal>
 				<Header> Allgemeine CADViewer-Einstellungen </Header>
@@ -4417,6 +4441,9 @@
 				<Text> Sélectionnez d'abord deux points dans le dessin avec la souris, puis entrez l'unité et la distance et appuyez sur OK </Text>
 				<TextObject>Sélectionnez d'abord une entité de chemin dans le dessin avec la souris, puis entrez l'unité et la distance et appuyez sur OK</TextObject>
 				<SelectPath>Sélectionnez le chemin</SelectPath>
+				<SelectPoints>Deux points</SelectPoints>
+				<Scalefac>Facteur d'échelle:</Scalefac>
+				<TextScale>Entrez l'unité et le facteur d'échelle et appuyez sur OK</TextScale>
 			</CalibrateModal>
 			<SettingsModal>
 				<Header> Paramètres généraux de CADViewer </Header>
