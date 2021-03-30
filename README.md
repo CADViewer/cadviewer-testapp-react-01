@@ -41,3 +41,8 @@ Read the general documentation on **CADViewer** is found at: https://cadviewer.c
 The general documentation on **AutoXchange 2020** is found at: https://tailormade.com/ax2020techdocs/.
 
 The CADViewer API is found at: https://cadviewer.com/cadviewerproapi/global.html.
+
+
+## CADViewer Install instructions - Angular and VueJS
+
+On Angular and VueJS, Install CADViewer with: *npm i cadviewer*, see instructions in:  https://www.npmjs.com/package/cadviewer

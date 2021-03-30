@@ -17,6 +17,7 @@ export function clearTextLayer(){
 	textLayer1 = cadviewer.cvjs_clearLayer(textLayer1);
 }
 
+
 var  selected_handles = [];
 var  handle_selector = false;
 var  current_selected_handle = "";
@@ -357,8 +358,6 @@ class CADViewer extends Component {
       //cadviewer.cvjs_setHandlers_FrontEnd('PHP', 'ReactJS','floorPlan');
       //cadviewer.cvjs_setHandlers_FrontEnd('dotNET', 'ReactJS','floorPlan');
       //cadviewer.cvjs_setHandlers_FrontEnd('Servlets', 'ReactJS','floorPlan');
-
-
 
 		// PATH and FILE to be loaded, can be in formats DWG, DXF, DWF, SVG , JS, DGN, PCF, JPG, GIF, PNG
 		  //var FileName = ServerBackEndUrl+ "/content/drawings/dwg/hq17_.dwg";		
