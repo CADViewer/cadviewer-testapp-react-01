@@ -4,6 +4,10 @@
 
 1: Install a sample React App implementing CADViewer API and Canvas: *npm i cadviewer-testapp-react-01* 
 
+**NOTE: Please use [Github](https://github.com/CADViewer/cadviewer-testapp-react-01) to download/clone this sample: [cadviewer-testapp-react-01](https://github.com/CADViewer/cadviewer-testapp-react-01) as the preferred route!** 
+
+
+
 As an alternative:
 
 2A: Install CADViewer from: *npm i cadviewer* , see: https://www.npmjs.com/package/cadviewer
