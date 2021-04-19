@@ -520,6 +520,11 @@ class CADViewer extends Component {
 		//      cvjs_conversion_addAXconversionParameter("RL", "EC1 Space Polygons");		 
 	//      cvjs_conversion_addAXconversionParameter("TL", "EC1 Space Numbers");		 
 
+// process all handles
+//		cadviewer.cvjs_conversion_addAXconversionParameter("HLALL", "");		 
+
+
+
 		cadviewer.cvjs_conversion_addAXconversionParameter("last", "");		 
 		cadviewer.cvjs_conversion_addAXconversionParameter("fpath", ServerLocation + "/converters/ax2020/windows/fonts/");		 
 							

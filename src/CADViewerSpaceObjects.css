@@ -1,9 +1,11 @@
 .CADViewerSpaceObjects {
-	position: absolute; 
+	position: relative; 
 	left: 0px; 
-	top: 250px; 
-	border: 0px solid green;
-  background-color: white;
+/*	top: 250px; 
+	border: 0px solid green;*/
+  background-color: white; 
+  touch-action: none;
+
 }
 
 

@@ -1153,70 +1153,13 @@ class CADViewerHelperMethods extends Component {
         <br/>Second group ID: &nbsp; &nbsp;<input type="text" id="group_2" defaultValue="NODE_xx" />&nbsp;<input type="text" id="group_2_subid" defaultValue="id_01" />&nbsp;<button className="w3-button demo" onClick="update_group_with_group();">Add Group to Group</button>&nbsp; &nbsp; <button className="w3-button demo" onClick="hide_object_in_group();">Hide Object In Group</button>&nbsp;&nbsp;  <button className="w3-button demo" onClick="show_object_in_group();">Show Object In Group</button>&nbsp;
     */}
 
-<table width="100%" height="100%" border="0" cellSpacing="0" border-spacing="0" id="mainTable">
-<tbody>
-	<tr > 
-		<td width="300" height="1">
-
-    <table id="xspace_icon_table1" border="0" >
-<tbody>	
-		<tr>
-	<td>
-	<strong>Space Type:</strong>&nbsp; 
-	</td>
-	<td>
-	<canvas id="dummy" width="5" height="10"></canvas>
-	</td>
-	<td>
-	<input type="text" id="image_Type" defaultValue="Wifi" />
-	</td>
-	<td>
-	</td>	
-	</tr>
-
-	<tr>
-	<td>
-	<strong>Space ID:</strong>&nbsp; 
-	</td>
-	<td>
-	<canvas id="dummy" width="5" height="10"></canvas>
-	</td>
-	<td>
-	<input type="text" id="image_ID" defaultValue="wifi_1" />
-	</td>
-	</tr>
-
-	<tr>
-	<td>
-	<strong>Space Image:</strong>&nbsp; 
-	</td>
-	<td>
-	<canvas id="dummy" width="5" height="10"></canvas>
-	</td>
-	<td>
-	<input type="text" id="image_sensor_location" defaultValue="wifi_25.svg" />
-	</td>
-	</tr>
-
-	<tr>
-	<td>
-	<strong>Create:</strong>&nbsp; 
-	</td>
-	<td>
-	<canvas id="dummy" width="5" height="10"></canvas>
-	</td>
-	<td>
-	<button className="w3-button demo" onClick={insert_from_type_id_image}>New Space Object</button>
-	</td>
-	</tr>
-
-
-  </tbody>
-</table>
-
-
-		</td>
-		<td>
+<canvas id="dummy" width="5" height="21"></canvas>
+	<strong>Space Type:</strong>&nbsp; 	<input type="text" id="image_Type" defaultValue="Wifi" />
+    <strong>Space ID:</strong>&nbsp; 	<input type="text" id="image_ID" defaultValue="wifi_1" />
+    <strong>Space Image:</strong>&nbsp; 	<input type="text" id="image_sensor_location" defaultValue="wifi_25.svg" />
+    <strong>Create:</strong>&nbsp; 	<button className="w3-button demo" onClick={insert_from_type_id_image}>New Space Object</button>
+    <br/>
+    <canvas id="dummy" width="5" height="22"></canvas>    
     <b>Highlight Spaces based on Color:&nbsp; </b> <input type="text" id="input_color" defaultValue="#AAAA00" />
 		<button className="w3-button demo" onClick={highlight_all_spaces}>Spaces</button>
 		<button className="w3-button demo" onClick={highlight_all_borders}>Borders</button>
@@ -1225,7 +1168,10 @@ class CADViewerHelperMethods extends Component {
     <button className="w3-button demo" onClick={clear_space_highlight}>Clear All</button>
     <button className="w3-button demo" onClick={display_all_objects}>All:(id,area)</button>
     <button className="w3-button demo" onClick={customAddTextToSpaces}>Text on Spaces</button>
-    <br/><br/><strong>Custom Interactive Canvas Samples:&nbsp;</strong><canvas id="dummy" width="10" height="10"></canvas>
+    <br/>
+    <canvas id="dummy" width="5" height="22"></canvas>
+
+    <strong>Custom Interactive Canvas Samples:&nbsp;</strong><canvas id="dummy" width="10" height="10"></canvas>
 		<button className="w3-button demo" onClick={cadviewerCanvasMethod01}>Canvas-DRAG (console)</button>
 		<button className="w3-button demo" onClick={cadviewerCanvasMethod02}>Canvas-CLICK (console)</button>
 		<button className="w3-button demo" onClick={cadviewerCanvasMethod03}>Make Rect -CLICK</button>
@@ -1239,18 +1185,16 @@ class CADViewerHelperMethods extends Component {
     &nbsp;&nbsp;&nbsp;&nbsp;  <button className="w3-button demo" onClick={copy_group_object}><i>Copy Group</i></button>&nbsp;<input type="text" id="copy_org_id" defaultValue="orgid" />&nbsp;<input type="text" id="copy_new_id" defaultValue="newid" /><button className="w3-button demo" onClick={hide_object_in_group}>Hide Subgroup In Group</button>&nbsp;&nbsp;  <button className="w3-button demo" onClick={show_object_in_group}>Show Subgroup In Group</button>&nbsp;
     <br/><i>Group 1:</i> &nbsp; &nbsp;<input type="text" id="group_1" defaultValue="NODE_xx" />  <i>Group 2:</i> &nbsp; &nbsp;<input type="text" id="group_2" defaultValue="NODE_yy" />&nbsp;<button className="w3-button demo" onClick={update_group_with_group}><i>Add Group to Group</i></button>&nbsp;&nbsp;Subgroup ID:&nbsp;<input type="text" id="group_2_subid" defaultValue="id_01" />&nbsp; &nbsp; 
 */} <br/>
-    <br/><b>JSON file sample(Relay - relaysample-01.json):&nbsp;</b><button className="w3-button demo" onClick={lock_all}>Lock all Relays</button>&nbsp;<button className="w3-button demo" onClick={unlock_all}>Unlock all Relays</button>&nbsp; <input type="text" id="relay_id" defaultValue="relay_01" />&nbsp;<button className="w3-button demo" onClick={unlock_single}>Unlock Relay</button>&nbsp;<button className="w3-button demo" onClick={lock_single}>Lock Relay</button>&nbsp;
-    
-    </td>
-    </tr>        
-  </tbody>
-  </table>
+    <canvas id="dummy" width="5" height="22"></canvas>
+  <b>JSON file sample(Relay - relaysample-01.json):&nbsp;</b><button className="w3-button demo" onClick={lock_all}>Lock all Relays</button>&nbsp;<button className="w3-button demo" onClick={unlock_all}>Unlock all Relays</button>&nbsp; <input type="text" id="relay_id" defaultValue="relay_01" />&nbsp;<button className="w3-button demo" onClick={unlock_single}>Unlock Relay</button>&nbsp;<button className="w3-button demo" onClick={lock_single}>Lock Relay</button>&nbsp;
+  
 
+  <canvas id="dummy" width="5" height="18"></canvas>
 
   <div className="slidecontainer">
   <strong><small>SVG Icon Size at Insert: <span id="iconsize"></span></small></strong><input type="range" min="1" max="400"  className="slider" id="myRange"/>
   </div>
-
+  
 
 {/*}
           <img id ="img1" src={logo} className="CADViewerHelperMethods-logo" alt="logo" />

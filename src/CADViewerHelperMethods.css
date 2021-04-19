@@ -3,6 +3,7 @@
   background-color: white;
   color: black;
   border: 0px solid blueviolet;
+  touch-action: none;
   
 }
 
@@ -49,8 +50,8 @@
 
 .slidecontainer {
 	width: 200px;
-	position: absolute;
-	top: 200px;
+	position: relative;
+	top: -5px;
 	left: 10px;
 }
 
