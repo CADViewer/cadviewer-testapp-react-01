@@ -196,6 +196,14 @@ function cvjs_popupTitleClick(roomid){
 // ENABLE ALL API EVENT HANDLES FOR AUTOCAD Handles
 function cvjs_mousedown(id, handle, entity){
 
+	// TEST - when click move to center with 300% around block handle 
+	cadviewer.cvjs_zoomHere_Handle(handle, 3.0, "floorPlan");
+	
+	// we cannot highlight because we have moved the mouse or finger out
+	// remove cadviewer.cvjs_mouseout_handleObjectStyles(id, handle); and it will highlight
+
+	//cadviewer.cvjs_HighlightHandleObjectStyles("#F00", 2.0, 1.0, true, id, handle);
+
 }
 
 function cvjs_click(id, handle, entity){
@@ -233,8 +241,10 @@ function cvjs_mouseout(id, handle, entity){
 
 function cvjs_mouseover(id, handle, entity){
 
-console.log("mysql mouseover "+id+"  "+handle+"  "+jQuery("#"+id).css("color"))
-//cvjs_mouseover_handleObjectPopUp(id, handle);	
+	console.log("mysql mouseover "+id+"  "+handle+"  "+jQuery("#"+id).css("color"))
+	//cvjs_mouseover_handleObjectPopUp(id, handle);	
+
+
 }
 
 function cvjs_mouseleave(id, handle, entity){
@@ -342,12 +352,13 @@ class CADViewer extends Component {
 		//var FileName = ServerBackEndUrl + "/content/drawings/dwg/BRA_Alta Vila_02_CkIn_06082020.dwg";	
 		//var FileName = ServerBackEndUrl+ "/content/drawings/dwg/LUXR-42-01-PID-005_0-Model.pdf";
 		//var FileName = ServerBackEndUrl+ "/content/drawings/dwg/hq17_2spaces.dwg";
+		// var FileName = ServerBackEndUrl+ "/content/drawings/dwg/gnb_Sample.dwg";//
+
 		var FileName = ServerBackEndUrl+ "/content/drawings/dwg/hq17_.dwg";
 
 		cadviewer.cvjs_debugMode(true);
 		cadviewer.cvjs_setServerLocationURL(ServerLocation, ServerUrl);
 		cadviewer.cvjs_setServerBackEndUrl(ServerBackEndUrl);
-
 
 
 //		cadviewer.cvjs_setHandlerSettings('ReactJS', 'floorPlan'); // standard angular + nodejs
@@ -517,12 +528,11 @@ class CADViewer extends Component {
 		// calculate areas of spaces
 		cadviewer.cvjs_conversion_addAXconversionParameter("LA", "");		 
 
-		//      cvjs_conversion_addAXconversionParameter("RL", "EC1 Space Polygons");		 
-	//      cvjs_conversion_addAXconversionParameter("TL", "EC1 Space Numbers");		 
+		// cvjs_conversion_addAXconversionParameter("RL", "EC1 Space Polygons");		 
+	    // cvjs_conversion_addAXconversionParameter("TL", "EC1 Space Numbers");		 
 
-// process all handles
-//		cadviewer.cvjs_conversion_addAXconversionParameter("HLALL", "");		 
-
+		// process all handles
+		// cadviewer.cvjs_conversion_addAXconversionParameter("HLALL", "");		 
 
 
 		cadviewer.cvjs_conversion_addAXconversionParameter("last", "");		 
