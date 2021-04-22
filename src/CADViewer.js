@@ -331,19 +331,19 @@ class CADViewer extends Component {
 	
 
 		// connecting to Servlets Server
-		var ServerBackEndUrl = "http://localhost:8080/cadviewer/";
-		var ServerLocation = "c:/xampp/tomcat/webapps/cadviewer/";
+		//var ServerBackEndUrl = "http://localhost:8080/cadviewer/";
+		//var ServerLocation = "c:/xampp/tomcat/webapps/cadviewer/";
 
 
 
 		// Connecting to .NET Server
-		var ServerBackEndUrl = "http://localhost:53737/";
-		var ServerLocation = "c:/visualstudio/cadviewer/";
+		//var ServerBackEndUrl = "http://localhost:53737/";
+		//var ServerLocation = "c:/visualstudio/cadviewer/";
 
 
 		// Standard NodeJS Server
 		var ServerBackEndUrl = "http://localhost:3000/";
-		var ServerLocation = "c:/nodejs/cadviewerServer/";
+		var ServerLocation = "c:/nodejs/cadviewer-conversion-server/";
 
 		var ServerUrl = "http://localhost:8000/";
 
