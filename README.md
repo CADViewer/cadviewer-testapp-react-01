@@ -13,7 +13,7 @@ Install CADViewer via *npm i cadviewer* on all platforms, see specifics below fo
 
 As an alternative:
 
-2: Download a [React App](https://github.com/CADViewer/cadviewer-testapp-react-01) sample from [Github](https://github.com/CADViewer/cadviewer-testapp-react-01) implementing [CADViewer](https://github.com/CADViewer/cadviewer-testapp-react-01).
+2: Download a CADViewer [React](https://github.com/CADViewer/cadviewer-testapp-react-01) implementation sample from the [Github](https://github.com/CADViewer/cadviewer-testapp-react-01) repository [cadviewer-testapp-react-01](https://github.com/CADViewer/cadviewer-testapp-react-01).
 
 
 For both methods 1: and 2: , then do the following:
@@ -21,7 +21,7 @@ For both methods 1: and 2: , then do the following:
 
 Download the Node JS CAD Conversion server (or alternatively the PHP, .NET or Servlet Server implementations):  Go to:  https://cadviewer.com/download/, register and receive email and then download from **CADViewer Handler/Connector Scripts**.
 
-The [CADViewer](https://github.com/CADViewer/cadviewer-conversion-server) NodeJS CAD Conversion Server can be downloaded from [Github](https://github.com/CADViewer/cadviewer-conversion-server) from the repository [cadviewer-testapp-react-01](https://github.com/CADViewer/cadviewer-conversion-server).
+The [CADViewer](https://github.com/CADViewer/cadviewer-conversion-server) NodeJS CAD Conversion Server can be downloaded from [Github](https://github.com/CADViewer/cadviewer-conversion-server) from the repository [cadviewer-conversion-server](https://github.com/CADViewer/cadviewer-conversion-server).
 
 Download the CAD Converter AutoXchange 2020:  Go to: https://cadviewer.com/download/, register and receive email and then download from **AutoXchange 2020 Downloads**.
 
@@ -72,7 +72,7 @@ The CADViewer API is found at: https://cadviewer.com/cadviewerproapi/global.html
 
 As an alternative:
 
-2: Download an [Angular App](https://github.com/CADViewer/cadviewer-testapp-angular-v01) sample from [Github](https://github.com/CADViewer/cadviewer-testapp-angular-v01) implementing [CADViewer](https://github.com/CADViewer/cadviewer-testapp-angular-v01).
+2: Download a CADViewer [Angular](https://github.com/CADViewer/cadviewer-testapp-angular-v01) implementation sample from [Github](https://github.com/CADViewer/cadviewer-testapp-angular-v01) repository [cadviewer-testapp-angular-v01](https://github.com/CADViewer/cadviewer-testapp-angular-v01).
 
 
 For both methods 1: and 2: , then do the following:
@@ -80,7 +80,7 @@ For both methods 1: and 2: , then do the following:
 
 Download the Node JS CAD Conversion server (or alternatively the PHP, .NET or Servlet Server implementations):  Go to:  https://cadviewer.com/download/, register and receive email and then download from **CADViewer Handler/Connector Scripts**.
 
-The [CADViewer](https://github.com/CADViewer/cadviewer-conversion-server) NodeJS CAD Conversion Server can be downloaded from [Github](https://github.com/CADViewer/cadviewer-conversion-server) from the repository [cadviewer-testapp-react-01](https://github.com/CADViewer/cadviewer-conversion-server).
+The [CADViewer](https://github.com/CADViewer/cadviewer-conversion-server) NodeJS CAD Conversion Server can be downloaded from [Github](https://github.com/CADViewer/cadviewer-conversion-server) from the repository [cadviewer-conversion-server](https://github.com/CADViewer/cadviewer-conversion-server).
 
 Download the CAD Converter AutoXchange 2020:  Go to: https://cadviewer.com/download/, register and receive email and then download from **AutoXchange 2020 Downloads**.
 
@@ -122,7 +122,7 @@ The CADViewer API is found at: https://cadviewer.com/cadviewerproapi/global.html
 
 As an alternative:
 
-2: Download an [VueJS App](https://github.com/CADViewer/cadviewer-testapp-vue-01) sample from [Github](https://github.com/CADViewer/cadviewer-testapp-vue-v01) implementing [CADViewer](https://github.com/CADViewer/cadviewer-testapp-vue-01).
+2: Download a CADViewer [VueJS](https://github.com/CADViewer/cadviewer-testapp-vue-01) implementation sample from [Github](https://github.com/CADViewer/cadviewer-testapp-vue-v01) repository [cadviewer-testapp-vue-01](https://github.com/CADViewer/cadviewer-testapp-vue-01).
 
 
 
@@ -131,7 +131,7 @@ For both methods 1: and 2: , then do the following:
 
 Download the Node JS CAD Conversion server (or alternatively the PHP, .NET or Servlet Server implementations):  Go to:  https://cadviewer.com/download/, register and receive email and then download from **CADViewer Handler/Connector Scripts**.
 
-The [CADViewer](https://github.com/CADViewer/cadviewer-conversion-server) NodeJS CAD Conversion Server can be downloaded from [Github](https://github.com/CADViewer/cadviewer-conversion-server) from the repository [cadviewer-testapp-react-01](https://github.com/CADViewer/cadviewer-conversion-server).
+The [CADViewer](https://github.com/CADViewer/cadviewer-conversion-server) NodeJS CAD Conversion Server can be downloaded from [Github](https://github.com/CADViewer/cadviewer-conversion-server) from the repository [cadviewer-conversion-server](https://github.com/CADViewer/cadviewer-conversion-server).
 
 Download the CAD Converter AutoXchange 2020:  Go to: https://cadviewer.com/download/, register and receive email and then download from **AutoXchange 2020 Downloads**.
 
