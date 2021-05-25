@@ -9,7 +9,7 @@ Install CADViewer via *npm i cadviewer* on all platforms, see specifics below fo
 
 1A: Install CADViewer from: *npm i cadviewer* 
 
-1B: There are some general image and XML configuration files that CADViewer needs during execution, please download [react_public_folder_cadviewer_6_4.zip](https://cadviewer.com/downloads/handlers/reactjs/react_public_folder_cadviewer_6_4.zip) and place in your React /public/ project folder.   
+1B: There are some general image and XML configuration files that CADViewer needs during execution, please download [react_public_folder_cadviewer_6_5.zip](https://cadviewer.com/downloads/handlers/reactjs/react_public_folder_cadviewer_6_5.zip) and place in your React /public/ project folder.   
 
 As an alternative:
 
@@ -57,7 +57,7 @@ The CADViewer API is found at: https://cadviewer.com/cadviewerproapi/global.html
 
 1A: Install CADViewer: *npm i cadviewer* 
 
-1B: There are some general image, style and XML configuration files that CADViewer needs during execution, please download [angular_src_asset_folder_cadviewer_6_4.zip](https://cadviewer.com/downloads/handlers/angular/angular_src_asset_folder_cadviewer_6_4.zip) and place in your Angular /src/assets/ project folder.   
+1B: There are some general image, style and XML configuration files that CADViewer needs during execution, please download [angular_src_asset_folder_cadviewer_6_5.zip](https://cadviewer.com/downloads/handlers/angular/angular_src_asset_folder_cadviewer_6_5.zip) and place in your Angular /src/assets/ project folder.   
 
 1C: In *angular.json* , reference the cadviewer related stylesheets from /src/assets/:
 
@@ -67,7 +67,7 @@ The CADViewer API is found at: https://cadviewer.com/cadviewerproapi/global.html
               "src/assets/cadviewer/app/css/jquery.qtip.min.css",
               "src/assets/cadviewer/app/css/jquery-ui-1.11.4.min.css",
               "src/assets/cadviewer/app/css/bootstrap-multiselect.css",
-              "src/assets/cadviewer/app/css/cvjs_6.4.css"
+              "src/assets/cadviewer/app/css/cvjs_6.5.css"
             ],
 
 As an alternative:
@@ -118,7 +118,7 @@ The CADViewer API is found at: https://cadviewer.com/cadviewerproapi/global.html
 
 1A: Install CADViewer from: *npm i cadviewer* 
 
-1B: There are some general image and XML configuration files that CADViewer needs during execution, please download [vue_react_public_folder_cadviewer_6_4.zip](https://cadviewer.com/downloads/handlers/reactjs/react_public_folder_cadviewer_6_4.zip) and place in your VueJS /public/ project folder.   
+1B: There are some general image and XML configuration files that CADViewer needs during execution, please download [vue_react_public_folder_cadviewer_6_5.zip](https://cadviewer.com/downloads/handlers/reactjs/react_public_folder_cadviewer_6_5.zip) and place in your VueJS /public/ project folder.   
 
 As an alternative:
 

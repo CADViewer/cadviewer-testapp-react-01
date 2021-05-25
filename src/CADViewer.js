@@ -360,6 +360,9 @@ class CADViewer extends Component {
 		cadviewer.cvjs_setServerLocationURL(ServerLocation, ServerUrl);
 		cadviewer.cvjs_setServerBackEndUrl(ServerBackEndUrl);
 
+	   // cadviewer.cvjs_setLeafletJS(true);
+		
+
 
 //		cadviewer.cvjs_setHandlerSettings('ReactJS', 'floorPlan'); // standard angular + nodejs
 
@@ -451,30 +454,70 @@ class CADViewer extends Component {
 		
 		// Initialize CADViewer  - needs the div name on the svg element on page that contains CADViewerJS and the location of the
 		// main application "app" folder. It can be either absolute or relative
-				
+
+		
+/*		
 		// SETTINGS OF THE COLORS OF SPACES
-		var cvjsRoomPolygonBaseAttributes = {
+		var BaseAttributes = {
 				fill: '#d8e1e3', //'#d8e1e3', // '#ffd7f4', //'#D3D3D3',   // #FFF   #ffd7f4
-				"fill-opacity": 0.04,    //"0.05",   // 0.1
+				"fill-opacity": 0.1,    //"0.05",   // 0.1
 				stroke: '#CCC',  
 				'stroke-width': 0.25,
 				'stroke-linejoin': 'round',
+				'stroke-opacity': 0.1,
+				//opacity: 0.1,
 			};
 		
-		var cvjsRoomPolygonHighlightAttributes = {
-				fill: '#a4d7f4',
-				"fill-opacity": "0.5",
+		var HighlightAttributes = {
+				fill: '#a4d7f4',   // #a4d7f4
+				"fill-opacity": 1.0,
 				stroke: '#a4d7f4',
-				'stroke-width': 0.75
+				'stroke-width': 0.75,
+				'stroke-opacity': 1,
+				//opacity: 0.5,
+
 			};
 			
-		var cvjsRoomPolygonSelectAttributes = {
+		var SelectAttributes = {
 				fill: '#5BBEF6',
-				"fill-opacity": "0.5",
+				"fill-opacity": 1.0,
 				stroke: '#5BBEF6',
-				'stroke-width': 0.75
+				'stroke-width': 0.75,
+				'stroke-opacity': 1.0,
+				 //opacity: 0.5,
 			};
-	
+
+*/
+
+			var BaseAttributes = {
+				fill: '#d8e1e3', //'#d8e1e3', // '#ffd7f4', //'#D3D3D3',   // #FFF   #ffd7f4
+				"fill-opacity": "0.1",
+				stroke: '#CCC',  //  #CCC
+				'stroke-width': 0.5,
+				'stroke-opacity': "0.7",
+				'stroke-linejoin': 'round'
+			};
+
+			// Location Highlight Attribute    (no separation between location types)
+			var HighlightAttributes = {
+				fill: '#a4d7f4',
+				"fill-opacity": "0.8",
+				stroke: '#a4d7f4',
+				'stroke-width': 1,
+				'stroke-opacity': "0.8"
+			};
+
+			// Location Select Attribute    (no separation between location types)
+			var SelectAttributes = {   // fill: '#5BBEF6',
+				fill: '#5BBEF6',
+				"fill-opacity": "0.8",
+				stroke: '#5BBEF6',
+				'stroke-width': 1,
+				'stroke-opacity': "0.8"
+			};
+
+
+
 		/** FIXED POP-UP MODAL  **/
 		
 			// THIS IS THE DESIGN OF THE pop-up MODAL WHEN CLICKING ON SPACES
@@ -490,7 +533,7 @@ class CADViewer extends Component {
 		//  cvjs_InitCADViewer_highLight_popUp_app("floorPlan", ServerUrl+"app/", cvjsRoomPolygonBaseAttributes, cvjsRoomPolygonHighlightAttributes, cvjsRoomPolygonSelectAttributes, my_cvjsPopUpBody);
 
 		//      cvjs_InitCADViewer_highLight_popUp_app("floorPlan", ServerUrl+ "/cadviewer/app/", cvjsRoomPolygonBaseAttributes, cvjsRoomPolygonHighlightAttributes, cvjsRoomPolygonSelectAttributes, my_cvjsPopUpBody );
-		cadviewer.cvjs_InitCADViewer_highLight_popUp_app("floorPlan", "/cadviewer/app/", cvjsRoomPolygonBaseAttributes, cvjsRoomPolygonHighlightAttributes, cvjsRoomPolygonSelectAttributes, my_cvjsPopUpBody );
+		cadviewer.cvjs_InitCADViewer_highLight_popUp_app("floorPlan", "/cadviewer/app/", BaseAttributes, HighlightAttributes, SelectAttributes, my_cvjsPopUpBody );
 				
 		// set the location to license key, typically the js folder in main app application folder ../app/cv/
 		//cadviewer.cvjs_setLicenseKeyPath("/cadviewer/app/cv/");
