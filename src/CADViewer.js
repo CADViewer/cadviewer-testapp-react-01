@@ -345,6 +345,13 @@ class CADViewer extends Component {
 		var ServerBackEndUrl = "http://localhost:3000/";
 		var ServerLocation = "c:/nodejs/cadviewer-conversion-server/";
 
+
+		// ONLINE TEST SERVER
+		//var ServerBackEndUrl = "http://convertcad.online:3000/";
+		//var ServerLocation = "/home/cadviewer/convertcad.online/cadviewer-conversion-server/";
+
+
+
 		var ServerUrl = "http://localhost:8000/";
 
 		
