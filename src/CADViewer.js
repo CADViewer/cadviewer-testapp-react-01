@@ -258,7 +258,7 @@ function cvjs_mouseenter(id, handle, entity){
 //	cvjs_mouseenter_handleObjectStyles("#ffcccb", 5.0, 0.7, true, id, handle);
 
 
-cadviewer.cvjs_mouseenter_handleObjectStyles("#F00", 2.0, 1.0, true, id, handle);
+cadviewer.cvjs_mouseenter_handleObjectStyles("#F00", 10.0, 1.0, true, id, handle);
 
 }
 
