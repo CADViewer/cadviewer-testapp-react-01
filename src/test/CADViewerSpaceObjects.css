@@ -1,0 +1,53 @@
+.CADViewerSpaceObjects {
+	position: relative; 
+	left: 0px; 
+/*	top: 250px; 
+	border: 0px solid green;*/
+  background-color: white; 
+  touch-action: none;
+
+}
+
+
+#space_icon_table2 {
+	position: absolute; 
+	left: 0px; 
+	top: 0px; 
+	width: 40px ;
+	border: 2px solid gray;
+	
+}
+
+#space_icon_table2 tr td{
+    border: 2px solid gray;
+	text-align: center; 
+    vertical-align: middle;
+	width : 40px;
+}
+
+#icon_div_popup {
+	position: absolute;
+	border: 1px solid black;
+	background: #F5F5F5;
+	
+	font-family:Verdana;
+	font-size:9pt;	
+}
+
+
+#myImagesToDrag {
+	position: absolute; 
+	left: 0px; 
+	top: 250px; 
+	width: 120px;
+	height: 500px;
+	border: 0px solid red;
+	
+}
+
+
+
+.Button{
+  color: black;
+}
+
