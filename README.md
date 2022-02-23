@@ -38,7 +38,20 @@ Read the sections on installing and handling [Fonts](https://tailormade.com/ax20
 
 ## How to Use
 
-Once installed, run npm start to start the server. Use http://localhost:xxxxx/ as a starting point (assuming that your have installed under http://localhost:xxxxx).
+1: Install the package.
+
+2: In the files ***/src/CADViewer.js*** or ***src/CADViewerBlocks01.js*** ensure that the front-end and back-end server locations are correctly defined. 
+
+		//
+		var ServerBackEndUrl = "http://localhost:3000/";
+		var ServerLocation = "";    // leave blank
+		
+		// Standard Front-end
+		var ServerUrl = "http://localhost:8000/";
+
+3: Make sure the back-end CAD conversion server is installed. If using [CADViewer Node JS](https://github.com/CADViewer/cadviewer-conversion-server) conversion server, make sure the CADViewer_config.json is properly configured with the various server settings, their Urls and other parameters 
+
+4:  Run npm start to start the ReactJS server. Use http://localhost:8000 as a starting point in your browser, (assuming that your have installed under http://localhost:8000).
 
 
 
