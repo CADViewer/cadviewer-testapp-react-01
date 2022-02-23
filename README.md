@@ -6,7 +6,7 @@ The repository contains a full setup of CADViewer with React.
 
 ## This package contains
 
-1: CADViewer script library  - npm installed into ClientApp as part of React JS front-end.
+1: [CADViewer script library](https://www.npmjs.com/package/cadviewer)  - [npm](https://www.npmjs.com/package/cadviewer) installed into ClientApp as part of React JS front-end.
 
 2: cadviewer-testapp-react-01/src/index.js invokes helper script documents for two samples:
 
