@@ -1,4 +1,4 @@
-# cadviewer-testapp--react-01
+# cadviewer-testapp-react-01
 
 ReactJS CADViewer front-end sample
 
@@ -12,7 +12,9 @@ The repository contains a full setup of CADViewer with React.
 
 3: All structures for file-conversion, sample drawings, redlines, etc. 
 
-4: /src/index.js invokes helper script documents two samples:
+4: cadviewer-testapp-react-01/src/index.js invokes helper script documents two samples:
+
+simple comment/uncomment relevant parts of this script file ***index.js*** to run either sample 4a or 4b below:
 
 4a: General sample:
 
@@ -24,6 +26,8 @@ The repository contains a full setup of CADViewer with React.
 
 		CADViewerBlocks01.js: - CADViewer canvas initialization 
 		CADViewerHelperMethodsBlocks01.js: script document with helper methods for testing the CADViewer API for block image substitution
+
+
 
 
 
