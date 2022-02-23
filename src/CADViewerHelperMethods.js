@@ -1176,9 +1176,9 @@ class CADViewerHelperMethods extends Component {
 		<button className="w3-button demo" onClick={cadviewerCanvasMethod02}>Canvas-CLICK (console)</button>
 		<button className="w3-button demo" onClick={cadviewerCanvasMethod03}>Make Rect -CLICK</button>
 		<button className="w3-button demo" onClick={cadviewerCanvasMethod04}>Make Rect -DRAG</button>
-		<button className="w3-button demo" onClick={cadviewerCanvasMethod05}>Select Spaces -DRAG (rl/tl in ax2020)</button>
+		<button className="w3-button demo" onClick={cadviewerCanvasMethod05}>Select Spaces -DRAG (rl/tl in ax2022)</button>
 		<button className="w3-button demo" onClick={cadviewerCanvasMethod06}>Make Box/Arrow Canvas-CLICK</button>
-    <button className="w3-button demo" onClick={cadviewerCanvasMethod07}>Select Handles -CLICK (DblClick End) (hlall in ax2020)</button>
+    <button className="w3-button demo" onClick={cadviewerCanvasMethod07}>Select Handles -CLICK (DblClick End) (hlall in ax2022)</button>
 
 {/*
     <br/><b><i>IOT commands:</i>&nbsp; </b> 

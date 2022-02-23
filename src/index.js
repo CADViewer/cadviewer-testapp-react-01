@@ -1,17 +1,30 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+
+// Standard test case  -  uncomment all "STANDARD"
+//*
 import CADViewer from './CADViewer';
 import CADViewerSpaceObjects from './CADViewerSpaceObjects';
 import CADViewerHelperMethods from './CADViewerHelperMethods';
+//*/
+
+/*
+// Blocks case - uncomment all "BLOCKS"
+import CADViewerBlocks01 from './CADViewerBlocks01';
+import CADViewerHelperMethodsBlocks01 from './CADViewerHelperMethodsBlocks01';
+*/
+
+
 import * as serviceWorker from './serviceWorker';
 
-
+// STANDARD case
+//*
 ReactDOM.render(
   <React.StrictMode>
-    <CADViewerSpaceObjects />
+    <CADViewer />
   </React.StrictMode>,
-  document.getElementById('CADViewerSpaceObjects')
+  document.getElementById('CADViewerCanvas')
 );
 
 ReactDOM.render(
@@ -21,14 +34,33 @@ ReactDOM.render(
   document.getElementById('CADViewerHelperMethods')
 );
 
-
 ReactDOM.render(
   <React.StrictMode>
-    <CADViewer />
+    <CADViewerSpaceObjects />
+  </React.StrictMode>,
+  document.getElementById('CADViewerSpaceObjects')
+);
+//*/
+
+
+
+// BLOCKS case
+/*
+ReactDOM.render(
+  <React.StrictMode>
+    <CADViewerBlocks01 />
   </React.StrictMode>,
   document.getElementById('CADViewerCanvas')
 );
 
+
+ReactDOM.render(
+  <React.StrictMode>
+    <CADViewerHelperMethodsBlocks01 />
+  </React.StrictMode>,
+  document.getElementById('CADViewerHelperMethods')
+);
+*/
 
 
 

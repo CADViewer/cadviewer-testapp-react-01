@@ -47,15 +47,6 @@ function cvjs_OnLoadEnd(){
 
 	textLayer1 = cadviewer.cvjs_clearLayer(textLayer1);
 	
-	cadviewer.cvjs_LayerOff("EC1 Space Names");
-	cadviewer.cvjs_LayerOff("EC1 Space Status Descs");
-	cadviewer.cvjs_LayerOff("EC1 Space Project");
-	cadviewer.cvjs_LayerOff("EC1 Space Function Descs");
-	cadviewer.cvjs_LayerOff("EC1 Space Type Descs");
-	cadviewer.cvjs_LayerOff("EC1 Tenant Names");
-	cadviewer.cvjs_LayerOff("EC1 UDA Design Capacity");
-	cadviewer.cvjs_LayerOff("EC1 UDA Is Secured");
-
 }
 
 function cvjs_OnLoadEndRedlines(){
@@ -321,7 +312,43 @@ function cvjs_ObjectSelectedHyperlink(){
 function cvjs_ObjectSelectedStickyNotes(){
 };
 
-class CADViewer extends Component {
+function myCustomPopUpBody(rmid){
+
+	// extracting block attributes
+    var myobject = cadviewer.cvjs_returnSpaceObjectID(rmid);
+    //console.log("myCustomPopUpBody is called: "+ rmid+" "+JSON.stringify(myobject));
+    try {
+        // get block attribute:
+
+        var cvjsPopUpBody = "<div style='line-height:75%'><font size='0'>";
+        
+        for (var i = 1; i <= myobject.blockAttributeCount; i++) {
+            var attribId = "#" + myobject.blockAttributeId + "_" + i;
+            cvjsPopUpBody += jQuery(attribId).attr('cvjs:tag')+": <span id=\"mymodal_name_"+jQuery(attribId).attr('cvjs:value')+"\" >"+jQuery(attribId).attr('cvjs:value')+"</span><br>";
+        }
+        cvjsPopUpBody+= "<font size='+2'></div>";
+        return cvjsPopUpBody;
+    }
+    catch(err){
+
+
+    }
+
+}
+
+function populateMyCustomPopUpBody(){
+
+    // void
+}
+
+
+
+
+
+
+
+
+class CADViewerBlocks01 extends Component {
 
 	async componentDidMount () {
 
@@ -353,7 +380,10 @@ class CADViewer extends Component {
 		var ServerUrl = "http://localhost:8000/";
 		
 	    //var FileName = ServerBackEndUrl+ "/content/drawings/dwg/hq17_2spaces.dwg";		
-		var FileName = ServerBackEndUrl+ "/content/drawings/dwg/hq17_.dwg";
+		//var FileName = ServerBackEndUrl+ "/content/drawings/dwg/hq17_.dwg";
+
+		var FileName = ServerBackEndUrl+ "/content/custom/ff-ia.svg";
+
 
 		cadviewer.cvjs_debugMode(true);
 	   // cadviewer.cvjs_setLeafletJS(true);
@@ -416,6 +446,17 @@ class CADViewer extends Component {
 		 // Pass over the location of the installation, will update the internal paths
 		 cadviewer.cvjs_PrintToPDFWindowRelativeSize(0.8);
 		 cadviewer.cvjs_setFileModalEditMode(false);
+
+
+		// do not display modals
+
+
+		cadviewer.cvjs_setNoModalMode(true);
+        cadviewer.cvjs_setCallbackForModalDisplay(true, myCustomPopUpBody, populateMyCustomPopUpBody);
+
+
+
+
 	   		   
 		// For "Merge DWG" / "Merge PDF" commands, set up the email server to send merged DWG files or merged PDF files with redlines/interactive highlight.
 		// See php / xampp documentation on how to prepare your server
@@ -547,22 +588,19 @@ class CADViewer extends Component {
 		cadviewer.cvjs_setSpaceObjectsAbsolutePath(ServerBackEndUrl+'/content/spaceObjects/', ServerLocation+'/content/spaceObjects/');
 		cadviewer.cvjs_setInsertImageObjectsAbsolutePath(ServerBackEndUrl+'/content/inserted_image_objects/', ServerLocation+'/content/inserted_image_objects/')
 
-			
+
+		
+		
 		cadviewer.cvjs_conversion_clearAXconversionParameters();
-	    //			 cadviewer.cvjs_conversion_addAXconversionParameter("lw", "0.3");		 
- 	    //			 cadviewer.cvjs_conversion_addAXconversionParameter("lwmin", "0.3");		 
 
-	    // process layers for spaces  RL/TL
-		cadviewer.cvjs_conversion_addAXconversionParameter("RL", "RM_");		 
-		cadviewer.cvjs_conversion_addAXconversionParameter("TL", "RM_TXT");		 
-		// calculate areas of spaces
-		cadviewer.cvjs_conversion_addAXconversionParameter("LA", "");		 
+		// process blocks with a given name, in this case "audiovisual"
+		cadviewer.cvjs_conversion_addAXconversionParameter("blockname", "audiovisual");		 
 
-		// process all handles
-		// cadviewer.cvjs_conversion_addAXconversionParameter("HLALL", "");		 
+		// process all invisible attributes in the block 
+		cadviewer.cvjs_conversion_addAXconversionParameter("ia", "");		 
 
-		// open the last saved view in the file
-		cadviewer.cvjs_conversion_addAXconversionParameter("last", "");		 
+		// open the modelspace 
+		cadviewer.cvjs_conversion_addAXconversionParameter("model", "");		 
 							
 		// Load file - needs the svg div name and name and path of file to load
 		cadviewer.cvjs_LoadDrawing("floorPlan", FileName );
@@ -593,7 +631,7 @@ class CADViewer extends Component {
 
     render(){
         return (    
-              <div className="CADViewer"> 
+              <div className="CADViewerBlocks01"> 
 					{/*This is the CADViewer floorplan div declaration*/}
 					<div id="floorPlan" >
 					</div>
@@ -603,7 +641,7 @@ class CADViewer extends Component {
     }
 }
 
-export default CADViewer;
+export default CADViewerBlocks01;
 
 
 
