@@ -63,8 +63,10 @@ This repository should contain the latest converters, but in case you need to up
 <br>
 <br>
 
-# Installing CADViewer - General instructions for CADViewer for ReactJS, Angular and VueJS
+# Installing CADViewer 
 
+General instructions for CADViewer for ReactJS, Angular and VueJS
+ 
 Install CADViewer via *npm i cadviewer* on all platforms, see specifics below for each platform on how to add auxillary files and connect with back-end conversion server.
 
 
