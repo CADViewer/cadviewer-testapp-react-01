@@ -8,30 +8,28 @@ The repository contains a full setup of CADViewer with React.
 
 1: CADViewer script library  - npm installed into ClientApp as part of React JS front-end.
 
-2: AutoXchange AX2022 Converter and DWG Merge 2022 Converter - in their preferred folder structure
+2: cadviewer-testapp-react-01/src/index.js invokes helper script documents two samples:
 
-3: All structures for file-conversion, sample drawings, redlines, etc. 
+simply comment/uncomment relevant parts of this script file ***index.js*** to run either sample 4a or 4b below:
 
-4: cadviewer-testapp-react-01/src/index.js invokes helper script documents two samples:
-
-simple comment/uncomment relevant parts of this script file ***index.js*** to run either sample 4a or 4b below:
-
-4a: General sample:
+2a: General sample:
 
 		CADViewer.js: - CADViewer canvas initialization 
 		CADViewerHelperMethods.js: script document with helper methods for testing the CADViewer API
 		CADViewerSpaceObjects.js: drag-place div to add objects to the canvas
 
-4b: Block substitution sample: 
+2b: Block substitution sample: 
 
 		CADViewerBlocks01.js: - CADViewer canvas initialization 
 		CADViewerHelperMethodsBlocks01.js: script document with helper methods for testing the CADViewer API for block image substitution
 
 
 
+## This package does not contains
 
+5: The back-end AutoXchange 2022 conversion server and connecting scripts. Install these separately!
 
-## This package does not contain
+**NOTE:** With this download, use the NodeJS CAD conversion server: https://github.com/CADViewer/cadviewer-conversion-server
 
 6: The converter folder structure contains a larger set of fonts, installed in /cadviewer/converters/ax2022/windows/fonts/, but a fuller set of fonts can be installed. 
 
