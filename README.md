@@ -27,7 +27,7 @@ simply comment/uncomment relevant parts of this script file ***index.js*** to ru
 
 ## This package does not contains
 
-5: The back-end AutoXchange 2022 conversion server and connecting scripts. Install these separately!
+5: The [back-end AutoXchange 2022](https://github.com/CADViewer/cadviewer-conversion-server) conversion server and connecting scripts. Install these separately!
 
 **NOTE:** With this download, use the NodeJS CAD conversion server: https://github.com/CADViewer/cadviewer-conversion-server
 
