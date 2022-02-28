@@ -1,7 +1,85 @@
-# Installing CADViewer
+# cadviewer-testapp-react-01
 
-## CADViewer for ReactJS, Angular and VueJS
+ReactJS CADViewer front-end sample
 
+The repository contains a full setup of CADViewer with React.
+
+## This package contains
+
+1: [CADViewer script library](https://www.npmjs.com/package/cadviewer)  - [npm](https://www.npmjs.com/package/cadviewer) installed into ClientApp as part of React JS front-end.
+
+2: cadviewer-testapp-react-01/src/index.js invokes helper script documents for two samples:
+
+simply comment/uncomment relevant parts of this script file ***index.js*** to run either sample 4a or 4b below:
+
+2a: General sample:
+
+		CADViewer.js: - CADViewer canvas initialization 
+		CADViewerHelperMethods.js: script document with helper methods for testing the CADViewer API
+		CADViewerSpaceObjects.js: drag-place div to add objects to the canvas
+
+2b: Block substitution sample: 
+
+		CADViewerBlocks01.js: - CADViewer canvas initialization 
+		CADViewerHelperMethodsBlocks01.js: script document with helper methods for testing the CADViewer API for block image substitution
+
+
+
+## This package does not contains
+
+5: The [back-end AutoXchange 2022](https://github.com/CADViewer/cadviewer-conversion-server) conversion server and connecting scripts. Install these separately!
+
+**NOTE:** With this download, use the NodeJS CAD conversion server: https://github.com/CADViewer/cadviewer-conversion-server
+
+6: The converter folder structure contains a larger set of fonts, installed in /cadviewer/converters/ax2022/windows/fonts/, but a fuller set of fonts can be installed, found on our [download](https://cadviewer.com/download) site. 
+
+Read the sections on installing and handling [Fonts](https://tailormade.com/ax2020techdocs/installation/fonts/) in [AutoXchange 2022 TechDocs](https://tailormade.com/ax2020techdocs/) and [TroubleShooting](https://tailormade.com/ax2020techdocs/troubleshooting/).
+
+
+## How to Use
+
+1: Install the package.
+
+2: In the files ***/src/CADViewer.js*** or ***src/CADViewerBlocks01.js*** ensure that the front-end and back-end server locations are correctly defined. 
+
+		//
+		var ServerBackEndUrl = "http://localhost:3000/";
+		var ServerLocation = "";    // leave blank
+		
+		// Standard Front-end
+		var ServerUrl = "http://localhost:8000/";
+
+3: Make sure the back-end CAD conversion server is installed. If using [CADViewer Node JS](https://github.com/CADViewer/cadviewer-conversion-server) conversion server, make sure the CADViewer_config.json is properly configured with the various server settings, their Urls and other parameters 
+
+4:  Run npm start to start the ReactJS server. Use http://localhost:8000 as a starting point in your browser, (assuming that your have installed under http://localhost:8000).
+
+
+
+## General Documentation 
+
+-   [CADViewer Techdocs and Installation Guide](https://cadviewer.com/cadviewertechdocs/download)
+
+
+
+## Updating CAD Converters
+
+This repository should contain the latest converters, but in case you need to update any of the back-end converters please follow: 
+
+* [Download **AutoXchange**](/download/) (and other converters), install (unzip) AX2022 in **/converters/ax2022/windows** or **/converters/ax2022/linux** or in the designated folder structure.
+
+* Read the sections on installing and handling [Fonts](https://tailormade.com/ax2020techdocs/installation/fonts/) in [AutoXchange 2022 TechDocs](https://tailormade.com/ax2020techdocs/) and [TroubleShooting](https://tailormade.com/ax2020techdocs/troubleshooting/).
+
+* Try out the samples and build your own application!
+
+
+<br>
+<br>
+<br>
+
+# Installing CADViewer 
+
+General instructions for CADViewer for ReactJS, Angular and VueJS
+ 
 Install CADViewer via *npm i cadviewer* on all platforms, see specifics below for each platform on how to add auxillary files and connect with back-end conversion server.
 
 
