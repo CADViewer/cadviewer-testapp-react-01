@@ -312,6 +312,51 @@ function cvjs_ObjectSelectedHyperlink(){
 function cvjs_ObjectSelectedStickyNotes(){
 };
 
+function custom_callback1(){
+	var id = cadviewer.cvjs_idObjectClicked();
+	window.alert("Hello callback1 "+id);
+};
+function custom_callback2(){
+	var id = cadviewer.cvjs_idObjectClicked();
+	window.alert("Hello callback2 "+id);
+};
+function custom_callback3(){
+	var id = cadviewer.cvjs_idObjectClicked();
+	window.alert("Hello callback3 "+id);
+};
+function custom_callback4(){
+	var id = cadviewer.cvjs_idObjectClicked();
+	window.alert("Hello callback4 "+id);
+};
+function custom_callback5(){
+	var id = cadviewer.cvjs_idObjectClicked();
+	window.alert("Hello callback5 "+id);
+};
+function custom_callback6(){
+	var id = cadviewer.cvjs_idObjectClicked();
+	window.alert("Hello callback6 "+id);
+};
+function custom_callback7(){
+	var id = cadviewer.cvjs_idObjectClicked();
+	window.alert("Hello callback7 "+id);
+};
+function custom_callback8(){
+	var id = cadviewer.cvjs_idObjectClicked();
+	window.alert("Hello callback8 "+id);
+};
+function custom_callback9(){
+	var id = cadviewer.cvjs_idObjectClicked();
+	window.alert("Hello callback9 "+id);
+};
+function custom_callback10(){
+	var id = cadviewer.cvjs_idObjectClicked();
+	window.alert("Hello callback10 "+id);
+};
+
+
+
+
+
 function myCustomPopUpBody(rmid){
 
 	// extracting block attributes
@@ -434,6 +479,18 @@ class CADViewerBlocks01 extends Component {
         cadviewer.cvjs_setCallbackMethod("cvjs_mouseleave", cvjs_mouseleave);
         cadviewer.cvjs_setCallbackMethod("cvjs_mouseenter", cvjs_mouseenter);
         cadviewer.cvjs_setCallbackMethod("cvjs_graphicalObjectCreated", cvjs_graphicalObjectCreated);
+
+        cadviewer.cvjs_setCallbackMethod("custom_callback1", custom_callback1);
+        cadviewer.cvjs_setCallbackMethod("custom_callback2", custom_callback2);
+        cadviewer.cvjs_setCallbackMethod("custom_callback3", custom_callback3);
+        cadviewer.cvjs_setCallbackMethod("custom_callback4", custom_callback4);
+        cadviewer.cvjs_setCallbackMethod("custom_callback5", custom_callback5);
+        cadviewer.cvjs_setCallbackMethod("custom_callback6", custom_callback6);
+        cadviewer.cvjs_setCallbackMethod("custom_callback7", custom_callback7);
+        cadviewer.cvjs_setCallbackMethod("custom_callback8", custom_callback8);
+        cadviewer.cvjs_setCallbackMethod("custom_callback9", custom_callback9);
+        cadviewer.cvjs_setCallbackMethod("custom_callback10", custom_callback10);
+
 
 		// END set all callback methods
 

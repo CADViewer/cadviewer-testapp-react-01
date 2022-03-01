@@ -320,6 +320,115 @@ function cvjs_ObjectSelectedHyperlink(){
 };
 function cvjs_ObjectSelectedStickyNotes(){
 };
+function custom_callback1(){
+	var id = cadviewer.cvjs_idObjectClicked();
+	window.alert("Hello callback1 "+id);
+};
+function custom_callback2(){
+	var id = cadviewer.cvjs_idObjectClicked();
+	window.alert("Hello callback2 "+id);
+};
+function custom_callback3(){
+	var id = cadviewer.cvjs_idObjectClicked();
+	window.alert("Hello callback3 "+id);
+};
+function custom_callback4(){
+	var id = cadviewer.cvjs_idObjectClicked();
+	window.alert("Hello callback4 "+id);
+};
+function custom_callback5(){
+	var id = cadviewer.cvjs_idObjectClicked();
+	window.alert("Hello callback5 "+id);
+};
+function custom_callback6(){
+	var id = cadviewer.cvjs_idObjectClicked();
+	window.alert("Hello callback6 "+id);
+};
+function custom_callback7(){
+	var id = cadviewer.cvjs_idObjectClicked();
+	window.alert("Hello callback7 "+id);
+};
+function custom_callback8(){
+	var id = cadviewer.cvjs_idObjectClicked();
+	window.alert("Hello callback8 "+id);
+};
+function custom_callback9(){
+	var id = cadviewer.cvjs_idObjectClicked();
+	window.alert("Hello callback9 "+id);
+};
+function custom_callback10(){
+	var id = cadviewer.cvjs_idObjectClicked();
+	window.alert("Hello callback10 "+id);
+};
+
+
+
+
+
+// Dynamic Modal Call-back
+
+function myCustomPopUpBody(rmid){
+
+	console.log("click on myCustomPopUpBody: "+rmid+" I now change the pop-up menu:");
+	// make your own popup based on callback
+	var my_cvjsPopUpBody = "";
+
+	// we make 3 random modals
+	var modalnumber = Math.floor(Math.random() * 6.0);
+
+
+	if (modalnumber == 0){
+		// standard modal
+		// standard 3 item menu
+		//  cvjs_modal_1 sets a suitable size 
+		my_cvjsPopUpBody = "<div class=\"cvjs_modal_1\" id=\"my_own_clickmenu1()\">Custom<br>Menu 1<br><i class=\'fa fa-undo\'></i></div>";
+		my_cvjsPopUpBody += "<div class=\"cvjs_modal_1\" id=\"my_own_clickmenu2()\">Custom<br>Menu 2<br><i class=\'fa fa-info-circle\'></i></div>";
+		my_cvjsPopUpBody += "<div class=\"cvjs_modal_1\" id=\"cvjs_zoomHere()\">Zoom<br>Here<br><i class=\'fa fa-search-plus\'></i></div>";
+	}
+	else
+	if (modalnumber == 1){
+		// column based, but just two click menus
+		my_cvjsPopUpBody = "<div class=\"cvjs_modal_1\" id=\"my_own_clickmenu1()\">Custom<br>Menu One<br><i class=\'fa fa-undo\'></i></div>";
+		my_cvjsPopUpBody += "<div class=\"cvjs_modal_1\" id=\"cvjs_zoomHere()\">Zoom<br>Here<br><i class=\'fa fa-reply\'></i></div>";
+	}
+	else
+	if (modalnumber >=2){
+		// row based content with callback
+
+		var str = " "+rmid;
+		my_cvjsPopUpBody = "<div>";
+		my_cvjsPopUpBody += "Element ID: <span style=\"color: darkblue;cursor: pointer;\" id=\"custom_callback1()\" >"+str+"</span><br>";
+
+		var branch = Math.floor(Math.random() * 2.0);
+
+		if (branch == 0){
+			str = " Presumed Wall Void";	
+			my_cvjsPopUpBody += "Survey: <span style=\"color: darkblue;cursor: pointer;\" id=\"custom_callback2()\" >"+str+"</span><br>";
+			str = " Service Alert";
+			my_cvjsPopUpBody += "Notice: <span style=\"color: darkblue;cursor: pointer;\" id=\"custom_callback3()\" >"+str+"</span><br>";
+		
+		}else{
+			str = "Presumed Ceiling Void";	
+			my_cvjsPopUpBody += "Survey: <span style=\"color: darkblue;cursor: pointer;\" id=\"custom_callback4()\" >"+str+"</span><br>";
+			str = "Evaluation Pending";
+			my_cvjsPopUpBody += "Notice: <span style=\"color: darkblue;cursor: pointer;\" id=\"custom_callback5()\" >"+str+"</span><br>";
+
+		}
+//		my_cvjsPopUpBody += "Status: <a href=\"javascript:custom_callback5()\"><strong>More Info</strong> <i class=\"glyphicon glyphicon-transfer\" id=\"custom_callback5()\"></i></a> ";
+
+		my_cvjsPopUpBody += "Status: <span style=\"color: darkblue;cursor: pointer;\" id=\"custom_callback6()\" >"+"<strong>More Info</strong>"+"   <i class=\'fa fa-reply\'></i></span><br>";
+		my_cvjsPopUpBody += "</div>";
+	}
+
+	return my_cvjsPopUpBody;
+}
+
+function populateMyCustomPopUpBody(rmid, node){
+	console.log(" we actually have a second callback to change content of the the pop-up menu after myCustomPopUpBody (developed originally for Angular2) populateMyCustomPopUpBody: "+rmid+"  "+node);
+}
+
+
+
 
 class CADViewer extends Component {
 
@@ -405,6 +514,20 @@ class CADViewer extends Component {
         cadviewer.cvjs_setCallbackMethod("cvjs_mouseenter", cvjs_mouseenter);
         cadviewer.cvjs_setCallbackMethod("cvjs_graphicalObjectCreated", cvjs_graphicalObjectCreated);
 
+		
+        cadviewer.cvjs_setCallbackMethod("custom_callback1", custom_callback1);
+        cadviewer.cvjs_setCallbackMethod("custom_callback2", custom_callback2);
+        cadviewer.cvjs_setCallbackMethod("custom_callback3", custom_callback3);
+        cadviewer.cvjs_setCallbackMethod("custom_callback4", custom_callback4);
+        cadviewer.cvjs_setCallbackMethod("custom_callback5", custom_callback5);
+        cadviewer.cvjs_setCallbackMethod("custom_callback6", custom_callback6);
+        cadviewer.cvjs_setCallbackMethod("custom_callback7", custom_callback7);
+        cadviewer.cvjs_setCallbackMethod("custom_callback8", custom_callback8);
+        cadviewer.cvjs_setCallbackMethod("custom_callback9", custom_callback9);
+        cadviewer.cvjs_setCallbackMethod("custom_callback10", custom_callback10);
+
+
+
 		// END set all callback methods
 
 		  // Location of installation folders
@@ -443,38 +566,6 @@ class CADViewer extends Component {
 		// main application "app" folder. It can be either absolute or relative
 
 		
-/*		
-		// SETTINGS OF THE COLORS OF SPACES
-		var BaseAttributes = {
-				fill: '#d8e1e3', //'#d8e1e3', // '#ffd7f4', //'#D3D3D3',   // #FFF   #ffd7f4
-				"fill-opacity": 0.1,    //"0.05",   // 0.1
-				stroke: '#CCC',  
-				'stroke-width': 0.25,
-				'stroke-linejoin': 'round',
-				'stroke-opacity': 0.1,
-				//opacity: 0.1,
-			};
-		
-		var HighlightAttributes = {
-				fill: '#a4d7f4',   // #a4d7f4
-				"fill-opacity": 1.0,
-				stroke: '#a4d7f4',
-				'stroke-width': 0.75,
-				'stroke-opacity': 1,
-				//opacity: 0.5,
-
-			};
-			
-		var SelectAttributes = {
-				fill: '#5BBEF6',
-				"fill-opacity": 1.0,
-				stroke: '#5BBEF6',
-				'stroke-width': 0.75,
-				'stroke-opacity': 1.0,
-				 //opacity: 0.5,
-			};
-
-*/
 
 			var BaseAttributes = {
 				fill: '#d8e1e3', //'#d8e1e3', // '#ffd7f4', //'#D3D3D3',   // #FFF   #ffd7f4
@@ -505,7 +596,7 @@ class CADViewer extends Component {
 
 
 
-		/** FIXED POP-UP MODAL  **/
+		/** FIXED POP-UP MODAL **/ 
 		
 			// THIS IS THE DESIGN OF THE pop-up MODAL WHEN CLICKING ON SPACES
 		// KEEP METHODS NAME AS IS FOR NOW...............
@@ -513,15 +604,19 @@ class CADViewer extends Component {
 		var my_cvjsPopUpBody = "<div class=\'cvjs_modal_1\' id=\'my_own_clickmenu1()\'>Custom<br>Menu 1<br><i class=\'fa fa-undo\'></i></div>";
 		my_cvjsPopUpBody += "<div class=\'cvjs_modal_1\' id=\'my_own_clickmenu2()\'>Custom<br>Menu 2<br><i class=\'fa fa-info-circle\'></i></div>";
 		my_cvjsPopUpBody += "<div class=\'cvjs_modal_1\' id=\'cvjs_zoomHere()\'>Zoom<br>Here<br><i class=\'fa fa-search-plus\'></i></div>";
-			
-
-			// Initialize CADViewer - needs the div name on the svg element on page that contains CADViewerJS and the location of the
-			// And we intialize with the Space Object Custom values
-		//  cvjs_InitCADViewer_highLight_popUp_app("floorPlan", ServerUrl+"app/", cvjsRoomPolygonBaseAttributes, cvjsRoomPolygonHighlightAttributes, cvjsRoomPolygonSelectAttributes, my_cvjsPopUpBody);
-
-		//      cvjs_InitCADViewer_highLight_popUp_app("floorPlan", ServerUrl+ "/cadviewer/app/", cvjsRoomPolygonBaseAttributes, cvjsRoomPolygonHighlightAttributes, cvjsRoomPolygonSelectAttributes, my_cvjsPopUpBody );
-		cadviewer.cvjs_InitCADViewer_highLight_popUp_app("floorPlan", "/cadviewer/app/", BaseAttributes, HighlightAttributes, SelectAttributes, my_cvjsPopUpBody );
 				
+	
+		// custom development of call-back modal  - UNCOMMENT TWO CODE LINES BELOW  
+		//      Setting Space Object Modals Display to be based on a callback method -
+
+		my_cvjsPopUpBody = "";
+		cadviewer.cvjs_setCallbackForModalDisplay(true, myCustomPopUpBody, populateMyCustomPopUpBody)
+
+	
+		cadviewer.cvjs_InitCADViewer_highLight_popUp_app("floorPlan", "/cadviewer/app/", BaseAttributes, HighlightAttributes, SelectAttributes, my_cvjsPopUpBody );
+		// note second path parameter internally overwritten in case of npm install
+
+
 		// set the location to license key, typically the js folder in main app application folder ../app/cv/
 		//cadviewer.cvjs_setLicenseKeyPath("/cadviewer/app/cv/");
 		// alternatively, set the key directly, by pasting in the cvKey portion of the cvlicense.js file, note the JSON \" around all entities 	 
