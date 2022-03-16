@@ -25,13 +25,26 @@ simply comment/uncomment relevant parts of this script file ***index.js*** to ru
 
 
 
+3a: The general sample ***2a*** , loads in a sample pre-converted drawing from the CADViewer server. Comment out the line:
+
+	var FileName = "https://onlinedemo.cadviewer.com/cadviewer_7_0/php/load-demo-file-npm-install.php?file=base_xref_json_Mar_15_H11_8.svg";
+
+once the [cadviewer-conversion-server](https://github.com/CADViewer/cadviewer-conversion-server), see below, is installed.
+
+3b:  The general sample ***2a*** , also loads in Space Objects and overlay them into the drawing from the call-back method ***cvjs_OnLoadEnd()***. Once [cadviewer-conversion-server](https://github.com/CADViewer/cadviewer-conversion-server) is installed and working, then uncomment the line: 
+
+	cadviewer.cvjs_loadSpaceObjectsDirect("floorPlan", "https://onlinedemo.cadviewer.com/cadviewer_7_0/php/load-demo-file-npm-install.php?file=spaceobject-npm-demo-01.json")
+
+
+
+
 ## This package does not contains
 
-5: The [back-end AutoXchange 2022](https://github.com/CADViewer/cadviewer-conversion-server) conversion server and connecting scripts. Install these separately!
+1: The [back-end AutoXchange 2022](https://github.com/CADViewer/cadviewer-conversion-server) conversion server and connecting scripts. Install these separately!
 
 **NOTE:** With this download, use the NodeJS CAD conversion server: https://github.com/CADViewer/cadviewer-conversion-server
 
-6: The converter folder structure contains a larger set of fonts, installed in /cadviewer/converters/ax2022/windows/fonts/, but a fuller set of fonts can be installed, found on our [download](https://cadviewer.com/download) site. 
+2: The converter folder structure contains a larger set of fonts, installed in /cadviewer/converters/ax2022/windows/fonts/, but a fuller set of fonts can be installed, found on our [download](https://cadviewer.com/download) site. 
 
 Read the sections on installing and handling [Fonts](https://tailormade.com/ax2020techdocs/installation/fonts/) in [AutoXchange 2022 TechDocs](https://tailormade.com/ax2020techdocs/) and [TroubleShooting](https://tailormade.com/ax2020techdocs/troubleshooting/).
 
