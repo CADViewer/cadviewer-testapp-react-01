@@ -47,6 +47,19 @@ function cvjs_OnLoadEnd(){
 
 	textLayer1 = cadviewer.cvjs_clearLayer(textLayer1);
 	
+
+	// NOTE - FOR NPM FIRST INSTALL , we load the JSON object with spaces too!
+	
+	cadviewer.cvjs_loadSpaceObjectsDirect("floorPlan", "https://onlinedemo.cadviewer.com/cadviewer_7_0/php/load-demo-file-npm-install.php?file=spaceobject-npm-demo-01.json")
+	// REMOVE WHEN LOADING FROM CAD SERVER
+
+
+
+
+	cadviewer.cvjs_setCurrentRedlineValues_NameUserid(user_name, user_id);
+
+
+	// THIS ILLUSTRATES HOW TO TURN OFF LAYERS ON LOAD ..... sample drawing may not have these layers...
 	cadviewer.cvjs_LayerOff("EC1 Space Names");
 	cadviewer.cvjs_LayerOff("EC1 Space Status Descs");
 	cadviewer.cvjs_LayerOff("EC1 Space Project");
@@ -461,8 +474,18 @@ class CADViewer extends Component {
 		// Standard Front-end
 		var ServerUrl = "http://localhost:8000/";
 		
-	    //var FileName = ServerBackEndUrl+ "/content/drawings/dwg/hq17_2spaces.dwg";		
+	    //Standard file from /content/ folder on CADViewer NodeJS Conversion Server
 		var FileName = ServerBackEndUrl+ "/content/drawings/dwg/hq17_.dwg";
+
+
+		// NOTE-NOTE-NOTE
+		// Loading pre-conveted DWG file from CADViewer Server, change to own implementation of CADViewer NodeJS Conversion Server
+
+		var FileName = "https://onlinedemo.cadviewer.com/cadviewer_7_0/php/load-demo-file-npm-install.php?file=base_xref_json_Mar_15_H11_8.svg";
+
+
+
+
 
 		cadviewer.cvjs_debugMode(true);
 	   // cadviewer.cvjs_setLeafletJS(true);

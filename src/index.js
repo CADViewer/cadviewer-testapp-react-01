@@ -9,8 +9,8 @@ import CADViewerSpaceObjects from './CADViewerSpaceObjects';
 import CADViewerHelperMethods from './CADViewerHelperMethods';
 //*/
 
-//*
 // Blocks case - uncomment all "BLOCKS"
+/*
 import CADViewerBlocks01 from './CADViewerBlocks01';
 import CADViewerHelperMethodsBlocks01 from './CADViewerHelperMethodsBlocks01';
 //*/
@@ -61,8 +61,6 @@ ReactDOM.render(
   document.getElementById('CADViewerHelperMethods')
 );
 //*/
-
-
 
 
 
