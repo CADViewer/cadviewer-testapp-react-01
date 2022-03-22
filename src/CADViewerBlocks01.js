@@ -425,9 +425,9 @@ class CADViewerBlocks01 extends Component {
 		var ServerUrl = "http://localhost:8000/";
 		
 	    //var FileName = ServerBackEndUrl+ "/content/drawings/dwg/hq17_2spaces.dwg";		
-		var FileName = ServerBackEndUrl+ "/content/drawings/dwg/hq17_.dwg";
+		//var FileName = ServerBackEndUrl+ "/content/drawings/dwg/hq17_.dwg";
 
-		//var FileName = ServerBackEndUrl+ "/content/custom/ff-ia.svg";
+		var FileName = ServerBackEndUrl+ "/content/custom/ff-ia.svg";
 
 
 		cadviewer.cvjs_debugMode(true);

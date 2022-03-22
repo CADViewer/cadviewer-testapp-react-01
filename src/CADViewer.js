@@ -49,8 +49,9 @@ function cvjs_OnLoadEnd(){
 	
 
 	// NOTE - FOR NPM FIRST INSTALL , we load the JSON object with spaces too!
+
+	// cadviewer.cvjs_loadSpaceObjectsDirect("floorPlan", "https://onlinedemo.cadviewer.com/cadviewer_7_0/php/load-demo-file-npm-install.php?file=spaceobject-npm-demo-01.json")
 	
-	cadviewer.cvjs_loadSpaceObjectsDirect("floorPlan", "https://onlinedemo.cadviewer.com/cadviewer_7_0/php/load-demo-file-npm-install.php?file=spaceobject-npm-demo-01.json")
 	// REMOVE WHEN LOADING FROM CAD SERVER
 
 
@@ -481,7 +482,7 @@ class CADViewer extends Component {
 		// NOTE-NOTE-NOTE
 		// Loading pre-conveted DWG file from CADViewer Server, change to own implementation of CADViewer NodeJS Conversion Server
 
-		var FileName = "https://onlinedemo.cadviewer.com/cadviewer_7_0/php/load-demo-file-npm-install.php?file=base_xref_json_Mar_15_H11_8.svg";
+		// var FileName = "https://onlinedemo.cadviewer.com/cadviewer_7_0/php/load-demo-file-npm-install.php?file=base_xref_json_Mar_15_H11_8.svg";
 
 
 
