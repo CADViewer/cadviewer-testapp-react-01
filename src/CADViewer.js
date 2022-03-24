@@ -375,6 +375,66 @@ function custom_callback10(){
 	window.alert("Hello callback10 "+id);
 };
 
+function cvjs_customCommand_01(){
+	window.alert("Hello click! cvjs_customCommand_01");
+};
+function cvjs_customCommand_02(){
+	window.alert("Hello click! cvjs_customCommand_02");
+};
+function cvjs_customCommand_03(){
+	window.alert("Hello click! cvjs_customCommand_03");
+};
+function cvjs_customCommand_04(){
+	window.alert("Hello click! cvjs_customCommand_04");
+};
+function cvjs_customCommand_05(){
+	window.alert("Hello click! cvjs_customCommand_05");
+};
+function cvjs_customCommand_06(){
+	window.alert("Hello click! cvjs_customCommand_06");
+};
+function cvjs_customCommand_07(){
+	window.alert("Hello click! cvjs_customCommand_07");
+};
+function cvjs_customCommand_08(){
+	window.alert("Hello click! cvjs_customCommand_08");
+};
+function cvjs_customCommand_09(){
+	window.alert("Hello click! cvjs_customCommand_09");
+};
+function cvjs_customCommand_10(){
+	window.alert("Hello click! cvjs_customCommand_10");
+};
+function cvjs_customCommand_11(){
+	window.alert("Hello click! cvjs_customCommand_11");
+};
+function cvjs_customCommand_12(){
+	window.alert("Hello click! cvjs_customCommand_12");
+};
+function cvjs_customCommand_13(){
+	window.alert("Hello click! cvjs_customCommand_13");
+};
+function cvjs_customCommand_14(){
+	window.alert("Hello click! cvjs_customCommand_14");
+};
+function cvjs_customCommand_15(){
+	window.alert("Hello click! cvjs_customCommand_15");
+};
+function cvjs_customCommand_16(){
+	window.alert("Hello click! cvjs_customCommand_16");
+};
+function cvjs_customCommand_17(){
+	window.alert("Hello click! cvjs_customCommand_17");
+};
+function cvjs_customCommand_18(){
+	window.alert("Hello click! cvjs_customCommand_18");
+};
+function cvjs_customCommand_19(){
+	window.alert("Hello click! cvjs_customCommand_19");
+};
+function cvjs_customCommand_20(){
+	window.alert("Hello click! cvjs_customCommand_20");
+};
 
 
 
@@ -538,7 +598,7 @@ class CADViewer extends Component {
         cadviewer.cvjs_setCallbackMethod("cvjs_mouseenter", cvjs_mouseenter);
         cadviewer.cvjs_setCallbackMethod("cvjs_graphicalObjectCreated", cvjs_graphicalObjectCreated);
 
-		
+		// custom callback commands
         cadviewer.cvjs_setCallbackMethod("custom_callback1", custom_callback1);
         cadviewer.cvjs_setCallbackMethod("custom_callback2", custom_callback2);
         cadviewer.cvjs_setCallbackMethod("custom_callback3", custom_callback3);
@@ -549,6 +609,27 @@ class CADViewer extends Component {
         cadviewer.cvjs_setCallbackMethod("custom_callback8", custom_callback8);
         cadviewer.cvjs_setCallbackMethod("custom_callback9", custom_callback9);
         cadviewer.cvjs_setCallbackMethod("custom_callback10", custom_callback10);
+		// custom icon commands
+        cadviewer.cvjs_setCallbackMethod("cvjs_customCommand_01", cvjs_customCommand_01);
+        cadviewer.cvjs_setCallbackMethod("cvjs_customCommand_02", cvjs_customCommand_02);
+        cadviewer.cvjs_setCallbackMethod("cvjs_customCommand_03", cvjs_customCommand_03);
+        cadviewer.cvjs_setCallbackMethod("cvjs_customCommand_04", cvjs_customCommand_04);
+        cadviewer.cvjs_setCallbackMethod("cvjs_customCommand_05", cvjs_customCommand_05);
+        cadviewer.cvjs_setCallbackMethod("cvjs_customCommand_06", cvjs_customCommand_06);
+        cadviewer.cvjs_setCallbackMethod("cvjs_customCommand_07", cvjs_customCommand_07);
+        cadviewer.cvjs_setCallbackMethod("cvjs_customCommand_08", cvjs_customCommand_08);
+        cadviewer.cvjs_setCallbackMethod("cvjs_customCommand_09", cvjs_customCommand_09);
+        cadviewer.cvjs_setCallbackMethod("cvjs_customCommand_10", cvjs_customCommand_10);
+        cadviewer.cvjs_setCallbackMethod("cvjs_customCommand_11", cvjs_customCommand_11);
+        cadviewer.cvjs_setCallbackMethod("cvjs_customCommand_12", cvjs_customCommand_12);
+        cadviewer.cvjs_setCallbackMethod("cvjs_customCommand_13", cvjs_customCommand_13);
+        cadviewer.cvjs_setCallbackMethod("cvjs_customCommand_14", cvjs_customCommand_14);
+        cadviewer.cvjs_setCallbackMethod("cvjs_customCommand_15", cvjs_customCommand_15);
+        cadviewer.cvjs_setCallbackMethod("cvjs_customCommand_16", cvjs_customCommand_16);
+        cadviewer.cvjs_setCallbackMethod("cvjs_customCommand_17", cvjs_customCommand_17);
+        cadviewer.cvjs_setCallbackMethod("cvjs_customCommand_18", cvjs_customCommand_18);
+        cadviewer.cvjs_setCallbackMethod("cvjs_customCommand_19", cvjs_customCommand_19);
+        cadviewer.cvjs_setCallbackMethod("cvjs_customCommand_20", cvjs_customCommand_20);
 
 
 
@@ -585,7 +666,12 @@ class CADViewer extends Component {
 		// 3: Users can change the number of top menu icon pages and the content of pages, based on a configuration file in folder /cadviewer/app/js/menu_config/    		
 		cadviewer.cvjs_setTopMenuXML("floorPlan", "cadviewer_full_commands_01.xml");  //cadviewer.cvjs_setTopMenuXML("floorPlan", "cadviewer_full_commands_01.xml", "/cadviewer/app/cv/cv-pro/menu_config/");
 
+		// Menu including custom commands row on last page
+		//cadviewer.cvjs_setTopMenuXML("floorPlan", "cadviewer_menu_all_items_custom_commands.xml");
 		
+
+
+
 		// Initialize CADViewer  - needs the div name on the svg element on page that contains CADViewerJS and the location of the
 		// main application "app" folder. It can be either absolute or relative
 
@@ -665,6 +751,16 @@ class CADViewer extends Component {
 		cadviewer.cvjs_setRedlinesAbsolutePath(ServerBackEndUrl+'/content/redlines/fileloader_610/', ServerLocation+'/content/redlines/fileloader_610/');
 		cadviewer.cvjs_setSpaceObjectsAbsolutePath(ServerBackEndUrl+'/content/spaceObjects/', ServerLocation+'/content/spaceObjects/');
 		cadviewer.cvjs_setInsertImageObjectsAbsolutePath(ServerBackEndUrl+'/content/inserted_image_objects/', ServerLocation+'/content/inserted_image_objects/')
+
+
+
+		// test customconversionendpointextension
+		//FileName = "http://intalenttech.cn:8055/assets/143555d9-f637-471d-870e-945f226d7df7";
+		//cadviewer.cvjs_setCustomConversionEndpointExtension(true);
+
+
+
+
 
 			
 		cadviewer.cvjs_conversion_clearAXconversionParameters();
