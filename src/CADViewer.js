@@ -539,10 +539,16 @@ class CADViewer extends Component {
 		var FileName = ServerBackEndUrl+ "/content/drawings/dwg/hq17_.dwg";
 
 
-		// NOTE-NOTE-NOTE
-		// Loading pre-conveted DWG file from CADViewer Server, change to own implementation of CADViewer NodeJS Conversion Server
+		// NOTE-NOTE: THIS IS THE STARTING POINT:
+		// Loading pre-conveted DWG file from CADViewer Server. Install CADViewer NodeJS Conversion Server, and pull DWG from that. 
+		// Uncomment this, then CADViewer Conversion Server is up running. 
+		var FileName = "https://onlinedemo.cadviewer.com/cadviewer_7_0/php/load-demo-file-npm-install.php?file=base_xref_json_Mar_15_H11_8.svg";
 
-		// var FileName = "https://onlinedemo.cadviewer.com/cadviewer_7_0/php/load-demo-file-npm-install.php?file=base_xref_json_Mar_15_H11_8.svg";
+
+		// Test CustomConversionEndpointExtension - this allows users to connect to CADViewer NodeJS Conversion Serve for conversions, but
+		// pull the content from cvjs_customConversionEndpointExtension_xx_yy_zz.js , https://cadviewer.com/cadviewertechdocs/handlers_business/
+		//FileName = "http://myendpoint.com:8055/assets/143555d9-f637-471d-870e-945f226d7df7&ftype=svg";
+		//cadviewer.cvjs_setCustomConversionEndpointExtension(true);
 
 
 
@@ -751,12 +757,6 @@ class CADViewer extends Component {
 		cadviewer.cvjs_setRedlinesAbsolutePath(ServerBackEndUrl+'/content/redlines/fileloader_610/', ServerLocation+'/content/redlines/fileloader_610/');
 		cadviewer.cvjs_setSpaceObjectsAbsolutePath(ServerBackEndUrl+'/content/spaceObjects/', ServerLocation+'/content/spaceObjects/');
 		cadviewer.cvjs_setInsertImageObjectsAbsolutePath(ServerBackEndUrl+'/content/inserted_image_objects/', ServerLocation+'/content/inserted_image_objects/')
-
-
-
-		// test customconversionendpointextension
-		//FileName = "http://intalenttech.cn:8055/assets/143555d9-f637-471d-870e-945f226d7df7";
-		//cadviewer.cvjs_setCustomConversionEndpointExtension(true);
 
 
 
