@@ -7,6 +7,11 @@ The repository contains a full setup of CADViewer with React.
 Download and from the install folder (cadviewer-testapp-react-01) run:
 
 		sudo npm install
+		
+***Note:*** If getting an error "Global install: Permission denied in wd dependency" , please use:
+
+		sudo npm install --unsafe-perm
+		
 
 
 ## This package contains
