@@ -46,13 +46,20 @@ function cvjs_OnLoadEnd(){
 	//cvjs_initZeroWidthHandling("floorPlan", 1.0);			
 
 	textLayer1 = cadviewer.cvjs_clearLayer(textLayer1);
+
 	
+	// capture processed SVG for storage or processing. 
+	if (true){
+		var mySVG = cadviewer.cvjs_extractSVGfromCanvas("floorPlan");
+		// download as SVG file
+		cadviewer.cvjs_downloadObjectAsFile("test.svg", mySVG);
+	}
+
 
 	// NOTE - FOR NPM FIRST INSTALL , we load the JSON object with spaces too!
-
-	// cadviewer.cvjs_loadSpaceObjectsDirect("floorPlan", "https://onlinedemo.cadviewer.com/cadviewer_7_0/php/load-demo-file-npm-install.php?file=spaceobject-npm-demo-01.json")
-	
+	cadviewer.cvjs_loadSpaceObjectsDirect("floorPlan", "https://onlinedemo.cadviewer.com/cadviewer_7_0/php/load-demo-file-npm-install.php?file=spaceobject-npm-demo-01.json")
 	// REMOVE WHEN LOADING FROM CAD SERVER
+
 
 
 
@@ -64,11 +71,6 @@ function cvjs_OnLoadEnd(){
 	cadviewer.cvjs_LayerOff("EC1 Space Names");
 	cadviewer.cvjs_LayerOff("EC1 Space Status Descs");
 	cadviewer.cvjs_LayerOff("EC1 Space Project");
-	cadviewer.cvjs_LayerOff("EC1 Space Function Descs");
-	cadviewer.cvjs_LayerOff("EC1 Space Type Descs");
-	cadviewer.cvjs_LayerOff("EC1 Tenant Names");
-	cadviewer.cvjs_LayerOff("EC1 UDA Design Capacity");
-	cadviewer.cvjs_LayerOff("EC1 UDA Is Secured");
 
 }
 
@@ -539,19 +541,17 @@ class CADViewer extends Component {
 		var FileName = ServerBackEndUrl+ "/content/drawings/dwg/hq17_.dwg";
 
 
-		// NOTE-NOTE: THIS IS THE STARTING POINT:
+		// NOTE - FOR NPM FIRST INSTALL
 		// Loading pre-conveted DWG file from CADViewer Server. Install CADViewer NodeJS Conversion Server, and pull DWG from that. 
 		// Uncomment this, then CADViewer Conversion Server is up running. 
 		var FileName = "https://onlinedemo.cadviewer.com/cadviewer_7_0/php/load-demo-file-npm-install.php?file=base_xref_json_Mar_15_H11_8.svg";
+		// REMOVE WHEN LOADING FROM CAD SERVER
 
 
 		// Test CustomConversionEndpointExtension - this allows users to connect to CADViewer NodeJS Conversion Serve for conversions, but
 		// pull the content from cvjs_customConversionEndpointExtension_xx_yy_zz.js , https://cadviewer.com/cadviewertechdocs/handlers_business/
 		//FileName = "http://myendpoint.com:8055/assets/143555d9-f637-471d-870e-945f226d7df7&ftype=svg";
 		//cadviewer.cvjs_setCustomConversionEndpointExtension(true);
-
-
-
 
 
 		cadviewer.cvjs_debugMode(true);
@@ -764,12 +764,13 @@ class CADViewer extends Component {
 
 			
 		cadviewer.cvjs_conversion_clearAXconversionParameters();
-	    //			 cadviewer.cvjs_conversion_addAXconversionParameter("lw", "0.3");		 
- 	    //			 cadviewer.cvjs_conversion_addAXconversionParameter("lwmin", "0.3");		 
 
 	    // process layers for spaces  RL/TL
-		cadviewer.cvjs_conversion_addAXconversionParameter("RL", "RM_");		 
-		cadviewer.cvjs_conversion_addAXconversionParameter("TL", "RM_TXT");		 
+		cadviewer.cvjs_conversion_addAXconversionParameter("RL", "RM%24");		 
+		cadviewer.cvjs_conversion_addAXconversionParameter("TL", "RM%24TXT");		 
+
+//		cadviewer.cvjs_conversion_addAXconversionParameter("RL", "RM_");		 
+//		cadviewer.cvjs_conversion_addAXconversionParameter("TL", "RM_TXT");		 
 		// calculate areas of spaces
 		cadviewer.cvjs_conversion_addAXconversionParameter("LA", "");		 
 
@@ -777,7 +778,8 @@ class CADViewer extends Component {
 		// cadviewer.cvjs_conversion_addAXconversionParameter("HLALL", "");		 
 
 		// open the last saved view in the file
-		cadviewer.cvjs_conversion_addAXconversionParameter("last", "");		 
+		cadviewer.cvjs_conversion_addAXconversionParameter("model", "");		 
+//		cadviewer.cvjs_conversion_addAXconversionParameter("last", "");		 
 							
 		// Load file - needs the svg div name and name and path of file to load
 		cadviewer.cvjs_LoadDrawing("floorPlan", FileName );
