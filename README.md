@@ -4,6 +4,16 @@ ReactJS CADViewer front-end sample
 
 The repository contains a full setup of CADViewer with React.
 
+Download and from the install folder (cadviewer-testapp-react-01) run:
+
+		sudo npm install
+		
+***Note:*** If getting an error "Global install: Permission denied in wd dependency" , please use:
+
+		sudo npm install --unsafe-perm
+		
+
+
 ## This package contains
 
 1: [CADViewer script library](https://www.npmjs.com/package/cadviewer)  - [npm](https://www.npmjs.com/package/cadviewer) installed into ClientApp as part of React JS front-end.
