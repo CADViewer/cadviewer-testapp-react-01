@@ -18,10 +18,21 @@ export function clearTextLayer(){
 }
 
 
+export function setOnloadEndFlag(flag){
+	onloadEndFlag2 = flag;
+}
+
+
+
 var  selected_handles = [];
 var  handle_selector = false;
 var  current_selected_handle = "";
 
+var onloadEndFlag1 = false;   // set this to true to download display svg and overlay json file on load
+var onloadEndFlag2 = false;   // set this to true to overlay with a json object
+
+
+var FileName = "";
 
 // We should to define all the CADViewer methods in which we are getting information return from CADViewer
 // THEY CAN BE PLACEHOLDERS ONLY 
@@ -33,6 +44,12 @@ function cvjs_OnLoadEnd(){
 	// generic callback method, called when the drawing is loaded
 	// here you fill in your stuff, call DB, set up arrays, etc..
 	// this method MUST be retained as a dummy method! - if not implemeted -
+
+	// set maximum CADViewer canvas side  - as component has been rendered at this point
+	cadviewer.cvjs_resizeWindow_position("floorPlan" );
+
+
+
 
 	cadviewer.cvjs_resetZoomPan("floorPlan");
 
@@ -49,19 +66,40 @@ function cvjs_OnLoadEnd(){
 
 	
 	// capture processed SVG for storage or processing. 
-	if (true){
+	if (onloadEndFlag1){
 		var mySVG = cadviewer.cvjs_extractSVGfromCanvas("floorPlan");
 		// download as SVG file
-		cadviewer.cvjs_downloadObjectAsFile("test.svg", mySVG);
+		cadviewer.cvjs_downloadObjectAsFile("testSVGprocessed.svg", mySVG);
+
+		// download non processed SVG file
+		var mySVGnotprocessed = cadviewer.cvjs_returnNonPreprocessedSVG();
+		cadviewer.cvjs_downloadObjectAsFile("testSVGnotprocessed.svg", mySVGnotprocessed);
+		
+
+		// get the data content link to pull serverside svg/svgz file
+		var mySVGzlink = cadviewer.cvjs_restAPI_getSVGContentData(true);
+		console.log("endpoint to pickup on server: "+mySVGzlink);
+
+
+		// get all space objects
+		var SpaceObjects = cadviewer.cvjs_returnAllSpaceObjects()
+		cadviewer.cvjs_downloadObjectAsFile("testSpaceObjects.json", JSON.stringify(SpaceObjects));
+
+	}
+	
+	
+	// if loading a SVG, decorate with spaceobjects
+	if (onloadEndFlag2){
+		cadviewer.cvjs_loadSpaceObjectsDirect("floorPlan", "http://localhost:3000/content/SpaceObjects/testSpaceObjects.json")
+//		cadviewer.cvjs_loadSpaceObjectsDirect("floorPlan", "http://localhost:3000/content/SpaceObjects/testSpaceObjects2.json")
+
+
 	}
 
 
 	// NOTE - FOR NPM FIRST INSTALL , we load the JSON object with spaces too!
-	cadviewer.cvjs_loadSpaceObjectsDirect("floorPlan", "https://onlinedemo.cadviewer.com/cadviewer_7_0/php/load-demo-file-npm-install.php?file=spaceobject-npm-demo-01.json")
+	//cadviewer.cvjs_loadSpaceObjectsDirect("floorPlan", "https://onlinedemo.cadviewer.com/cadviewer_7_0/php/load-demo-file-npm-install.php?file=spaceobject-npm-demo-01.json")
 	// REMOVE WHEN LOADING FROM CAD SERVER
-
-
-
 
 
 	cadviewer.cvjs_setCurrentRedlineValues_NameUserid(user_name, user_id);
@@ -98,28 +136,43 @@ function cvjs_graphicalObjectOnChange(type, graphicalObject, spaceID){
 			
 		/**
 		 * Return a JSON structure of all content of a given ID: <br>
-		* 	var jsonStructure =  	{	"path":   path, <br>
-		*								"tags": tags, <br>
-		*								"node": node, <br>
-		*								"outerhtml": outerHTML, <br>
-		*								"occupancy": occupancy, <br>
-		*								"name": name, <br>
-		*								"type": type, <br>
-		*								"id": id, <br>
-		*								"defaultcolor": defaultcolor, <br>
-		*								"layer": layer, <br>
-		*								"group": group, <br>
-		*								"linked": linked, <br>
-		*								"attributes": attributes, <br>
-		*								"attributeStatus": attributeStatus, <br>
-		*								"displaySpaceObjects": displaySpaceObjects, <br>
-		*								"translate_x": translate_x, <br>
-		*								"translate_y": translate_y, <br>
-		*								"scale_x": scale_x ,<br>
-		*								"scale_y": scale_y ,<br>
-		*								"rotate": rotate, <br>
-		*								"transform": transform} <br>
-		* @param {string} spaceID - Id of the Space Object to return
+		* 	var jsonStructure =  	{	"path": path,
+		*								"tags": tags, 
+		*								"node": node, 
+		*								"area": area, 
+		*								"outerhtml": outerHTML, 
+		*								"occupancy": occupancy, 
+		*								"name": name, 
+		*								"type": type, 
+		*								"id": id, 
+		*								"defaultcolor": defaultcolor, 
+		*								"highlightcolor": highlightcolor, 
+		*								"selectcolor": selectcolor, 
+		*								"layer": layer, 
+		*								"group": group, 
+		*								"linked": linked, 
+		*								"attributes": attributes, 
+		*								"attributeStatus": attributeStatus, 
+		*								"displaySpaceObjects": displaySpaceObjects,
+		*								"translate_x": translate_x, 
+		*								"translate_y": translate_y, 
+		*								"scale_x": scale_x ,
+		*								"scale_y": scale_y ,
+		*								"rotate": rotate, 
+		*								"transform": transform, 
+		*								"svgx": svgx, 
+		*								"svgy": svgx, 
+		*								"dwgx": dwgx, 
+		*								"dwgy": dwgy , 
+		*                               "customContent" : mycustomcontent,
+		*                               "pageNumber" : "",
+		*                               "pageName" : "",
+		*                               "block" : "",
+		*                               "blockAttributeId" : "",
+		*                               "blockAttributeCount" : ""
+		*                               "clickhandler" : "enable",
+		*                               }
+ 		* @param {string} spaceID - Id of the Space Object to return
 		* @return {Object} jsonSpaceObject - Object with the entire space objects content
 		*/
 
@@ -128,7 +181,19 @@ function cvjs_graphicalObjectOnChange(type, graphicalObject, spaceID){
 		// cvjs_setSpaceObjectDirect(jsonSpaceObject) 
 		// when I am recreating the content of the drawing at load
 		// for the fun of it, display the SVG geometry of the space:			
-		console.log("This is the SVG: "+myobject.outerhtml)
+		// console.log("This is the SVG: "+myobject.outerhtml);
+
+
+		// NOTE! - v6.9.12 when an object is created, the application programmer can simply give 
+		// the object a name matching a database, if needed. 
+		var newName = "ID"+Math.floor(Math.random() * 1000000);
+		console.log("OnloadEnd new object created name:"+myobject.name+ " id:"+myobject.id+" new name"+newName)
+		
+		//window.alert(myobject.name);
+
+		cadviewer.cvjs_changeSpaceObjectName(myobject.id, newName)
+
+
 	}
 
 
@@ -538,20 +603,41 @@ class CADViewer extends Component {
 		var ServerUrl = "http://localhost:8000/";
 		
 	    //Standard file from /content/ folder on CADViewer NodeJS Conversion Server
-		var FileName = ServerBackEndUrl+ "/content/drawings/dwg/hq17_.dwg";
+		FileName = ServerBackEndUrl+ "/content/drawings/dwg/hq17_.dwg";
 
 
 		// NOTE - FOR NPM FIRST INSTALL
 		// Loading pre-conveted DWG file from CADViewer Server. Install CADViewer NodeJS Conversion Server, and pull DWG from that. 
 		// Uncomment this, then CADViewer Conversion Server is up running. 
-		var FileName = "https://onlinedemo.cadviewer.com/cadviewer_7_0/php/load-demo-file-npm-install.php?file=base_xref_json_Mar_15_H11_8.svg";
+		//FileName = "https://onlinedemo.cadviewer.com/cadviewer_7_0/php/load-demo-file-npm-install.php?file=base_xref_json_Mar_15_H11_8.svg";
 		// REMOVE WHEN LOADING FROM CAD SERVER
 
 
-		// Test CustomConversionEndpointExtension - this allows users to connect to CADViewer NodeJS Conversion Serve for conversions, but
+		// Test CustomConversionEndpointExtension - this allows users to connect to CADViewer NodeJS Conversion Serve for conversions
+		// ftype=dwg, fype=svg, ftype=svgz
 		// pull the content from cvjs_customConversionEndpointExtension_xx_yy_zz.js , https://cadviewer.com/cadviewertechdocs/handlers_business/
-		//FileName = "http://myendpoint.com:8055/assets/143555d9-f637-471d-870e-945f226d7df7&ftype=svg";
+		// load DWG
+		//FileName = "http://myendpoint.com:8055/assets/143555d9-f637-471d-870e-945f226d7df7&ftype=dwg";
 		//cadviewer.cvjs_setCustomConversionEndpointExtension(true);
+		// load SVG
+		//FileName = "http://myendpoint.com:8055/assets/143555d9-f637-471d-870e-945f226d7df7&ftype=svg";
+		//FileName = ServerBackEndUrl+ "/content/drawings/svg/testSVGnotprocessed.svg";
+		//cadviewer.cvjs_setCustomConversionEndpointExtension(false);
+		//cadviewer.cvjs_setSpaceObjectProcessing(false);
+
+
+
+		// load DWG SVG
+		//FileName = "http://intalenttech.cn:8055/assets/a41b766f-b595-4dab-9e45-ef8ffc540520?ftype=svg";
+		//FileName = "http://intalenttech.cn:8055/assets/143555d9-f637-471d-870e-945f226d7df7?ftype=dwg";
+		
+		//FileName = "http://intalenttech.cn:8055/assets/143555d9-f637-471d-870e-945f226d7df7";
+		//cadviewer.cvjs_setCustomConversionEndpointExtension(true);
+
+
+
+
+
 
 
 		cadviewer.cvjs_debugMode(true);
@@ -651,6 +737,15 @@ class CADViewer extends Component {
 		 cadviewer.cvjs_PrintToPDFWindowRelativeSize(0.8);
 		 cadviewer.cvjs_setFileModalEditMode(false);
 	   		   
+
+
+		 cadviewer.cvjs_DisplayCoordinatesMenu("floorPlan",true);
+
+		// 6.9.11
+		// set SpaceObjectsCustomMenu location and json config file,  flag true to display SpaceObject Menu, false to hide
+		cadviewer.cvjs_setSpaceObjectsCustomMenu( "/content/customInsertSpaceObjectMenu/", "cadviewercustomspacecommands.json", true);
+
+
 		// For "Merge DWG" / "Merge PDF" commands, set up the email server to send merged DWG files or merged PDF files with redlines/interactive highlight.
 		// See php / xampp documentation on how to prepare your server
 		cadviewer.cvjs_emailSettings_PDF_publish("From CAD Server", "my_from_address@mydomain.com", "my_cc_address@mydomain.com", "my_reply_to@mydomain.com");
@@ -673,7 +768,7 @@ class CADViewer extends Component {
 		cadviewer.cvjs_setTopMenuXML("floorPlan", "cadviewer_full_commands_01.xml");  //cadviewer.cvjs_setTopMenuXML("floorPlan", "cadviewer_full_commands_01.xml", "/cadviewer/app/cv/cv-pro/menu_config/");
 
 		// Menu including custom commands row on last page
-		//cadviewer.cvjs_setTopMenuXML("floorPlan", "cadviewer_menu_all_items_custom_commands.xml");
+		// cadviewer.cvjs_setTopMenuXML("floorPlan", "cadviewer_menu_all_items_custom_commands.xml");
 		
 
 
@@ -766,11 +861,11 @@ class CADViewer extends Component {
 		cadviewer.cvjs_conversion_clearAXconversionParameters();
 
 	    // process layers for spaces  RL/TL
-		cadviewer.cvjs_conversion_addAXconversionParameter("RL", "RM%24");		 
-		cadviewer.cvjs_conversion_addAXconversionParameter("TL", "RM%24TXT");		 
+		//cadviewer.cvjs_conversion_addAXconversionParameter("RL", "RM%24");		 
+		//cadviewer.cvjs_conversion_addAXconversionParameter("TL", "RM%24TXT");		 
 
-//		cadviewer.cvjs_conversion_addAXconversionParameter("RL", "RM_");		 
-//		cadviewer.cvjs_conversion_addAXconversionParameter("TL", "RM_TXT");		 
+		cadviewer.cvjs_conversion_addAXconversionParameter("RL", "RM_");		 
+		cadviewer.cvjs_conversion_addAXconversionParameter("TL", "RM_TXT");		 
 		// calculate areas of spaces
 		cadviewer.cvjs_conversion_addAXconversionParameter("LA", "");		 
 
@@ -784,11 +879,12 @@ class CADViewer extends Component {
 		// Load file - needs the svg div name and name and path of file to load
 		cadviewer.cvjs_LoadDrawing("floorPlan", FileName );
 
-		// set maximum CADViewer canvas side
-		cadviewer.cvjs_resizeWindow_position("floorPlan" );
+
+		// NOTE!set maximum CADViewer canvas side  - once loaded in cvjs_OnLoadEnd()
+		// cadviewer.cvjs_resizeWindow_position("floorPlan" );
 
 		// alternatively set a fixed CADViewer canvas size
-		//	cvjs_resizeWindow_fixedSize(600, 400, "floorPlan");			   
+		//cvjs_resizeWindow_fixedSize(600, 400, "floorPlan");			   
 	}
 
 	componentWillUnmount () {

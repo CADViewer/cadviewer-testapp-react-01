@@ -5,9 +5,12 @@ import './index.css';
 // Standard test case  -  uncomment all "STANDARD"
 //*
 import CADViewer from './CADViewer';
-import CADViewerSpaceObjects from './CADViewerSpaceObjects';
 import CADViewerHelperMethods from './CADViewerHelperMethods';
 //*/
+
+// import CADViewerSpaceObjects from './CADViewerSpaceObjects';   - moved inside CADViewer 6.9.11
+
+
 
 // Blocks case - uncomment all "BLOCKS"
 /*
@@ -33,6 +36,9 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('CADViewerHelperMethods')
 );
+//*/
+
+/*   moved inside CADViewer 6.9.11
 
 ReactDOM.render(
   <React.StrictMode>
@@ -40,7 +46,13 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('CADViewerSpaceObjects')
 );
-//*/
+
+
+
+*/
+
+
+
 
 
 

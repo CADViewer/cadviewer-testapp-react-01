@@ -186,43 +186,68 @@ function insertCloneIcon(event){
   var insertposx = event.pageX +4 - device_from_left_base;  // take y location into consideration
   var containerheight = 0; // 544/2.0;    // the cloned object is inserted into 50% of table height
   var insertposy = event.pageY- device_from_top_base+20 - containerheight;
-  
+
+
   console.log(insertposx+" "+insertposy);
+
+
   console.log("1b event xy  "+insertImageSelected+"  "+event.pageX+"  "+event.pageY+"  "+(insertposy));
 
-  var clone;
+  if (insertImageSelected == 1){
+    jQuery("#danger_drag_clone").css({"left" : (insertposx), "top" : (insertposy ) }).css({'z-index': 1000}).css({'border': '1px solid black'}).show();	  
+  }
 
-   switch (insertImageSelected){
-
-    case 1 : clone =  "#danger_drag_clone"; break;
-    case 2 : clone =  "#boiler_drag_clone"; break;
-    case 3 : clone =  "#pin_drag_clone"; break;
-    case 4 : clone =  "#aircon_drag_clone"; break;
-    case 5 : clone =  "#wifi_drag_clone"; break;
-    case 6 : clone =  "#vent_drag_clone"; break;
-    case 7 : clone =  "#temp_drag_clone"; break;
-    case 8 : clone =  "#assembly_drag_clone"; break;
-    case 9 : clone =  "#device_drag_clone"; break;
-    case 10 : clone =  "#fire_alarm_drag_clone"; break;
-    case 11 : clone =  "#fire_exit_drag_clone"; break;
-    case 12 : clone =  "#fire_extinguisher_drag_clone"; break;
-    case 13 : clone =  "#refuge_point_drag_clone"; break;
-    default: clone = "";
-
-   }
-
-   jQuery(clone).css({"left" : (insertposx), "top" : (insertposy ) }).css({'z-index': 1000}).css({'border': '1px solid black'}).show();	  
+  if (insertImageSelected == 9){
+    jQuery("#device_drag_clone").css({"left" : (insertposx), "top" : (insertposy) }).css({'z-index': 1000}).css({'border': '1px solid black'}).show();	  
+  }
+  if (insertImageSelected == 5){
+    jQuery("#wifi_drag_clone").css({"left" : (insertposx), "top" : (insertposy ) }).css({'z-index': 1000}).css({'border': '1px solid black'}).show();	  
+  }
+  if (insertImageSelected == 2){
+    jQuery("#boiler_drag_clone").css({"left" : (insertposx), "top" : (insertposy ) }).css({'z-index': 1000}).css({'border': '1px solid black'}).show();	  
+  }
+ if (insertImageSelected == 3){
+    jQuery("#pin_drag_clone").css({"left" : (insertposx), "top" : (insertposy ) }).css({'z-index': 1000}).css({'border': '1px solid black'}).show();	  
+  }
+  if (insertImageSelected == 4){
+    jQuery("#aircon_drag_clone").css({"left" : (insertposx), "top" : (insertposy ) }).css({'z-index': 1000}).css({'border': '1px solid black'}).show();	  
+  }
+  if (insertImageSelected == 6){
+    jQuery("#vent_drag_clone").css({"left" : (insertposx), "top" : (insertposy ) }).css({'z-index': 1000}).css({'border': '1px solid black'}).show();	  
+  }
+  if (insertImageSelected == 7){
+    jQuery("#temp_drag_clone").css({"left" : (insertposx), "top" : (insertposy ) }).css({'z-index': 1000}).css({'border': '1px solid black'}).show();	  
+  }
+  if (insertImageSelected == 8){
+    jQuery("#assembly_drag_clone").css({"left" : (insertposx), "top" : (insertposy ) }).css({'z-index': 1000}).css({'border': '1px solid black'}).show();	  
+  }
+  if (insertImageSelected == 10){
+    jQuery("#fire_alarm_drag_clone").css({"left" : (insertposx), "top" : (insertposy ) }).css({'z-index': 1000}).css({'border': '1px solid black'}).show();	  
+  }
+  if (insertImageSelected == 11){
+    jQuery("#fire_exit_drag_clone").css({"left" : (insertposx), "top" : (insertposy ) }).css({'z-index': 1000}).css({'border': '1px solid black'}).show();	  
+  }
+  if (insertImageSelected == 12){
+    jQuery("#fire_extinguisher_drag_clone").css({"left" : (insertposx), "top" : (insertposy ) }).css({'z-index': 1000}).css({'border': '1px solid black'}).show();	  
+  }
+  if (insertImageSelected == 13){
+    jQuery("#refuge_point_drag_clone").css({"left" : (insertposx), "top" : (insertposy ) }).css({'z-index': 1000}).css({'border': '1px solid black'}).show();	  
+  }
 
 }
 
 
 function handleDragImages(event){
 
+  //console.log("myImagesToDrag: "+jQuery('#myImagesToDrag').offset().left+" "+jQuery('#myImagesToDrag').offset().top);
+  //device_from_top_base = document.getElementById('myImagesToDrag').offsetTop;
+  //device_from_left_base = document.getElementById('myImagesToDrag').offsetLeft;
+
   console.log("space_icon_table2: "+jQuery('#space_icon_table2').offset().left+" "+jQuery('#space_icon_table2').offset().top);
   device_from_top_base = jQuery('#space_icon_table2').offset().top;
   device_from_left_base = jQuery('#space_icon_table2').offset().left;
 
-  console.log("in handleDragImages space_icon_table2: "+device_from_top_base+ " left: "+device_from_left_base);
+  console.log("in handleDragImages myImagesToDrag:"+device_from_top_base+ " left: "+device_from_left_base);
 
 	// handle move 
 	
@@ -260,8 +285,8 @@ class CADViewerSpaceObjects extends Component {
     		// here we clone icons to be able to move them into the canvas
             insertImageSelected = 0;
 
-              // sunstitute #myImagesToDrag with #space_icon_table2
 
+              // sunstitute #myImagesToDrag with #space_icon_table2
             jQuery("#device_drag").clone().appendTo("#space_icon_table2").prop('id', 'device_drag_clone').css('position', 'absolute').css('top', 0).css('left', 100).css('width','40px').hide(); 
             jQuery("#wifi_drag").clone().appendTo("#space_icon_table2").prop('id', 'wifi_drag_clone').css('position', 'absolute').css('width','40px').hide(); 
             jQuery("#pin_drag").clone().appendTo("#space_icon_table2").prop('id', 'pin_drag_clone').css('position', 'absolute').css('width','40px').hide(); 
@@ -313,7 +338,81 @@ class CADViewerSpaceObjects extends Component {
               handleDragImages(event);
 
             });
-        
+    
+
+
+            
+/*
+            jQuery("#space_icon_table2").mouseout(function(event) {
+
+                jQuery('#icon_div_popup').hide();
+
+            });
+            
+            jQuery("#myImagesToDrag").mouseout(function(event) {
+                        
+                if (insertImageSelected == 1){
+                    jQuery("#danger_drag_clone").hide();
+                }
+                if (insertImageSelected == 9){
+                    jQuery("#device_drag_clone").hide();	  
+                }
+                if (insertImageSelected == 5){
+                    jQuery("#wifi_drag_clone").hide();	  
+                }
+                if (insertImageSelected == 2){
+                    jQuery("#boiler_drag_clone").hide();	  
+                }
+                if (insertImageSelected == 3){
+                    jQuery("#pin_drag_clone").hide();	  
+                }
+                if (insertImageSelected == 4){
+                    jQuery("#aircon_drag_clone").hide();	  
+                }
+                if (insertImageSelected == 6){
+                    jQuery("#vent_drag_clone").hide();	  
+                }
+                if (insertImageSelected == 7){
+                    jQuery("#temp_drag_clone").hide();	  
+                }
+                if (insertImageSelected == 8){
+                    jQuery("#assembly_drag_clone").hide();
+                }
+                if (insertImageSelected == 10){
+                    jQuery("#fire_alarm_drag_clone").hide();
+                }
+                if (insertImageSelected == 11){
+                    jQuery("#fire_exit_drag_clone").hide();
+                }
+                if (insertImageSelected == 12){
+                    jQuery("#fire_extinguisher_drag_clone").hide();
+                }
+                if (insertImageSelected == 13){
+                    jQuery("#refuge_point_drag_clone").hide();
+                }
+    
+                jQuery('#icon_div_popup').hide();
+
+                console.log("imagestodrag.mouseout...."+insertImageSelected);
+                // NOTE  - HERE WE CALL THE API COMMAND TO ADD A SPACE IMAGE OBJECT
+
+                if (insertImageSelected>0){
+                    // set variables for image
+                    selectIconImage(insertImageSelected);
+                    insertImageSelected = 0;		
+
+                    // update the fields in the CADViewerHelperMethod container
+                    myHelperMethods.setSpaceInputFields(loadSpaceImage_Location.substring(loadSpaceImage_Location.lastIndexOf("/")+1), loadSpaceImage_ID, loadSpaceImage_Type, loadSpaceImage_Layer);
+                    
+                    // place the icon on the canvas
+                    cadviewer.cvjs_setImageSpaceObjectParameters(loadSpaceImage_Location, loadSpaceImage_ID, loadSpaceImage_Type, loadSpaceImage_Layer);
+                    cadviewer.cvjs_addFixedSizeImageSpaceObject("floorPlan");
+                }
+            
+            });
+  
+*/
+
 
     jQuery("#space_icon_table2").mouseout(function(event) {
               
@@ -387,116 +486,118 @@ class CADViewerSpaceObjects extends Component {
     return (
       <div className="CADViewerSpaceObjects">
 
-        <table id="space_icon_table2" >	
-        <tbody>
-                <tr>
-                <td>
-                    <div id="danger_drag">
-                        <img src="/cadviewer/content/drawings/svg/danger.png" alt="CADViewer insert Object"  width="40px" onClick={selectIconImageDummy(9)}/>
-                    </div>
-                </td>
-                </tr>
 
-                <tr>
-                <td> 
-                    <div id="boiler_drag">
-                    <img src="/cadviewer/content/drawings/svg/HVAC_01.svg" alt="CADViewer insert Object"  width="40px" onClick={selectIconImageDummy(5)}/>
-                    </div>
-                </td>
-                </tr>
+    <div id="myImagesToDrag"></div>
 
-                <tr>
-                <td>
-                    <div id="pin_drag">
-                    <img src="/cadviewer/content/drawings/svg/pin_01.svg" alt="CADViewer insert Object"  width="40px" height="40px" onClick={selectIconImageDummy(3)}/> 
-                    </div>
-                </td>
-                </tr>
-                <tr>
-                <td>
-                    <div id="aircon_drag">
-                <img src="/cadviewer/content/drawings/svg/HVAC_04.svg" alt="CADViewer insert Object"  width="40px"  onClick={selectIconImageDummy(4)}/>
-                    </div>
-                </td>
-                </tr>
+    <table id="space_icon_table2" >	
+    <tbody>
+            <tr>
+            <td>
+                <div id="danger_drag">
+                    <img src="/cadviewer/content/drawings/svg/danger.png" alt="CADViewer insert Object"  width="40px" onClick={selectIconImageDummy(9)}/>
+                </div>
+            </td>
+            </tr>
 
-                <tr>
-                <td>
-                    <div id="wifi_drag">
-                    <img src="/cadviewer/content/drawings/svg/wifi_25.svg" alt="CADViewer insert Object" width="40px"  onClick={selectIconImageDummy(2)}/>
-                    </div>
-                </td>
-                </tr>
+            <tr>
+            <td> 
+                <div id="boiler_drag">
+                <img src="/cadviewer/content/drawings/svg/HVAC_01.svg" alt="CADViewer insert Object"  width="40px" onClick={selectIconImageDummy(5)}/>
+                </div>
+            </td>
+            </tr>
 
-                <tr>
-                <td>
-                    <div id="vent_drag">
-                <img src="/cadviewer/content/drawings/svg/HVAC_02.svg" alt="CADViewer insert Object"  width="40px" onClick={selectIconImageDummy(6)}/>
-                    </div>
-                </td>
-                </tr>
+            <tr>
+            <td>
+                <div id="pin_drag">
+                <img src="/cadviewer/content/drawings/svg/pin_01.svg" alt="CADViewer insert Object"  width="40px" height="40px" onClick={selectIconImageDummy(3)}/> 
+                </div>
+            </td>
+            </tr>
+            <tr>
+            <td>
+                <div id="aircon_drag">
+            <img src="/cadviewer/content/drawings/svg/HVAC_04.svg" alt="CADViewer insert Object"  width="40px"  onClick={selectIconImageDummy(4)}/>
+                </div>
+            </td>
+            </tr>
 
-                <tr>
-                <td>
-                    <div id="temp_drag">
-                <img src="/cadviewer/content/drawings/svg/HVAC_03.svg" alt="CADViewer insert Object"  width="40px" onClick={selectIconImageDummy(7)}/>
-                    </div>
-                </td>
-                </tr>
+            <tr>
+            <td>
+                <div id="wifi_drag">
+                <img src="/cadviewer/content/drawings/svg/wifi_25.svg" alt="CADViewer insert Object" width="40px"  onClick={selectIconImageDummy(2)}/>
+                </div>
+            </td>
+            </tr>
 
+            <tr>
+            <td>
+                <div id="vent_drag">
+            <img src="/cadviewer/content/drawings/svg/HVAC_02.svg" alt="CADViewer insert Object"  width="40px" onClick={selectIconImageDummy(6)}/>
+                </div>
+            </td>
+            </tr>
 
-                <tr>
-                <td>
-                    <div id="assembly_drag">
-                        <img src="/cadviewer/content/drawings/svg/assembly_point.png" alt="CADViewer insert Object"  width="40px" onClick={selectIconImageDummy(8)}/>
-                    </div>
-                </td>
-                </tr>
-
-                <tr>
-                <td>
-                    <div id="device_drag">
-                <img src="/cadviewer/content/drawings/svg/device_54.svg" alt="CADViewer insert Object" width="40px" onClick={selectIconImageDummy(1)}/>
-                    </div>
-                </td>
+            <tr>
+            <td>
+                <div id="temp_drag">
+            <img src="/cadviewer/content/drawings/svg/HVAC_03.svg" alt="CADViewer insert Object"  width="40px" onClick={selectIconImageDummy(7)}/>
+                </div>
+            </td>
+            </tr>
 
 
-                </tr>
+            <tr>
+            <td>
+                <div id="assembly_drag">
+                    <img src="/cadviewer/content/drawings/svg/assembly_point.png" alt="CADViewer insert Object"  width="40px" onClick={selectIconImageDummy(8)}/>
+                </div>
+            </td>
+            </tr>
 
-                <tr>
-                <td>
-                    <div id="fire_alarm_drag">
-                        <img src="/cadviewer/content/drawings/svg/fire_alarm_call_point.png" alt="CADViewer insert Object"  width="40px" onClick={selectIconImageDummy(10)}/>
-                    </div>
-                </td>
-                </tr>
+            <tr>
+            <td>
+                <div id="device_drag">
+            <img src="/cadviewer/content/drawings/svg/device_54.svg" alt="CADViewer insert Object" width="40px" onClick={selectIconImageDummy(1)}/>
+                </div>
+            </td>
 
-                <tr>
-                <td>
-                    <div id="fire_exit_drag">
-                        <img src="/cadviewer/content/drawings/svg/fire_exit.png" alt="CADViewer insert Object"  width="40px" onClick={selectIconImageDummy(11)}/>
-                    </div>
-                </td>
-                </tr>
 
-                <tr>
-                <td>
-                    <div id="fire_extinguisher_drag">
-                        <img src="/cadviewer/content/drawings/svg/fire_extinguisher.png" alt="CADViewer insert Object"  width="40px" onClick={selectIconImageDummy(12)}/>
-                    </div>
-                </td>
-                </tr>
+            </tr>
 
-                <tr>
-                <td>
-                    <div id="refuge_point_drag">
-                    <img src="/cadviewer/content/drawings/svg/refuge_point.png" alt="CADViewer insert Object"  width="40px" onClick={selectIconImageDummy(13)}/>
-                    </div>
-                </td>
-                </tr>
-        </tbody>
-        </table>			  
+            <tr>
+            <td>
+                <div id="fire_alarm_drag">
+                    <img src="/cadviewer/content/drawings/svg/fire_alarm_call_point.png" alt="CADViewer insert Object"  width="40px" onClick={selectIconImageDummy(10)}/>
+                </div>
+            </td>
+            </tr>
 
+            <tr>
+            <td>
+                <div id="fire_exit_drag">
+                    <img src="/cadviewer/content/drawings/svg/fire_exit.png" alt="CADViewer insert Object"  width="40px" onClick={selectIconImageDummy(11)}/>
+                </div>
+            </td>
+            </tr>
+
+            <tr>
+            <td>
+                <div id="fire_extinguisher_drag">
+                    <img src="/cadviewer/content/drawings/svg/fire_extinguisher.png" alt="CADViewer insert Object"  width="40px" onClick={selectIconImageDummy(12)}/>
+                </div>
+            </td>
+            </tr>
+
+            <tr>
+            <td>
+                <div id="refuge_point_drag">
+                <img src="/cadviewer/content/drawings/svg/refuge_point.png" alt="CADViewer insert Object"  width="40px" onClick={selectIconImageDummy(13)}/>
+                </div>
+            </td>
+            </tr>
+    </tbody>
+    </table>			  
 
     <div id="icon_div_popup"></div>
 

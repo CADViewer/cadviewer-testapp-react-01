@@ -303,7 +303,7 @@ function highlight_all_spaces(){
 
   var colortype = {
       fill: selectedColor,
-      "fill-opacity": "0.8",
+      "fill-opacity": "0.3",
       stroke: selectedColor,
       'stroke-width': 1,
       'stroke-opacity': "1",
@@ -482,6 +482,23 @@ function cadviewerCanvasMethod07(){
   cadviewer.cvjs_executeCustomCanvasMethod_click(generic_handles_mousemove_method_01, generic_handles_mousedown_method_01, generic_handles_mouseup_method_01, generic_handles_dblclick_method_01,generic_handles_init_method_01)  
 }
  
+
+
+function loadprocessedsvg(){
+
+
+    CV.setOnloadEndFlag(false);
+    var FileName = "http://localhost:3000"+ "/content/drawings/svg/testSVGnotprocessed.svg";
+		cadviewer.cvjs_setCustomConversionEndpointExtension(false);
+		cadviewer.cvjs_setSpaceObjectProcessing(false);
+		cadviewer.cvjs_LoadDrawing("floorPlan", FileName);
+
+}
+ 
+
+
+
+
 
 ///// DRAG + CLICK ON CANVAS  - CONSOLE
 
@@ -1129,6 +1146,7 @@ class CADViewerHelperMethods extends Component {
   async componentDidMount () {
 
 
+    /*    remove slider, as implemented internally in CADViewer v6.9.11
     var slider = document.getElementById("myRange");
     var output = document.getElementById("iconsize");
     output.innerHTML = slider.value+"%";
@@ -1140,6 +1158,7 @@ class CADViewerHelperMethods extends Component {
       cadviewer.cvjs_setGlobalSpaceImageObjectScaleFactor(this.value/100.0);
       
     }
+    */
 
   }  
 
@@ -1179,27 +1198,36 @@ class CADViewerHelperMethods extends Component {
 		<button className="w3-button demo" onClick={cadviewerCanvasMethod05}>Select Spaces -DRAG (rl/tl in ax2022)</button>
 		<button className="w3-button demo" onClick={cadviewerCanvasMethod06}>Make Box/Arrow Canvas-CLICK</button>
     <button className="w3-button demo" onClick={cadviewerCanvasMethod07}>Select Handles -CLICK (DblClick End) (hlall in ax2022)</button>
+    <button className="w3-button demo" onClick={loadprocessedsvg}>Load processed SVG</button>
+
 
 {/*
     <br/><b><i>IOT commands:</i>&nbsp; </b> 
     &nbsp;&nbsp;&nbsp;&nbsp;  <button className="w3-button demo" onClick={copy_group_object}><i>Copy Group</i></button>&nbsp;<input type="text" id="copy_org_id" defaultValue="orgid" />&nbsp;<input type="text" id="copy_new_id" defaultValue="newid" /><button className="w3-button demo" onClick={hide_object_in_group}>Hide Subgroup In Group</button>&nbsp;&nbsp;  <button className="w3-button demo" onClick={show_object_in_group}>Show Subgroup In Group</button>&nbsp;
     <br/><i>Group 1:</i> &nbsp; &nbsp;<input type="text" id="group_1" defaultValue="NODE_xx" />  <i>Group 2:</i> &nbsp; &nbsp;<input type="text" id="group_2" defaultValue="NODE_yy" />&nbsp;<button className="w3-button demo" onClick={update_group_with_group}><i>Add Group to Group</i></button>&nbsp;&nbsp;Subgroup ID:&nbsp;<input type="text" id="group_2_subid" defaultValue="id_01" />&nbsp; &nbsp; 
-*/} <br/>
-    <canvas id="dummy" width="5" height="22"></canvas>
+*/} 
+
+  <br/>
+  <canvas id="dummy" width="5" height="22"></canvas>
   <b>JSON file sample(Relay - relaysample-01.json):&nbsp;</b><button className="w3-button demo" onClick={lock_all}>Lock all Relays</button>&nbsp;<button className="w3-button demo" onClick={unlock_all}>Unlock all Relays</button>&nbsp; <input type="text" id="relay_id" defaultValue="relay_01" />&nbsp;<button className="w3-button demo" onClick={unlock_single}>Unlock Relay</button>&nbsp;<button className="w3-button demo" onClick={lock_single}>Lock Relay</button>&nbsp;
   
+  <br/>
+  <br/>
+  
 
+{/*    remove slider, as implemented internally in CADViewer v6.9.11
   <canvas id="dummy" width="5" height="18"></canvas>
-
   <div className="slidecontainer">
   <strong><small>SVG Icon Size at Insert: <span id="iconsize"></span></small></strong><input type="range" min="1" max="400"  className="slider" id="myRange"/>
   </div>
-  
+*/}
+
 
 {/*}
           <img id ="img1" src={logo} className="CADViewerHelperMethods-logo" alt="logo" />
           <h4>CADViewerHelperMethods</h4>
 */} 
+
           </div>
     );
   }
