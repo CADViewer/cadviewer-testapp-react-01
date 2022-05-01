@@ -132,6 +132,10 @@ function cvjs_graphicalObjectOnChange(type, graphicalObject, spaceID){
 //	window.alert("CALLBACK: cvjs_graphicalObjectOnChange: "+type+" "+graphicalObject+" "+spaceID+" indexSpace: "+graphicalObject.toLowerCase().indexOf("space"));
 	console.log("CALLBACK: cvjs_graphicalObjectOnChange: "+type+" "+graphicalObject+" "+spaceID+" indexSpace: "+graphicalObject.toLowerCase().indexOf("space"));
 
+	myobject = cadviewer.cvjs_returnSpaceObjectID(spaceID);
+	console.log("This Object "+myobject.id+" with name "+myobject.name+" has Parent: "+myobject.parent);
+
+
 	if (type == 'Create' && graphicalObject.toLowerCase().indexOf("space")>-1 && graphicalObject.toLowerCase().indexOf("circle")==-1){
 			
 		/**
@@ -171,6 +175,7 @@ function cvjs_graphicalObjectOnChange(type, graphicalObject, spaceID){
 		*                               "blockAttributeId" : "",
 		*                               "blockAttributeCount" : ""
 		*                               "clickhandler" : "enable",
+		*                               "parent" : "none",
 		*                               }
  		* @param {string} spaceID - Id of the Space Object to return
 		* @return {Object} jsonSpaceObject - Object with the entire space objects content
