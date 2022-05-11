@@ -50,6 +50,9 @@ function cvjs_OnLoadEnd(){
 
 
 
+	cadviewer.cvjs_hideSpaceObjectID("107");
+
+
 
 	cadviewer.cvjs_resetZoomPan("floorPlan");
 
@@ -609,6 +612,13 @@ class CADViewer extends Component {
 		
 	    //Standard file from /content/ folder on CADViewer NodeJS Conversion Server
 		FileName = ServerBackEndUrl+ "/content/drawings/dwg/hq17_.dwg";
+
+
+
+//		cadviewer.cvjs_setIconImageSize("floorPlan",34, 44);  // standard sizes, no need to change these, modify if 7 skin and want to scale
+//      cadviewer.cvjs_setCADViewerInterfaceVersion(6);  // old skin,  version 7 is new skin, which is default 
+
+
 
 
 		// NOTE - FOR NPM FIRST INSTALL
