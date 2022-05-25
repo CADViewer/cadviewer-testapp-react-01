@@ -135,8 +135,10 @@ function cvjs_graphicalObjectOnChange(type, graphicalObject, spaceID){
 //	window.alert("CALLBACK: cvjs_graphicalObjectOnChange: "+type+" "+graphicalObject+" "+spaceID+" indexSpace: "+graphicalObject.toLowerCase().indexOf("space"));
 	console.log("CALLBACK: cvjs_graphicalObjectOnChange: "+type+" "+graphicalObject+" "+spaceID+" indexSpace: "+graphicalObject.toLowerCase().indexOf("space"));
 
+
 	myobject = cadviewer.cvjs_returnSpaceObjectID(spaceID);
 	console.log("This Object "+myobject.id+" with name "+myobject.name+" has Parent: "+myobject.parent);
+
 
 
 	if (type == 'Create' && graphicalObject.toLowerCase().indexOf("space")>-1 && graphicalObject.toLowerCase().indexOf("circle")==-1){
@@ -192,14 +194,14 @@ function cvjs_graphicalObjectOnChange(type, graphicalObject, spaceID){
 		// console.log("This is the SVG: "+myobject.outerhtml);
 
 
-		// NOTE! - v6.9.12 when an object is created, the application programmer can simply give 
+
+		// NOTE! - When an object is created, the application programmer can simply give 
 		// the object a name matching a database, if needed. 
+		/*
 		var newName = "ID"+Math.floor(Math.random() * 1000000);
 		console.log("OnloadEnd new object created name:"+myobject.name+ " id:"+myobject.id+" new name"+newName)
-		
-		//window.alert(myobject.name);
-
 		cadviewer.cvjs_changeSpaceObjectName(myobject.id, newName)
+		*/
 
 
 	}
@@ -512,6 +514,14 @@ function cvjs_customCommand_20(){
 };
 
 
+function cvjs_insertSpaceObjectCustomCodePlaceholder(){
+	console.log("callback for spaceobject insertion, do custom checks here if false the insertion is aborted, if true continued as usual");
+	return true;
+};
+
+
+
+ 
 
 
 // Dynamic Modal Call-back
@@ -661,10 +671,10 @@ class CADViewer extends Component {
 		// Set all paths, and handlers, changes these depending on back-end server
 		cadviewer.cvjs_setAllServerPaths_and_Handlers(ServerBackEndUrl, ServerUrl, ServerLocation, "NodeJS", "ReactJS", "floorPlan");
 	  
-
-
         //      Setting all callback methods  - they have to be injected into the CADViewer class componnet
-        cadviewer.cvjs_setCallbackMethod("cvjs_OnLoadEnd", cvjs_OnLoadEnd);
+
+		cadviewer.cvjs_setCallbackMethod("cvjs_insertSpaceObjectCustomCodePlaceholder", cvjs_insertSpaceObjectCustomCodePlaceholder);
+		cadviewer.cvjs_setCallbackMethod("cvjs_OnLoadEnd", cvjs_OnLoadEnd);
         cadviewer.cvjs_setCallbackMethod("cvjs_graphicalObjectOnChange", cvjs_graphicalObjectOnChange);
         cadviewer.cvjs_setCallbackMethod("cvjs_OnLoadEndRedlines", cvjs_OnLoadEndRedlines);
         cadviewer.cvjs_setCallbackMethod("cvjs_ObjectSelected", cvjs_ObjectSelected);

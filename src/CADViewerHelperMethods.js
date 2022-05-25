@@ -25,59 +25,45 @@ import * as CV from "./CADViewer.js";
 
 /// RELAY LOCK JSON SAMPLE 
 
-function unlock_all(){
+function open_all(){
 
-	var spaceObjectIds = cadviewer.cvjs_getSpaceObjectNodeList();
-	for (var spc in spaceObjectIds){		
-        var node = spaceObjectIds[spc];
-        
-        cadviewer.cvjs_showObjectInSpaceObjectGroup(node, "id_05");
-        cadviewer.cvjs_hideObjectInSpaceObjectGroup(node, "id_04");
-        cadviewer.cvjs_hideObjectInSpaceObjectGroup(node, "id_06");
-	}
-
+  cadviewer.cvjs_showOnlyObjectInAllSpaceObjectGroups('open');
 }
 
 function lock_all(){
 
-	var spaceObjectIds = cadviewer.cvjs_getSpaceObjectNodeList();
-	for (var spc in spaceObjectIds){		
-        var node = spaceObjectIds[spc];
-        
-        cadviewer.cvjs_hideObjectInSpaceObjectGroup(node, "id_05");
-        cadviewer.cvjs_showObjectInSpaceObjectGroup(node, "id_04");
-        cadviewer.cvjs_showObjectInSpaceObjectGroup(node, "id_06");
-	}
-
-
+  cadviewer.cvjs_showOnlyObjectInAllSpaceObjectGroups('locked');
 }
+
+function close_all(){
+
+  cadviewer.cvjs_showOnlyObjectInAllSpaceObjectGroups('closed');
+}
+
 
 function lock_single(){
 
-    var relay_id = jQuery('#relay_id').val();    
-    var node = cadviewer.cvjs_getSpaceObjectNodefromId(relay_id);
-        
-  console.log("lock relay_id"+relay_id+"  "+node);
-
-    cadviewer.cvjs_hideObjectInSpaceObjectGroup(node, "id_05");
-    cadviewer.cvjs_showObjectInSpaceObjectGroup(node, "id_04");
-    cadviewer.cvjs_showObjectInSpaceObjectGroup(node, "id_06");
+    var door_id = jQuery('#door_id').val();    
+    cadviewer.cvjs_showOnlyObjectInSpaceObjectGroup(door_id, 'locked', "id")
 
 }
 
-function unlock_single(){
 
-    var relay_id = jQuery('#relay_id').val();    
-    var node = cadviewer.cvjs_getSpaceObjectNodefromId(relay_id);
+function open_single(){
 
-    console.log("lock relay_id"+relay_id+"  "+node);
-
-
-    cadviewer.cvjs_showObjectInSpaceObjectGroup(node, "id_05");
-    cadviewer.cvjs_hideObjectInSpaceObjectGroup(node, "id_04");
-    cadviewer.cvjs_hideObjectInSpaceObjectGroup(node, "id_06");
+  var door_id = jQuery('#door_id').val();    
+  cadviewer.cvjs_showOnlyObjectInSpaceObjectGroup(door_id, 'open', "id")
 
 }
+
+
+function close_single(){
+
+  var door_id = jQuery('#door_id').val();    
+  cadviewer.cvjs_showOnlyObjectInSpaceObjectGroup(door_id, 'closed', "id")
+
+}
+
 
  
 function hide_object_in_group(){
@@ -410,10 +396,9 @@ function update_group_with_group(){
 }
 
 
-
 function insert_from_type_id_image(){
 
-    var loadSpaceImage_Location = "/cadviewer/content/drawings/svg/" + jQuery('#image_sensor_location').val();
+    var loadSpaceImage_Location = "http://localhost:3000/content/drawings/svg/" + jQuery('#image_sensor_location').val();
     var loadSpaceImage_ID = jQuery('#image_ID').val();
     var loadSpaceImage_Type = jQuery('#image_Type').val();
     var loadSpaceImage_Layer = "cvjs_SpaceLayer";
@@ -1133,7 +1118,15 @@ console.log("REMOVE: generic_dblclick_method_01: x="+x+" y="+y+" svg_x="+svg_x+"
 };
 
 
+
 // END - SAMPLE TO DRAG RECTANGLE over HANDLES
+
+function checknumberoftypes(){
+
+  var mytype = "wi-fi";
+  var myspaces = cadviewer.cvjs_getSpaceObjectByType(mytype);
+  window.alert("Number of "+mytype+ " types="+myspaces.SpaceObjects.length);
+}
 
 
 
@@ -1199,6 +1192,7 @@ class CADViewerHelperMethods extends Component {
 		<button className="w3-button demo" onClick={cadviewerCanvasMethod06}>Make Box/Arrow Canvas-CLICK</button>
     <button className="w3-button demo" onClick={cadviewerCanvasMethod07}>Select Handles -CLICK (DblClick End) (hlall in ax2022)</button>
     <button className="w3-button demo" onClick={loadprocessedsvg}>Load processed SVG</button>
+    <button className="w3-button demo" onClick={checknumberoftypes}>Check number of types</button>
 
 
 {/*
@@ -1209,7 +1203,7 @@ class CADViewerHelperMethods extends Component {
 
   <br/>
   <canvas id="dummy" width="5" height="22"></canvas>
-  <b>JSON file sample(Relay - relaysample-01.json):&nbsp;</b><button className="w3-button demo" onClick={lock_all}>Lock all Relays</button>&nbsp;<button className="w3-button demo" onClick={unlock_all}>Unlock all Relays</button>&nbsp; <input type="text" id="relay_id" defaultValue="relay_01" />&nbsp;<button className="w3-button demo" onClick={unlock_single}>Unlock Relay</button>&nbsp;<button className="w3-button demo" onClick={lock_single}>Lock Relay</button>&nbsp;
+  <b>Place out Door Objects:&nbsp;</b><button className="w3-button demo" onClick={close_all}>Close all Doors</button>&nbsp;<button className="w3-button demo" onClick={lock_all}>Lock all Doors</button>&nbsp;<button className="w3-button demo" onClick={open_all}>Open All Doors</button>&nbsp; <input type="text" id="door_id" defaultValue="Door_" />&nbsp;<button className="w3-button demo" onClick={lock_single}>Lock Door</button>&nbsp;<button className="w3-button demo" onClick={close_single}>Close Door</button>&nbsp;<button className="w3-button demo" onClick={open_single}>Open Door</button>&nbsp;
   
   <br/>
   <br/>
