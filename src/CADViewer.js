@@ -136,8 +136,10 @@ function cvjs_graphicalObjectOnChange(type, graphicalObject, spaceID){
 	console.log("CALLBACK: cvjs_graphicalObjectOnChange: "+type+" "+graphicalObject+" "+spaceID+" indexSpace: "+graphicalObject.toLowerCase().indexOf("space"));
 
 
-	myobject = cadviewer.cvjs_returnSpaceObjectID(spaceID);
-	console.log("This Object "+myobject.id+" with name "+myobject.name+" has Parent: "+myobject.parent);
+	if (graphicalObject.toLowerCase().indexOf("space")!==-1){
+		myobject = cadviewer.cvjs_returnSpaceObjectID(spaceID);
+		console.log("This Object "+myobject.id+" with name "+myobject.name+" has Parent: "+myobject.parent);
+	}
 
 
 
