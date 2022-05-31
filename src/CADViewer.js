@@ -18,6 +18,12 @@ export function clearTextLayer(){
 }
 
 
+export function retrieve_redlines_stickynotes(){
+	cadviewer.cvjs_setAllRedlineStickyNoteObjects(myredlinestickynoteObjects);
+}
+
+
+
 export function setOnloadEndFlag(flag){
 	onloadEndFlag2 = flag;
 }
@@ -127,10 +133,15 @@ function cvjs_OnLoadEndRedlines(){
 	cadviewer.cvjs_lockAllRedlines_LockedUsersList();
 }
 
+
+var myobject;
+var myredlineObjects = {};
+var mystickynoteObjects = {};
+var myredlinestickynoteObjects = {};
+
 // Callback Method on Creation and Delete 
 //export function cvjs_graphicalObjectOnChange(type, graphicalObject, spaceID){
 function cvjs_graphicalObjectOnChange(type, graphicalObject, spaceID){
-	var myobject;
 	// do something with the graphics object created! 
 //	window.alert("CALLBACK: cvjs_graphicalObjectOnChange: "+type+" "+graphicalObject+" "+spaceID+" indexSpace: "+graphicalObject.toLowerCase().indexOf("space"));
 	console.log("CALLBACK: cvjs_graphicalObjectOnChange: "+type+" "+graphicalObject+" "+spaceID+" indexSpace: "+graphicalObject.toLowerCase().indexOf("space"));
@@ -141,6 +152,9 @@ function cvjs_graphicalObjectOnChange(type, graphicalObject, spaceID){
 		console.log("This Object "+myobject.id+" with name "+myobject.name+" has Parent: "+myobject.parent);
 	}
 
+
+
+	// SPACE OBJECTS
 
 
 	if (type == 'Create' && graphicalObject.toLowerCase().indexOf("space")>-1 && graphicalObject.toLowerCase().indexOf("circle")==-1){
@@ -208,7 +222,6 @@ function cvjs_graphicalObjectOnChange(type, graphicalObject, spaceID){
 
 	}
 
-
 	if (type == 'Delete' && graphicalObject.toLowerCase().indexOf("space")>-1 ){
 		// remove this entry from my DB
 
@@ -223,6 +236,49 @@ function cvjs_graphicalObjectOnChange(type, graphicalObject, spaceID){
 		myobject = cadviewer.cvjs_returnSpaceObjectID(spaceID);
 
 	}
+	
+	// REDLINE & STICKYNOTE OBJECTS
+
+
+		// REDLINES
+		if (type == 'Create' && graphicalObject.toLowerCase().indexOf("redline")>-1 ){
+			myredlineObjects = cadviewer.cvjs_returnAllRedlineObjects();   // cadviewer 6
+            myredlinestickynoteObjects = cadviewer.cvjs_returnAllRedlineStickyNoteObjects();  //cadviewer 7
+			console.log("red: "+JSON.stringify(myredlineObjects));
+			// 7.0.15
+		}
+
+		if (type == 'Delete' && graphicalObject.toLowerCase().indexOf("redline")>-1 ){		
+			myredlineObjects = cadviewer.cvjs_returnAllRedlineObjects();   // cadviewer 6
+            myredlinestickynoteObjects = cadviewer.cvjs_returnAllRedlineStickyNoteObjects();  //cadviewer 7
+			console.log("red: "+JSON.stringify(myredlineObjects));
+		}			
+
+		if (type == 'Create' && graphicalObject.toLowerCase().indexOf("stickynote")>-1){
+			myredlineObjects = cadviewer.cvjs_returnAllRedlineObjects();   // cadviewer 6
+            myredlinestickynoteObjects = cadviewer.cvjs_returnAllRedlineStickyNoteObjects();  //cadviewer 7
+			console.log("note:"+JSON.stringify(mystickynoteObjects));
+		}
+
+
+		if (type == 'Delete' && graphicalObject.toLowerCase().indexOf("stickynote")>-1 ){
+			myredlineObjects = cadviewer.cvjs_returnAllRedlineObjects();   // cadviewer 6
+            myredlinestickynoteObjects = cadviewer.cvjs_returnAllRedlineStickyNoteObjects();  //cadviewer 7
+			console.log("note:"+JSON.stringify(mystickynoteObjects));
+		}
+
+
+		if (type == 'Edit' && graphicalObject.toLowerCase().indexOf("stickynote")>-1 ){
+			myredlineObjects = cadviewer.cvjs_returnAllRedlineObjects();   // cadviewer 6
+            myredlinestickynoteObjects = cadviewer.cvjs_returnAllRedlineStickyNoteObjects();  //cadviewer 7
+			console.log("note:"+JSON.stringify(mystickynoteObjects));
+		}
+
+		if (type == 'Move' && graphicalObject.toLowerCase().indexOf("stickynote")>-1 ){
+			myredlineObjects = cadviewer.cvjs_returnAllRedlineObjects();   // cadviewer 6
+            myredlinestickynoteObjects = cadviewer.cvjs_returnAllRedlineStickyNoteObjects();  //cadviewer 7
+			console.log("note:"+JSON.stringify(mystickynoteObjects));
+		}
 
 }
 
@@ -876,13 +932,9 @@ class CADViewer extends Component {
 
 		// NOTE BELOW: THESE SETTINGS ARE FOR SERVER CONTROLS FOR UPLOAD OF REDLINES, FILES, SPACE OBJECTS
 		cadviewer.cvjs_setServerFileLocation_AbsolutePaths(ServerLocation+'/content/drawings/dwg/', ServerBackEndUrl+'content/drawings/dwg/',"","");
-		cadviewer.cvjs_setRedlinesAbsolutePath(ServerBackEndUrl+'/content/redlines/fileloader_610/', ServerLocation+'/content/redlines/fileloader_610/');
+		cadviewer.cvjs_setRedlinesAbsolutePath(ServerBackEndUrl+'/content/redlines/v7/', ServerLocation+'/content/redlines/v7/');
 		cadviewer.cvjs_setSpaceObjectsAbsolutePath(ServerBackEndUrl+'/content/spaceObjects/', ServerLocation+'/content/spaceObjects/');
 		cadviewer.cvjs_setInsertImageObjectsAbsolutePath(ServerBackEndUrl+'/content/inserted_image_objects/', ServerLocation+'/content/inserted_image_objects/')
-
-
-
-
 
 			
 		cadviewer.cvjs_conversion_clearAXconversionParameters();

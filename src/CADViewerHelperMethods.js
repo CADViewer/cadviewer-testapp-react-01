@@ -85,6 +85,13 @@ function show_object_in_group(){
   
 }
 
+function retrieve_redlines_stickynotes(){
+
+  CV.retrieve_redlines_stickynotes();
+
+}
+
+
 
 ////////// FETCH ALL SPACE OBJECTS 
 
@@ -1188,9 +1195,9 @@ class CADViewerHelperMethods extends Component {
 		<button className="w3-button demo" onClick={cadviewerCanvasMethod02}>Canvas-CLICK (console)</button>
 		<button className="w3-button demo" onClick={cadviewerCanvasMethod03}>Make Rect -CLICK</button>
 		<button className="w3-button demo" onClick={cadviewerCanvasMethod04}>Make Rect -DRAG</button>
-		<button className="w3-button demo" onClick={cadviewerCanvasMethod05}>Select Spaces -DRAG (rl/tl in ax2022)</button>
+		<button className="w3-button demo" onClick={cadviewerCanvasMethod05}>Select Spaces -DRAG (rl/tl in ax2023)</button>
 		<button className="w3-button demo" onClick={cadviewerCanvasMethod06}>Make Box/Arrow Canvas-CLICK</button>
-    <button className="w3-button demo" onClick={cadviewerCanvasMethod07}>Select Handles -CLICK (DblClick End) (hlall in ax2022)</button>
+    <button className="w3-button demo" onClick={cadviewerCanvasMethod07}>Select Handles -CLICK (DblClick End) (hlall in ax2023)</button>
     <button className="w3-button demo" onClick={loadprocessedsvg}>Load processed SVG</button>
     <button className="w3-button demo" onClick={checknumberoftypes}>Check number of types</button>
 
@@ -1203,7 +1210,7 @@ class CADViewerHelperMethods extends Component {
 
   <br/>
   <canvas id="dummy" width="5" height="22"></canvas>
-  <b>Place out Door Objects:&nbsp;</b><button className="w3-button demo" onClick={close_all}>Close all Doors</button>&nbsp;<button className="w3-button demo" onClick={lock_all}>Lock all Doors</button>&nbsp;<button className="w3-button demo" onClick={open_all}>Open All Doors</button>&nbsp; <input type="text" id="door_id" defaultValue="Door_" />&nbsp;<button className="w3-button demo" onClick={lock_single}>Lock Door</button>&nbsp;<button className="w3-button demo" onClick={close_single}>Close Door</button>&nbsp;<button className="w3-button demo" onClick={open_single}>Open Door</button>&nbsp;
+  <b>Place out Door Objects:&nbsp;</b><button className="w3-button demo" onClick={close_all}>Close all Doors</button>&nbsp;<button className="w3-button demo" onClick={lock_all}>Lock all Doors</button>&nbsp;<button className="w3-button demo" onClick={open_all}>Open All Doors</button>&nbsp; <input type="text" id="door_id" defaultValue="Door_" />&nbsp;<button className="w3-button demo" onClick={lock_single}>Lock Door</button>&nbsp;<button className="w3-button demo" onClick={close_single}>Close Door</button>&nbsp;<button className="w3-button demo" onClick={retrieve_redlines_stickynotes}>Retrieve Deleted Redlines</button>&nbsp;
   
   <br/>
   <br/>
