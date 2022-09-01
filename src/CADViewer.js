@@ -58,8 +58,6 @@ function cvjs_OnLoadEnd(){
 
 	cadviewer.cvjs_hideSpaceObjectID("107");
 
-
-
 	cadviewer.cvjs_resetZoomPan("floorPlan");
 
 	var user_name = "Bob Smith";
@@ -118,6 +116,13 @@ function cvjs_OnLoadEnd(){
 	cadviewer.cvjs_LayerOff("EC1 Space Names");
 	cadviewer.cvjs_LayerOff("EC1 Space Status Descs");
 	cadviewer.cvjs_LayerOff("EC1 Space Project");
+
+
+
+	// this illustrates how to set rotated watermarks
+	//cadviewer.cvjs_setWatermarks("Hello World-你好世界!", "这个真是好东西！2022-09-01", "#A3A3A3", true);
+
+
 
 }
 
@@ -342,8 +347,19 @@ function cvjs_popupTitleClick(roomid){
 // HANDLING OF MOUSE OPERATION
 
 
+var mouseover = false;
+var mouseclick = false;
+var customclickcontrol = false;
+
+
 // ENABLE ALL API EVENT HANDLES FOR AUTOCAD Handles
 function cvjs_mousedown(id, handle, entity){
+
+
+    if (customclickcontrol){
+        if (!mouseclick)
+        mouseclick = true;
+    }
 
 	// TEST - when click move to center with 300% around block handle 
 	cadviewer.cvjs_zoomHere_Handle(handle, 3.0, "floorPlan");
@@ -355,20 +371,44 @@ function cvjs_mousedown(id, handle, entity){
 
 }
 
-function cvjs_click(id, handle, entity){
+function cvjs_click(id, handle, entity, path, xpos, ypos){
 
+  console.log("click "+id+"  "+handle+" xpos="+xpos+" ypos="+ypos);
 
-  console.log("mysql click "+id+"  "+handle);
+  // if there is no x,y we simply return
+  if (xpos == undefined || ypos == undefined) return;
+
+  if (customclickcontrol){
+	  if (mouseclick)
+		  mouseclick = false;
+  }
+
   // if we click on an object, then we add to the handle list
   if (handle_selector){
-      selected_handles.push({id,handle});
-      current_selected_handle = handle;
+	  selected_handles.push({id,handle});
+	  current_selected_handle = handle;
   }
+
+  var loadSpaceImage_Location = "data:image/svg+xml;base64, PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+CjxzdmcKICAgeG1sbnM6ZGM9Imh0dHA6Ly9wdXJsLm9yZy9kYy9lbGVtZW50cy8xLjEvIgogICB4bWxuczpjYz0iaHR0cDovL2NyZWF0aXZlY29tbW9ucy5vcmcvbnMjIgogICB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiCiAgIHhtbG5zOnN2Zz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciCiAgIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIKICAgdmlld0JveD0iLTExMDAgLTIwMCAyMjAwIDIyMDAiCiAgIGhlaWdodD0iMjIwMCIKICAgd2lkdGg9IjIyMDAiCiAgIHhtbDpzcGFjZT0icHJlc2VydmUiCiAgIGlkPSJzdmcyIgogICB2ZXJzaW9uPSIxLjEiPjxtZXRhZGF0YQogICAgIGlkPSJtZXRhZGF0YTgiPjxyZGY6UkRGPjxjYzpXb3JrCiAgICAgICAgIHJkZjphYm91dD0iIj48ZGM6Zm9ybWF0PmltYWdlL3N2Zyt4bWw8L2RjOmZvcm1hdD48ZGM6dHlwZQogICAgICAgICAgIHJkZjpyZXNvdXJjZT0iaHR0cDovL3B1cmwub3JnL2RjL2RjbWl0eXBlL1N0aWxsSW1hZ2UiIC8+PC9jYzpXb3JrPjwvcmRmOlJERj48L21ldGFkYXRhPjxkZWZzCiAgICAgaWQ9ImRlZnM2IiAvPjxnCiAgICAgaWQ9ImcxMCI+PGcKICAgICAgIGlkPSJnMTIiPjxwYXRoCiAgICAgICAgIGlkPSJwYXRoNzIiCiAgICAgICAgIHN0eWxlPSJmaWxsOiNlMTFhMjI7ZmlsbC1vcGFjaXR5OjE7ZmlsbC1ydWxlOm5vbnplcm87c3Ryb2tlOm5vbmUiCiAgICAgICAgIGQ9Im0gNjQ5LjE0LDAgYyAtNDMyLjc4LC05Mi4xOSAtODY1LjQ5LC05Mi4xOSAtMTI5OC4yOCwwIC0xMjIuMTIsMjYuMDEgLTIxNy4yOCwxMjEuMTcgLTI0My4zLDI0My4zIC05Mi4xOCw0MzIuNzggLTkyLjE4LDg2NS40OSAwLDEyOTguMjggMjYuMDIsMTIyLjEyIDEyMS4xOCwyMTcuMjggMjQzLjMsMjQzLjI5IDQzMi43OSw5Mi4xOSA4NjUuNSw5Mi4xOSAxMjk4LjI4LDAgMTIyLjEzLC0yNi4wMSAyMTcuMjksLTEyMS4xNyAyNDMuMywtMjQzLjI5IDkyLjE5LC00MzIuNzkgOTIuMTksLTg2NS41IDAsLTEyOTguMjggLTI2LjAxLC0xMjIuMTMgLTEyMS4xNywtMjE3LjI5IC0yNDMuMywtMjQzLjMiIC8+PHBhdGgKICAgICAgICAgaWQ9InBhdGg3NCIKICAgICAgICAgc3R5bGU9ImZpbGw6I2ZmZmZmZjtmaWxsLW9wYWNpdHk6MTtmaWxsLXJ1bGU6bm9uemVybztzdHJva2U6bm9uZSIKICAgICAgICAgZD0ibSAwLDE0MDcuMzQgYyAtMTguODgsMCAtMzQuMjUsLTE1LjM2IC0zNC4yNSwtMzQuMjUgdiAtNzI0LjggYyAwLC0yMC40MSAtMTAuNTksLTM5LjM2IC0yNy45OCwtNTAuMDUgLTM1LjY4LC0yMS45NSAtNTYuOTksLTU5LjkgLTU2Ljk5LC0xMDEuNDkgMCwtNjUuNzMgNTMuNDksLTExOS4yMiAxMTkuMjIsLTExOS4yMiA2NS43NCwwIDExOS4yMiw1My40OSAxMTkuMjIsMTE5LjIyIDAsNDEuNTkgLTIxLjMxLDc5LjU0IC01Ni45OSwxMDEuNDkgLTE3LjM4LDEwLjY5IC0yNy45NywyOS42NCAtMjcuOTcsNTAuMDUgdiA3MjQuOCBjIDAsMTguODkgLTE1LjM3LDM0LjI1IC0zNC4yNiwzNC4yNSB6IG0gMCwtMTE0Ny4zNCBjIC0xMzAuNTQsMCAtMjM2Ljc0LDEwNi4yMSAtMjM2Ljc0LDIzNi43NSAwLDcxLjE1IDMxLjIyLDEzNi44NSA4NC45NiwxODEuNTMgdiA2OTQuODEgYyAwLDgzLjcgNjguMDksMTUxLjc4IDE1MS43OCwxNTEuNzggODMuNjksMCAxNTEuNzgsLTY4LjA4IDE1MS43OCwtMTUxLjc4IHYgLTY5NC44MSBjIDUzLjc0LC00NC42OCA4NC45NywtMTEwLjM4IDg0Ljk3LC0xODEuNTMgMCwtMTMwLjU0IC0xMDYuMjEsLTIzNi43NSAtMjM2Ljc1LC0yMzYuNzUiIC8+PHBhdGgKICAgICAgICAgaWQ9InBhdGg3NiIKICAgICAgICAgc3R5bGU9ImZpbGw6I2ZmZmZmZjtmaWxsLW9wYWNpdHk6MTtmaWxsLXJ1bGU6bm9uemVybztzdHJva2U6bm9uZSIKICAgICAgICAgZD0ibSAzODguMTAsMTQ1Ni42NSBjIC0yNi41MSwwIC00OC4wOCwtMjEuNTcgLTQ4LjA4LC00OC4wOCAwLC0yNi41MSAyMS41NywtNDguMDggNDguMDgsLTQ4LjA4IDI2LjUxLDAgNDguMDgsMjEuNTcgNDguMDgsNDguMDggMCwyNi41MSAtMjEuNTcsNDguMDggLTQ4LjA4LDQ4LjA4IHogbSAwLC0yMTMuNjkgYyAtOTEuMzIsMCAtMTY1LjYxLDc0LjI5IC0xNjUuNjEsMTY1LjYxIDAsOTEuMzIgNzQuMjksMTY1LjYxIDE2NS42MSwxNjUuNjEgOTEuMzIsMCAxNjUuNjEsLTc0LjI5IDE2NS42MSwtMTY1LjYxIDAsLTkxLjMyIC03NC4yOSwtMTY1LjYxIC0xNjUuNjEsLTE2NS42MSIgLz4KPC9nPjwvZz48L3N2Zz4="
+
+  var baseobject = "http://localhost:3000/content/customInsertSpaceObjectMenu/images/sensor_c.svg"
+  var id = "myID_"+ Math.floor(Math.random() * 10000);
+  var type = "sensor";
+  var layer = "mylayer";
+  cadviewer.cvjs_setImageSpaceObjectParameters(baseobject, id, type, layer);
+  // cadviewer.cvjs_setImageSpaceObjectParameters(loadSpaceImage_Location, id, type, layer);
+  cadviewer.cvjs_setGlobalSpaceImageObjectScaleFactor(1.0);
+
+  //console.log("cvjs_addFixedSizeImageSpaceObjectXY");
+  cadviewer.cvjs_addFixedSizeImageSpaceObjectXY("floorPlan", xpos, ypos)
+  //cvjs_addFixedSizeImageSpaceObject("floorPlan");
 
 // tell to update the Scroll bar 
 //vqUpdateScrollbar(id, handle);
 // window.alert("We have clicked an entity: "+entity.substring(4)+"\r\nThe AutoCAD Handle id: "+handle+"\r\nThe svg id is: "+id+"\r\nHighlight SQL pane entry");
 }
+
+
 
 function cvjs_dblclick(id, handle, entity){
 
@@ -388,18 +428,38 @@ function cvjs_mouseout(id, handle, entity){
   }
 }
 
+
+
+
+
 function cvjs_mouseover(id, handle, entity){
 
-	console.log("mysql mouseover "+id+"  "+handle+"  "+jQuery("#"+id).css("color"))
-	//cvjs_mouseover_handleObjectPopUp(id, handle);	
-
-
-}
-
-function cvjs_mouseleave(id, handle, entity){
-
-console.log("mysql mouseleave "+id+"  "+handle+"  "+jQuery("#"+id).css("color"));
-}
+	//	console.log("mouseover "+id+"  "+handle+"  "+jQuery("#"+id).css("color"));
+	
+		if (customclickcontrol){
+			if (!mouseover){
+				mouseover = true;
+				if (!mouseclick) cadviewer.cvjs_changeSpaceFixedLocation(id);
+			}
+		}
+	
+	
+		//cvjs_mouseover_handleObjectPopUp(id, handle);	
+	}
+	
+	function cvjs_mouseleave(id, handle, entity){
+	
+	//	console.log("mouseleave "+id+"  "+handle+"  "+jQuery("#"+id).css("color"));
+	
+		if (customclickcontrol){
+			mouseover = false;
+			console.log("mouseleave variable mouseclick: "+mouseclick);
+			if (!mouseclick)
+				cadviewer.cvjs_hideOnlyPop();
+		}
+	
+	}
+	
 
 
 function cvjs_mouseenter(id, handle, entity){
@@ -586,6 +646,9 @@ function cvjs_insertSpaceObjectCustomCodePlaceholder(){
 
 function myCustomPopUpBody(rmid){
 
+	// set custom color on modal
+	//cadviewer.cvjs_styleQTip_color(true, '#3DCD5D', '#293133', '#293133', '#293133', '#293133');
+
 	console.log("click on myCustomPopUpBody: "+rmid+" I now change the pop-up menu:");
 	// make your own popup based on callback
 	var my_cvjsPopUpBody = "";
@@ -598,7 +661,10 @@ function myCustomPopUpBody(rmid){
 		// standard modal
 		// standard 3 item menu
 		//  cvjs_modal_1 sets a suitable size 
-		my_cvjsPopUpBody = "<div class=\"cvjs_modal_1\" id=\"my_own_clickmenu1()\">Custom<br>Menu 1<br><i class=\'fa fa-undo\'></i></div>";
+
+		// style=\"background-color: none; color: #CBCBCB;\"
+
+		my_cvjsPopUpBody = "<div  class=\"cvjs_modal_1\" id=\"my_own_clickmenu1()\">Custom<br>Menu 1<br><i class=\'fa fa-undo\'></i></div>";
 		my_cvjsPopUpBody += "<div class=\"cvjs_modal_1\" id=\"my_own_clickmenu2()\">Custom<br>Menu 2<br><i class=\'fa fa-info-circle\'></i></div>";
 		my_cvjsPopUpBody += "<div class=\"cvjs_modal_1\" id=\"cvjs_zoomHere()\">Zoom<br>Here<br><i class=\'fa fa-search-plus\'></i></div>";
 	}
@@ -678,48 +744,21 @@ class CADViewer extends Component {
 		// Standard Front-end
 		var ServerUrl = "http://localhost:8000/";
 		
-	    //Standard file from /content/ folder on CADViewer NodeJS Conversion Server
-		FileName = ServerBackEndUrl+ "/content/drawings/dwg/hq17_.dwg";
-
 
 
 //		cadviewer.cvjs_setIconImageSize("floorPlan",34, 44);  // standard sizes, no need to change these, modify if 7 skin and want to scale
 //      cadviewer.cvjs_setCADViewerInterfaceVersion(6);  // old skin,  version 7 is new skin, which is default 
 
 
-
-
 		// NOTE - FOR NPM FIRST INSTALL
 		// Loading pre-conveted DWG file from CADViewer Server. Install CADViewer NodeJS Conversion Server, and pull DWG from that. 
 		// Uncomment this, then CADViewer Conversion Server is up running. 
-		//FileName = "https://onlinedemo.cadviewer.com/cadviewer_7_0/php/load-demo-file-npm-install.php?file=base_xref_json_Mar_15_H11_8.svg";
+//		FileName = "https://onlinedemo.cadviewer.com/cadviewer_7_0/php/load-demo-file-npm-install.php?file=base_xref_json_Mar_15_H11_8.svg";
+		FileName = "https://onlinedemo.cadviewer.com/cadviewer_7_0/php/load-demo-file-npm-install.php?file=M0-generic-06.svg";
 		// REMOVE WHEN LOADING FROM CAD SERVER
 
-
-		// Test CustomConversionEndpointExtension - this allows users to connect to CADViewer NodeJS Conversion Serve for conversions
-		// ftype=dwg, fype=svg, ftype=svgz
-		// pull the content from cvjs_customConversionEndpointExtension_xx_yy_zz.js , https://cadviewer.com/cadviewertechdocs/handlers_business/
-		// load DWG
-		//FileName = "http://myendpoint.com:8055/assets/143555d9-f637-471d-870e-945f226d7df7&ftype=dwg";
-		//cadviewer.cvjs_setCustomConversionEndpointExtension(true);
-		// load SVG
-		//FileName = "http://myendpoint.com:8055/assets/143555d9-f637-471d-870e-945f226d7df7&ftype=svg";
-		//FileName = ServerBackEndUrl+ "/content/drawings/svg/testSVGnotprocessed.svg";
-		//cadviewer.cvjs_setCustomConversionEndpointExtension(false);
-		//cadviewer.cvjs_setSpaceObjectProcessing(false);
-
-
-
-		// load DWG SVG
-		//FileName = "http://intalenttech.cn:8055/assets/a41b766f-b595-4dab-9e45-ef8ffc540520?ftype=svg";
-		//FileName = "http://intalenttech.cn:8055/assets/143555d9-f637-471d-870e-945f226d7df7?ftype=dwg";
-		
-		//FileName = "http://intalenttech.cn:8055/assets/143555d9-f637-471d-870e-945f226d7df7";
-		//cadviewer.cvjs_setCustomConversionEndpointExtension(true);
-
-
-
-
+	    //Standard file from /content/ folder on CADViewer NodeJS Conversion Server
+		FileName = ServerBackEndUrl+ "/content/drawings/dwg/hq17_.dwg";
 
 
 
@@ -834,9 +873,9 @@ class CADViewer extends Component {
 		cadviewer.cvjs_emailSettings_PDF_publish("From CAD Server", "my_from_address@mydomain.com", "my_cc_address@mydomain.com", "my_reply_to@mydomain.com");
 		   	 
 		// CHANGE LANGUAGE - DEFAULT IS ENGLISH	
-		cadviewer.cvjs_loadCADViewerLanguage("English"); //cadviewer.cvjs_loadCADViewerLanguage("English", "/app/cv/cv-pro/language_table/cadviewerProLanguage.xml");
-
+		cadviewer.cvjs_loadCADViewerLanguage("English", ""); 
 		// Available languages:  "English" ; "French, "Korean", "Spanish", "Portuguese", "Chinese-Simplified", "Chinese-Traditional"
+		  										//cadviewer.cvjs_loadCADViewerLanguage("English", "/cadviewer/app/cv/cv-pro/custom_language_table/custom_cadviewerProLanguage.xml");
 
 		// Set Icon Menu Interface controls. Users can: 
 		// 1: Disable all icon interfaces
@@ -956,7 +995,22 @@ class CADViewer extends Component {
 //		cadviewer.cvjs_conversion_addAXconversionParameter("last", "");		 
 							
 		// Load file - needs the svg div name and name and path of file to load
-		cadviewer.cvjs_LoadDrawing("floorPlan", FileName );
+
+
+		cadviewer.cvjs_LoadDrawing("floorPlan", FileName );		
+/*
+		var mySVG = "PD94bWwgdmVyc2lvbj0iMS4wIiBzdGFuZGFsb25lPSJubyI/Pgo8IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDIwMDEwOTA0Ly9FTiIKICJodHRwOi8vd3d3LnczLm9yZy9UUi8yMDAxL1JFQy1TVkctMjAwMTA5MDQvRFREL3N2ZzEwLmR0ZCI+CjxzdmcgdmVyc2lvbj0iMS4wIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciCiB3aWR0aD0iODMwLjAwMDAwMHB0IiBoZWlnaHQ9IjEyODAuMDAwMDAwcHQiIHZpZXdCb3g9IjAgMCA4MzAuMDAwMDAwIDEyODAuMDAwMDAwIgogcHJlc2VydmVBc3BlY3RSYXRpbz0ieE1pZFlNaWQgbWVldCI+CjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAuMDAwMDAwLDEyODAuMDAwMDAwKSBzY2FsZSgwLjEwMDAwMCwtMC4xMDAwMDApIgpmaWxsPSIjZmYwMDAwIiBzdHJva2U9IiMwMDAwMDAiIHN0cm9rZS13aWR0aD0iMjAiID4KPHBhdGggZD0iTTM4NTUgMTI3ODkgYy01NTUgLTQ0IC0xMDQzIC0xNzYgLTE1MzAgLTQxNCAtMTQ1NyAtNzEyIC0yMzcwIC0yMjIzCi0yMzIyIC0zODQwIDE5IC02MDUgMTUyIC0xMTU1IDQwNiAtMTY4MCAxMDkgLTIyNSAxODMgLTM1MyAzMzEgLTU3NSA2NSAtOTYKODU2IC0xMzY5IDE3NjAgLTI4MjcgOTAzIC0xNDU5IDE2NDYgLTI2NTMgMTY1MCAtMjY1MyA0IDAgNzQ3IDExOTQgMTY1MCAyNjUyCjkwNCAxNDU5IDE2OTUgMjczMiAxNzYwIDI4MjggMTQ4IDIyMiAyMjIgMzUwIDMzMSA1NzUgNDIxIDg2OSA1MjAgMTg2OSAyNzkKMjgyMSAtMjQ0IDk1OCAtODIyIDE3OTUgLTE2NDAgMjM3MSAtNjk2IDQ5MSAtMTU1MSA3NTkgLTI0MDQgNzUyIC05NCAtMSAtMjE2Ci01IC0yNzEgLTEweiBtNjM1IC0xNzY0IGM0NDAgLTgwIDgxMyAtMjcxIDExMjAgLTU3NSA3NjkgLTc2MSA4MjUgLTE5ODAgMTMwCi0yODEyIC0zMzUgLTQwMiAtODE3IC02NjMgLTEzNDQgLTcyOCAtMTE0IC0xNCAtMzc4IC0xNCAtNDkyIDAgLTg1MyAxMDUKLTE1NTAgNzE1IC0xNzY0IDE1NDQgLTE0MSA1NDUgLTUyIDExMzYgMjQzIDE2MTMgMzMwIDUzMSA4NjIgODc2IDE0OTcgOTY4CjEzMCAxOSA0ODEgMTMgNjEwIC0xMHoiLz4KPC9nPgo8L3N2Zz4=";
+		cadviewer.cvjs_LoadDrawing_SVG_string("floorPlan",mySVG, "pin.svg", true);
+
+*/		
+
+
+
+
+
+
+
+
 
 
 		// NOTE!set maximum CADViewer canvas side  - once loaded in cvjs_OnLoadEnd()

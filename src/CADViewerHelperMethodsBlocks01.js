@@ -235,6 +235,64 @@ function AudioVisual(){
 
 
 
+  function SigaPS(){
+
+    var spaceObjectIds = cadviewer.cvjs_getSpaceObjectIdList();
+    console.log(" IDs:"+spaceObjectIds.length);
+  
+//    var loadSpaceImage_Location = "http://localhost:3000/content/customInsertSpaceObjectMenu/images/76-Smoke-detector.svg";
+    var loadSpaceImage_Location = "http://localhost:3000/content/customInsertSpaceObjectMenu/images/76-Smoke-detector-bg-white.svg";
+    var id;
+    var myobject;
+    var attribute_tag;
+    var attribute_value;
+    var attribId;
+    var s_attribute = "";
+      for (var spc in spaceObjectIds){		
+
+        id = spaceObjectIds[spc];
+        myobject = cadviewer.cvjs_returnSpaceObjectID(id);
+
+        try {
+          // get block attribute:
+          // block attributes are listed with  ID_counter , and can be retrived with cvjs:tag and cvjs:value
+          s_attribute = "";
+          for (var i = 1; i <= myobject.blockAttributeCount; i++) {
+                attribId = "#" + myobject.blockAttributeId + "_" + i;
+                attribute_tag = jQuery(attribId).attr('cvjs:tag');
+                attribute_value = jQuery(attribId).attr('cvjs:value');
+
+                if (attribute_tag == "SIGA-PS" ){
+                  s_attribute = attribId ;
+                  console.log("s_attribute ="+s_attribute);
+                }
+
+                if (attribute_tag == "FWK_DEVICE_ADDRESSES" && attribute_value =="0010020132"){
+
+                  // we try hide any test attributes with tag SIGA-PS
+                  // not working, more involved coding needed...
+                  //if (s_attribute!= ""){
+                  //  jQuery(s_attribute).hide();
+                  //  console.log("hide!");
+                  // } 
+                  console.log("FWK_DEVICE_ADDRESSES 0010020132 id="+id+" spc:"+spc);
+                  cadviewer.cvjs_replaceSpaceObjectPathWithImage("floorPlan", id, loadSpaceImage_Location);
+
+                  cadviewer.cvjs_zoomHere_ObjectId(id, 10);
+
+  
+                }
+          }
+        }
+        catch(err){
+        
+        }
+
+
+      }
+  
+    }
+  
 
 
 // END BLOCK CONTROL METHODS
@@ -269,7 +327,7 @@ class CADViewerHelperMethodsBlocks01 extends Component {
     <canvas id="dummy" width="5" height="22"></canvas><strong>Block Substition:&nbsp;</strong>
     <button className="w3-button demo" onClick={AudioVisual}>AudioVisual</button>
 		<button className="w3-button demo" onClick={cadviewer.cvjs_hideOnlyPop}>Clear Spaces</button>
-    
+    <button className="w3-button demo" onClick={SigaPS}>Sigs-PS</button>
     <br/>
     <canvas id="dummy" width="5" height="22"></canvas>
     <strong>Custom Interactive Canvas Samples:&nbsp;</strong><canvas id="dummy" width="10" height="10"></canvas>

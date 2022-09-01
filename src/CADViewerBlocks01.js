@@ -429,6 +429,11 @@ class CADViewerBlocks01 extends Component {
 
 		var FileName = ServerBackEndUrl+ "/content/custom/ff-ia.svg";
 
+		var FileName = ServerBackEndUrl+ "/content/custom/carrier/EdwardsBRAVAL6N_Building 2 Floor 2_Fixed_ia.svg";
+		
+		var FileName = ServerBackEndUrl+ "/content/custom/carrier/EdwardsBRAVAL6N_v3_extents.svg";
+
+
 
 		cadviewer.cvjs_debugMode(true);
 	   // cadviewer.cvjs_setLeafletJS(true);
