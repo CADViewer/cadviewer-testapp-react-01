@@ -886,11 +886,11 @@ class CADViewer extends Component {
 		//cvjs_displayTopMenuIconBar(false, "floorPlan");  // disable top menu icon bar
 		//cvjs_displayTopNavigationBar(false, "floorPlan");  // disable top navigation bar
 
-		// 3: Users can change the number of top menu icon pages and the content of pages, based on a configuration file in folder /cadviewer/app/js/menu_config/    		
-		cadviewer.cvjs_setTopMenuXML("floorPlan", "cadviewer_full_commands_01.xml");  //cadviewer.cvjs_setTopMenuXML("floorPlan", "cadviewer_full_commands_01.xml", "/cadviewer/app/cv/cv-pro/menu_config/");
+		// 3: Users can change the number of top menu icon pages and the content of pages, based on a configuration file in folder /cadviewer/app/cv/cv-pro/menu_config/    		
+		cadviewer.cvjs_setTopMenuXML("floorPlan", "cadviewer_full_commands_01.xml", "");  //cadviewer.cvjs_setTopMenuXML("floorPlan", "cadviewer_full_commands_01.xml", "/cadviewer/app/cv/cv-pro/menu_config/");
 
 		// Menu including custom commands row on last page
-		// cadviewer.cvjs_setTopMenuXML("floorPlan", "cadviewer_menu_all_items_custom_commands.xml");
+		//cadviewer.cvjs_setTopMenuXML("floorPlan", "cadviewer_menu_all_items_custom_commands.xml", "cadviewer/app/cv/cv-pro/menu_config/");
 		
 
 
