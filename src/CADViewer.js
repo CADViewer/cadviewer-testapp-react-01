@@ -355,6 +355,8 @@ var customclickcontrol = false;
 // ENABLE ALL API EVENT HANDLES FOR AUTOCAD Handles
 function cvjs_mousedown(id, handle, entity){
 
+	console.log("cvjs_mousedown");
+
 
     if (customclickcontrol){
         if (!mouseclick)
@@ -371,9 +373,15 @@ function cvjs_mousedown(id, handle, entity){
 
 }
 
+var insertsensor = false
+
+
 function cvjs_click(id, handle, entity, path, xpos, ypos){
 
-  console.log("click "+id+"  "+handle+" xpos="+xpos+" ypos="+ypos);
+	console.log("click "+id+"  "+handle+" xpos="+xpos+" ypos="+ypos);
+
+	if (!insertsensor) return;
+
 
   // if there is no x,y we simply return
   if (xpos == undefined || ypos == undefined) return;
@@ -434,7 +442,7 @@ function cvjs_mouseout(id, handle, entity){
 
 function cvjs_mouseover(id, handle, entity){
 
-	//	console.log("mouseover "+id+"  "+handle+"  "+jQuery("#"+id).css("color"));
+	console.log("mouseover "+id+"  "+handle+"  "+jQuery("#"+id).css("color"));
 	
 		if (customclickcontrol){
 			if (!mouseover){
@@ -449,7 +457,7 @@ function cvjs_mouseover(id, handle, entity){
 	
 	function cvjs_mouseleave(id, handle, entity){
 	
-	//	console.log("mouseleave "+id+"  "+handle+"  "+jQuery("#"+id).css("color"));
+		console.log("mouseleave "+id+"  "+handle+"  "+jQuery("#"+id).css("color"));
 	
 		if (customclickcontrol){
 			mouseover = false;
@@ -465,6 +473,8 @@ function cvjs_mouseover(id, handle, entity){
 function cvjs_mouseenter(id, handle, entity){
 //	cvjs_mouseenter_handleObjectStyles("#a0a000", 4.0, 1.0, id, handle);
 //	cvjs_mouseenter_handleObjectStyles("#ffcccb", 5.0, 0.7, true, id, handle);
+
+console.log("cvjs_mouseenter");
 
 
 cadviewer.cvjs_mouseenter_handleObjectStyles("#F00", 10.0, 1.0, true, id, handle);
@@ -754,12 +764,11 @@ class CADViewer extends Component {
 		// Loading pre-conveted DWG file from CADViewer Server. Install CADViewer NodeJS Conversion Server, and pull DWG from that. 
 		// Uncomment this, then CADViewer Conversion Server is up running. 
 //		FileName = "https://onlinedemo.cadviewer.com/cadviewer_7_0/php/load-demo-file-npm-install.php?file=base_xref_json_Mar_15_H11_8.svg";
-		FileName = "https://onlinedemo.cadviewer.com/cadviewer_7_0/php/load-demo-file-npm-install.php?file=M0-generic-06.svg";
+		//FileName = "https://onlinedemo.cadviewer.com/cadviewer_7_0/php/load-demo-file-npm-install.php?file=M0-generic-06.svg";
 		// REMOVE WHEN LOADING FROM CAD SERVER
 
 	    //Standard file from /content/ folder on CADViewer NodeJS Conversion Server
 		FileName = ServerBackEndUrl+ "/content/drawings/dwg/hq17_.dwg";
-
 
 
 		cadviewer.cvjs_debugMode(true);
@@ -999,16 +1008,10 @@ class CADViewer extends Component {
 
 		cadviewer.cvjs_LoadDrawing("floorPlan", FileName );		
 /*
-		var mySVG = "PD94bWwgdmVyc2lvbj0iMS4wIiBzdGFuZGFsb25lPSJubyI/Pgo8IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDIwMDEwOTA0Ly9FTiIKICJodHRwOi8vd3d3LnczLm9yZy9UUi8yMDAxL1JFQy1TVkctMjAwMTA5MDQvRFREL3N2ZzEwLmR0ZCI+CjxzdmcgdmVyc2lvbj0iMS4wIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciCiB3aWR0aD0iODMwLjAwMDAwMHB0IiBoZWlnaHQ9IjEyODAuMDAwMDAwcHQiIHZpZXdCb3g9IjAgMCA4MzAuMDAwMDAwIDEyODAuMDAwMDAwIgogcHJlc2VydmVBc3BlY3RSYXRpbz0ieE1pZFlNaWQgbWVldCI+CjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAuMDAwMDAwLDEyODAuMDAwMDAwKSBzY2FsZSgwLjEwMDAwMCwtMC4xMDAwMDApIgpmaWxsPSIjZmYwMDAwIiBzdHJva2U9IiMwMDAwMDAiIHN0cm9rZS13aWR0aD0iMjAiID4KPHBhdGggZD0iTTM4NTUgMTI3ODkgYy01NTUgLTQ0IC0xMDQzIC0xNzYgLTE1MzAgLTQxNCAtMTQ1NyAtNzEyIC0yMzcwIC0yMjIzCi0yMzIyIC0zODQwIDE5IC02MDUgMTUyIC0xMTU1IDQwNiAtMTY4MCAxMDkgLTIyNSAxODMgLTM1MyAzMzEgLTU3NSA2NSAtOTYKODU2IC0xMzY5IDE3NjAgLTI4MjcgOTAzIC0xNDU5IDE2NDYgLTI2NTMgMTY1MCAtMjY1MyA0IDAgNzQ3IDExOTQgMTY1MCAyNjUyCjkwNCAxNDU5IDE2OTUgMjczMiAxNzYwIDI4MjggMTQ4IDIyMiAyMjIgMzUwIDMzMSA1NzUgNDIxIDg2OSA1MjAgMTg2OSAyNzkKMjgyMSAtMjQ0IDk1OCAtODIyIDE3OTUgLTE2NDAgMjM3MSAtNjk2IDQ5MSAtMTU1MSA3NTkgLTI0MDQgNzUyIC05NCAtMSAtMjE2Ci01IC0yNzEgLTEweiBtNjM1IC0xNzY0IGM0NDAgLTgwIDgxMyAtMjcxIDExMjAgLTU3NSA3NjkgLTc2MSA4MjUgLTE5ODAgMTMwCi0yODEyIC0zMzUgLTQwMiAtODE3IC02NjMgLTEzNDQgLTcyOCAtMTE0IC0xNCAtMzc4IC0xNCAtNDkyIDAgLTg1MyAxMDUKLTE1NTAgNzE1IC0xNzY0IDE1NDQgLTE0MSA1NDUgLTUyIDExMzYgMjQzIDE2MTMgMzMwIDUzMSA4NjIgODc2IDE0OTcgOTY4CjEzMCAxOSA0ODEgMTMgNjEwIC0xMHoiLz4KPC9nPgo8L3N2Zz4=";
+		var mySVG = "PD94bWwgdmVyc2lvbj0iMS4wIiBzdGFuZGFsb25lPSJubyI/Pgo8IURPQ1RZUEUgc3ZnIFBVQkxjQueryyAiLS8vVzNDLy9EVEQgU1ZHIDIwMDEwOTA0Ly9FTiIKICJodHRwOi8vd3d3LnczLm9yZy9UUi8yMDAxL1JFQy1TVkctMjAwMTA5MDQvRFREL3N2ZzEwLmR0ZCI+CjxzdmcgdmVyc2lvbj0iMS4wIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciCiB3aWR0aD0iODMwLjAwMDAwMHB0IiBoZWlnaHQ9IjEyODAuMDAwMDAwcHQiIHZpZXdCb3g9IjAgMCA4MzAuMDAwMDAwIDEyODAuMDAwMDAwIgogcHJlc2VydmVBc3BlY3RSYXRpbz0ieE1pZFlNaWQgbWVldCI+CjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAuMDAwMDAwLDEyODAuMDAwMDAwKSBzY2FsZSgwLjEwMDAwMCwtMC4xMDAwMDApIgpmaWxsPSIjZmYwMDAwIiBzdHJva2U9IiMwMDAwMDAiIHN0cm9rZS13aWR0aD0iMjAiID4KPHBhdGggZD0iTTM4NTUgMTI3ODkgYy01NTUgLTQ0IC0xMDQzIC0xNzYgLTE1MzAgLTQxNCAtMTQ1NyAtNzEyIC0yMzcwIC0yMjIzCi0yMzIyIC0zODQwIDE5IC02MDUgMTUyIC0xMTU1IDQwNiAtMTY4MCAxMDkgLTIyNSAxODMgLTM1MyAzMzEgLTU3NSA2NSAtOTYKODU2IC0xMzY5IDE3NjAgLTI4MjcgOTAzIC0xNDU5IDE2NDYgLTI2NTMgMTY1MCAtMjY1MyA0IDAgNzQ3IDExOTQgMTY1MCAyNjUyCjkwNCAxNDU5IDE2OTUgMjczMiAxNzYwIDI4MjggMTQ4IDIyMiAyMjIgMzUwIDMzMSA1NzUgNDIxIDg2OSA1MjAgMTg2OSAyNzkKMjgyMSAtMjQ0IDk1OCAtODIyIDE3OTUgLTE2NDAgMjM3MSAtNjk2IDQ5MSAtMTU1MSA3NTkgLTI0MDQgNzUyIC05NCAtMSAtMjE2Ci01IC0yNzEgLTEweiBtNjM1IC0xNzY0IGM0NDAgLTgwIDgxMyAtMjcxIDExMjAgLTU3NSA3NjkgLTc2MSA4MjUgLTE5ODAgMTMwCi0yODEyIC0zMzUgLTQwMiAtODE3IC02NjMgLTEzNDQgLTcyOCAtMTE0IC0xNCAtMzc4IC0xNCAtNDkyIDAgLTg1MyAxMDUKLTE1NTAgNzE1IC0xNzY0IDE1NDQgLTE0MSA1NDUgLTUyIDExMzYgMjQzIDE2MTMgMzMwIDUzMSA4NjIgODc2IDE0OTcgOTY4CjEzMCAxOSA0ODEgMTMgNjEwIC0xMHoiLz4KPC9nPgo8L3N2Zz4=";
 		cadviewer.cvjs_LoadDrawing_SVG_string("floorPlan",mySVG, "pin.svg", true);
 
 */		
-
-
-
-
-
-
 
 
 
@@ -1017,7 +1020,9 @@ class CADViewer extends Component {
 		// cadviewer.cvjs_resizeWindow_position("floorPlan" );
 
 		// alternatively set a fixed CADViewer canvas size
-		//cvjs_resizeWindow_fixedSize(600, 400, "floorPlan");			   
+		//window.alert("resize");
+		//cadviewer.cvjs_resizeWindow_fixedSize(200, 300, "floorPlan");			   
+		cadviewer.cvjs_resizeWindow_position("floorPlan" );
 	}
 
 	componentWillUnmount () {
@@ -1031,7 +1036,8 @@ class CADViewer extends Component {
             // we put the resize in a try-catch in case the init_CADViewer() has not initialized yet, and values are zero
         try{    
             cadviewer.cvjs_resizeWindow_position("floorPlan" );
-         //	window.vjs_resizeWindow_fixedSize(600, 400, "floorPlan");		
+			//window.alert("resize");
+            //cadviewer.cjs_resizeWindow_fixedSize(300, 300, "floorPlan");		
 
         } 
         catch(err) {console.log(err);}

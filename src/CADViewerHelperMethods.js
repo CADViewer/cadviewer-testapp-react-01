@@ -1,5 +1,5 @@
 import React, { Component }  from 'react';
-import jQuery from 'jquery';
+import JQ from 'jquery';
 import {findDOMNode } from 'react-dom';
 import logo from './logo.svg';
 import './CADViewerHelperMethods.css';
@@ -15,9 +15,9 @@ import * as CV from "./CADViewer.js";
 
  export function setSpaceInputFields(loadSpaceImage_Location, loadSpaceImage_ID, loadSpaceImage_Type, loadSpaceImage_Layer){
 
-  jQuery('#image_sensor_location').val(loadSpaceImage_Location); 
-  jQuery('#image_ID').val(loadSpaceImage_ID);
-  jQuery('#image_Type').val(loadSpaceImage_Type);
+  JQ('#image_sensor_location').val(loadSpaceImage_Location); 
+  JQ('#image_ID').val(loadSpaceImage_ID);
+  JQ('#image_Type').val(loadSpaceImage_Type);
   //var loadSpaceImage_Layer = loadSpaceImage_Layer;
 
 }
@@ -43,7 +43,7 @@ function close_all(){
 
 function lock_single(){
 
-    var door_id = jQuery('#door_id').val();    
+    var door_id = JQ('#door_id').val();    
     cadviewer.cvjs_showOnlyObjectInSpaceObjectGroup(door_id, 'locked', "id")
 
 }
@@ -51,7 +51,7 @@ function lock_single(){
 
 function open_single(){
 
-  var door_id = jQuery('#door_id').val();    
+  var door_id = JQ('#door_id').val();    
   cadviewer.cvjs_showOnlyObjectInSpaceObjectGroup(door_id, 'open', "id")
 
 }
@@ -59,7 +59,7 @@ function open_single(){
 
 function close_single(){
 
-  var door_id = jQuery('#door_id').val();    
+  var door_id = JQ('#door_id').val();    
   cadviewer.cvjs_showOnlyObjectInSpaceObjectGroup(door_id, 'closed', "id")
 
 }
@@ -68,9 +68,9 @@ function close_single(){
  
 function hide_object_in_group(){
 
-  var id = jQuery('#copy_new_id').val();    
+  var id = JQ('#copy_new_id').val();    
   var node = cadviewer.cvjs_getSpaceObjectNodefromId(id);
-  var objectTag = jQuery('#group_2_subid').val();    
+  var objectTag = JQ('#group_2_subid').val();    
   cadviewer.cvjs_hideObjectInSpaceObjectGroup(node, objectTag);
   
 }
@@ -78,9 +78,9 @@ function hide_object_in_group(){
 
 function show_object_in_group(){
 
-  var id = jQuery('#copy_new_id').val();    
+  var id = JQ('#copy_new_id').val();    
   var node = cadviewer.cvjs_getSpaceObjectNodefromId(id);
-  var objectTag = jQuery('#group_2_subid').val();    
+  var objectTag = JQ('#group_2_subid').val();    
   cadviewer.cvjs_showObjectInSpaceObjectGroup(node, objectTag);
   
 }
@@ -289,7 +289,7 @@ var iconObjectCounter = 1;
 
 function highlight_all_spaces(){
 
-  selectedColor = jQuery("#input_color").val();
+  selectedColor = JQ("#input_color").val();
   var secondcolor = selectedColor.substring(0,5);
   secondcolor+="FF";
   // window.alert(secondcolor);
@@ -314,7 +314,7 @@ function highlight_all_spaces(){
 
 function highlight_all_borders(){	
     
-  selectedColor = jQuery("#input_color").val();
+  selectedColor = JQ("#input_color").val();
   var colortype = {
     fill: '#fff',
     "fill-opacity": 0.01,
@@ -334,8 +334,8 @@ function highlight_all_borders(){
 
 function highlight_space_type(){
 
-  selectedColor = jQuery("#input_color").val();
-  var type = jQuery('#image_Type').val();	
+  selectedColor = JQ("#input_color").val();
+  var type = JQ('#image_Type').val();	
   var colortype = {
       fill: selectedColor,
       "fill-opacity": "0.8",
@@ -357,8 +357,8 @@ function highlight_space_type(){
 
 function highlight_space_id(){
 
-  selectedColor = jQuery("#input_color").val();
-  var spaceid = jQuery('#image_ID').val();	
+  selectedColor = JQ("#input_color").val();
+  var spaceid = JQ('#image_ID').val();	
   var colortype = {
       fill: selectedColor,
       "fill-opacity": "0.8",
@@ -405,9 +405,9 @@ function update_group_with_group(){
 
 function insert_from_type_id_image(){
 
-    var loadSpaceImage_Location = "http://localhost:3000/content/drawings/svg/" + jQuery('#image_sensor_location').val();
-    var loadSpaceImage_ID = jQuery('#image_ID').val();
-    var loadSpaceImage_Type = jQuery('#image_Type').val();
+    var loadSpaceImage_Location = "http://localhost:3000/content/drawings/svg/" + JQ('#image_sensor_location').val();
+    var loadSpaceImage_ID = JQ('#image_ID').val();
+    var loadSpaceImage_Type = JQ('#image_Type').val();
     var loadSpaceImage_Layer = "cvjs_SpaceLayer";
 
     cadviewer.cvjs_setImageSpaceObjectParameters(loadSpaceImage_Location, loadSpaceImage_ID, loadSpaceImage_Type, loadSpaceImage_Layer);
@@ -670,8 +670,8 @@ var generic_make_rect_stop_method = function() {
  window.alert("generic_make_rect_stop_method "+currentNode_underbar);
 
 
-  var loadSpaceImage_ID = jQuery('#image_ID').val();
-  var loadSpaceImage_Type = jQuery('#image_Type').val();
+  var loadSpaceImage_ID = JQ('#image_ID').val();
+  var loadSpaceImage_Type = JQ('#image_Type').val();
   var loadSpaceImage_Layer = "cvjs_SpaceLayer";
 
   // create a group with space as main object
