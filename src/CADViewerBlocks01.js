@@ -431,8 +431,14 @@ class CADViewerBlocks01 extends Component {
 
 		var FileName = ServerBackEndUrl+ "/content/custom/carrier/EdwardsBRAVAL6N_Building 2 Floor 2_Fixed_ia.svg";
 		
+
+
+		var FileName = ServerBackEndUrl+ "/content/custom/carrier/EdwardsRoadShow_Build1_Admin_Floor 1ak.svg";
+
 		var FileName = ServerBackEndUrl+ "/content/custom/carrier/EdwardsBRAVAL6N_v3_extents.svg";
 
+		var FileName = ServerBackEndUrl+ "/content/custom/carrier/EdwardsRoadShow_Build1_Admin_Floor 1-10-18.svg";
+		
 
 
 		cadviewer.cvjs_debugMode(true);
@@ -623,7 +629,7 @@ class CADViewerBlocks01 extends Component {
 		//  cvjs_InitCADViewer_highLight_popUp_app("floorPlan", ServerUrl+"app/", cvjsRoomPolygonBaseAttributes, cvjsRoomPolygonHighlightAttributes, cvjsRoomPolygonSelectAttributes, my_cvjsPopUpBody);
 
 		//      cvjs_InitCADViewer_highLight_popUp_app("floorPlan", ServerUrl+ "/cadviewer/app/", cvjsRoomPolygonBaseAttributes, cvjsRoomPolygonHighlightAttributes, cvjsRoomPolygonSelectAttributes, my_cvjsPopUpBody );
-		cadviewer.cvjs_InitCADViewer_highLight_popUp_app("floorPlan", "/cadviewer/app/", BaseAttributes, HighlightAttributes, SelectAttributes, my_cvjsPopUpBody );
+		cadviewer.cvjs_InitCADViewer_highLight_popUp_app("floorPlan", "/assets/cadviewer/app/", BaseAttributes, HighlightAttributes, SelectAttributes, my_cvjsPopUpBody );
 				
 		// set the location to license key, typically the js folder in main app application folder ../app/cv/
 		//cadviewer.cvjs_setLicenseKeyPath("/cadviewer/app/cv/");

@@ -64,6 +64,14 @@ function close_single(){
 
 }
 
+function hide_space_object(){
+
+  var door_id = JQ('#door_id').val();    
+  cadviewer.cvjs_hideSpaceObjectID(door_id);
+
+}
+
+
 
  
 function hide_object_in_group(){
@@ -1210,7 +1218,11 @@ class CADViewerHelperMethods extends Component {
 
   <br/>
   <canvas id="dummy" width="5" height="22"></canvas>
-  <b>Place out Door Objects:&nbsp;</b><button className="w3-button demo" onClick={close_all}>Close all Doors</button>&nbsp;<button className="w3-button demo" onClick={lock_all}>Lock all Doors</button>&nbsp;<button className="w3-button demo" onClick={open_all}>Open All Doors</button>&nbsp; <input type="text" id="door_id" defaultValue="Door_" />&nbsp;<button className="w3-button demo" onClick={lock_single}>Lock Door</button>&nbsp;<button className="w3-button demo" onClick={close_single}>Close Door</button>&nbsp;<button className="w3-button demo" onClick={retrieve_redlines_stickynotes}>Retrieve Deleted Redlines</button>&nbsp;
+  <b>Place out Door Objects:&nbsp;</b><button className="w3-button demo" onClick={close_all}>Close all Doors</button>&nbsp;
+  <button className="w3-button demo" onClick={lock_all}>Lock all Doors</button>&nbsp;<button className="w3-button demo" onClick={open_all}>Open All Doors</button>&nbsp; 
+  <input type="text" id="door_id" defaultValue="Door_" />&nbsp;<button className="w3-button demo" onClick={lock_single}>Lock Door</button>&nbsp;
+  <button className="w3-button demo" onClick={close_single}>Close Door</button>&nbsp;<button className="w3-button demo" onClick={retrieve_redlines_stickynotes}>Retrieve Deleted Redlines</button>&nbsp;
+  <button className="w3-button demo" onClick={hide_space_object}>Hide Space Object</button>&nbsp;
   
   <br/>
   <br/>
