@@ -751,9 +751,21 @@ class CADViewer extends Component {
 		//var ServerLocation = "/home/cadviewer/convertcad.online/cadviewer-conversion-server/";
 
 
+		// PHP server
+		//var ServerBackEndUrl = "http://localhost:/cadviewer/";
+
+
+
+
+
+
 		// Standard Front-end
 		var ServerUrl = "http://localhost:8000/";
 		
+
+
+
+
 
 
 //		cadviewer.cvjs_setIconImageSize("floorPlan",34, 44);  // standard sizes, no need to change these, modify if 7 skin and want to scale
@@ -776,7 +788,9 @@ class CADViewer extends Component {
 		
 		// Set all paths, and handlers, changes these depending on back-end server
 		cadviewer.cvjs_setAllServerPaths_and_Handlers(ServerBackEndUrl, ServerUrl, ServerLocation, "NodeJS", "ReactJS", "floorPlan");
-	  
+//		cadviewer.cvjs_setAllServerPaths_and_Handlers(ServerBackEndUrl, ServerUrl, ServerLocation, "PHP", "ReactJS", "floorPlan");
+
+
         //      Setting all callback methods  - they have to be injected into the CADViewer class componnet
 
 		cadviewer.cvjs_setCallbackMethod("cvjs_insertSpaceObjectCustomCodePlaceholder", cvjs_insertSpaceObjectCustomCodePlaceholder);
@@ -980,7 +994,7 @@ class CADViewer extends Component {
 
 		// NOTE BELOW: THESE SETTINGS ARE FOR SERVER CONTROLS FOR UPLOAD OF REDLINES, FILES, SPACE OBJECTS
 		cadviewer.cvjs_setServerFileLocation_AbsolutePaths(ServerLocation+'/content/drawings/dwg/', ServerBackEndUrl+'content/drawings/dwg/',"","");
-		cadviewer.cvjs_setRedlinesAbsolutePath(ServerBackEndUrl+'/content/redlines/v7/', ServerLocation+'/content/redlines/v7/');
+		cadviewer.cvjs_setRedlinesAbsolutePath(ServerBackEndUrl+'/content/redlines/v7/', ServerLocation+'/content/redlines/v7/', true);
 		cadviewer.cvjs_setSpaceObjectsAbsolutePath(ServerBackEndUrl+'/content/spaceObjects/', ServerLocation+'/content/spaceObjects/');
 		cadviewer.cvjs_setInsertImageObjectsAbsolutePath(ServerBackEndUrl+'/content/inserted_image_objects/', ServerLocation+'/content/inserted_image_objects/')
 
