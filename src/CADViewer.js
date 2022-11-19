@@ -882,7 +882,7 @@ class CADViewer extends Component {
 		 cadviewer.cvjs_PrintToPDFWindowRelativeSize(0.8);
 		 cadviewer.cvjs_setFileModalEditMode(false);
 	   		   
-
+		//cadviewer.cvjs_setZoomExtentsMode("top");
 
 		 cadviewer.cvjs_DisplayCoordinatesMenu("floorPlan",true);
 
