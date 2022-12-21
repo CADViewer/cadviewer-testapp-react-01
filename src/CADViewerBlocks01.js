@@ -523,6 +523,11 @@ class CADViewerBlocks01 extends Component {
         cadviewer.cvjs_setCallbackForModalDisplay(true, myCustomPopUpBody, populateMyCustomPopUpBody);
 
 
+		// set SpaceObjectsCustomMenu location and json config file,  flag true to display SpaceObject Menu, false to hide
+		cadviewer.cvjs_setSpaceObjectsCustomMenu( "/content/customInsertSpaceObjectMenu/", "cadviewercustomspacecommands.json", true);
+
+
+
 
 
 	   		   
