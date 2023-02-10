@@ -884,6 +884,10 @@ class CADViewer extends Component {
 	   		   
 		//cadviewer.cvjs_setZoomExtentsMode("top");
 
+
+		cadviewer.cvjs_setCADViewerInterfaceVersion(8);
+
+
 		 cadviewer.cvjs_DisplayCoordinatesMenu("floorPlan",true);
 
 		// 6.9.18
