@@ -1068,7 +1068,7 @@ class CADViewer extends Component {
         return (    
               <div className="CADViewer"> 
 					{/*This is the CADViewer floorplan div declaration*/}
-					<div id="floorPlan" >
+					<div id="floorPlan" class="cadviewer-core-styles">
 					</div>
 					{/*End of CADViewer declaration*/}.
 			  </div>
