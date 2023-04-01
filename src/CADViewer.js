@@ -736,7 +736,7 @@ class CADViewer extends Component {
 		//var ServerBackEndUrl = "http://localhost:8080/cadviewer/";
 		//var ServerLocation = "c:/xampp/tomcat/webapps/cadviewer/";
 
-		// Connecting to .NET Server
+		// Connecting to .NET Core Server
 		//var ServerBackEndUrl = "http://localhost:53737/";
 		//var ServerLocation = "c:/visualstudio/cadviewer/";
 
@@ -744,6 +744,16 @@ class CADViewer extends Component {
 		// Standard NodeJS Server
 		var ServerBackEndUrl = "http://localhost:3000/";
 		var ServerLocation = "";    // leave blank
+
+
+		// Standard Dotnet Server
+		//	var ServerBackEndUrl = "http://localhost:44371/";
+		// Connecting to .NET Core Server
+		//var ServerBackEndUrl = "http://localhost:53737/";
+//		var ServerLocation = "";
+
+
+
 
 
 		// ONLINE TEST SERVER
@@ -755,16 +765,9 @@ class CADViewer extends Component {
 		//var ServerBackEndUrl = "http://localhost:/cadviewer/";
 
 
-
-
-
-
 		// Standard Front-end
 		var ServerUrl = "http://localhost:8000/";
-		
-
-
-
+	
 
 
 
@@ -789,6 +792,7 @@ class CADViewer extends Component {
 		// Set all paths, and handlers, changes these depending on back-end server
 		cadviewer.cvjs_setAllServerPaths_and_Handlers(ServerBackEndUrl, ServerUrl, ServerLocation, "NodeJS", "ReactJS", "floorPlan");
 //		cadviewer.cvjs_setAllServerPaths_and_Handlers(ServerBackEndUrl, ServerUrl, ServerLocation, "PHP", "ReactJS", "floorPlan");
+//		cadviewer.cvjs_setAllServerPaths_and_Handlers(ServerBackEndUrl, ServerUrl, ServerLocation, "DotNet", "ReactJS", "floorPlan");
 
 
         //      Setting all callback methods  - they have to be injected into the CADViewer class componnet
