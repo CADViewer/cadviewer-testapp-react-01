@@ -890,6 +890,11 @@ class CADViewer extends Component {
 
 
 		cadviewer.cvjs_setCADViewerInterfaceVersion(8);
+		//cadviewer.cvjs_setCADViewerSkin("lightgray"); // lightgray, black, deepblue  // method can be omitted, alternative is "deepblue" , "nextcloud"
+		cadviewer.cvjs_setCADViewerSkin("black"); // lightgray, black, deepblue  // method can be omitted, alternative is "deepblue" , "nextcloud"
+		//		cadviewer.cvjs_setCADViewerSkin("deepblue"); // lightgray, black, deepblue  // method can be omitted, alternative is "deepblue" , "nextcloud"
+		
+
 
 
 		 cadviewer.cvjs_DisplayCoordinatesMenu("floorPlan",true);
