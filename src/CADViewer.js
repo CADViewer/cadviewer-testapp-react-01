@@ -146,7 +146,12 @@ var myredlinestickynoteObjects = {};
 
 // Callback Method on Creation and Delete 
 //export function cvjs_graphicalObjectOnChange(type, graphicalObject, spaceID){
-function cvjs_graphicalObjectOnChange(type, graphicalObject, spaceID){
+function cvjs_graphicalObjectOnChange(type, graphicalObject, spaceID, evt){
+	
+	
+	if (evt!=null) console.log("evt.which ="+evt.which);  // 1=left mouse , 3=right mouse
+	
+
 	// do something with the graphics object created! 
 //	window.alert("CALLBACK: cvjs_graphicalObjectOnChange: "+type+" "+graphicalObject+" "+spaceID+" indexSpace: "+graphicalObject.toLowerCase().indexOf("space"));
 	console.log("CALLBACK: cvjs_graphicalObjectOnChange: "+type+" "+graphicalObject+" "+spaceID+" indexSpace: "+graphicalObject.toLowerCase().indexOf("space"));
@@ -890,7 +895,7 @@ class CADViewer extends Component {
 
 
 		cadviewer.cvjs_setCADViewerInterfaceVersion(8);
-		//cadviewer.cvjs_setCADViewerSkin("lightgray"); // lightgray, black, deepblue  // method can be omitted, alternative is "deepblue" , "nextcloud"
+//		cadviewer.cvjs_setCADViewerSkin("lightgray"); // lightgray, black, deepblue  // method can be omitted, alternative is "deepblue" , "nextcloud"
 		cadviewer.cvjs_setCADViewerSkin("black"); // lightgray, black, deepblue  // method can be omitted, alternative is "deepblue" , "nextcloud"
 		//		cadviewer.cvjs_setCADViewerSkin("deepblue"); // lightgray, black, deepblue  // method can be omitted, alternative is "deepblue" , "nextcloud"
 		
