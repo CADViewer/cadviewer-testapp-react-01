@@ -1022,22 +1022,39 @@ class CADViewer extends Component {
 			
 		cadviewer.cvjs_conversion_clearAXconversionParameters();
 
-	    // process layers for spaces  RL/TL
-		//cadviewer.cvjs_conversion_addAXconversionParameter("RL", "RM%24");		 
-		//cadviewer.cvjs_conversion_addAXconversionParameter("TL", "RM%24TXT");		 
 
+		/* push all conversion parameters as a single json object */
+        var axparameters = {};
+        var parameters = []
+        axparameters.parameters = parameters;
+        axparameters.parameters.push({"paramName": "RL", "paramValue": "RM_"});
+        axparameters.parameters.push({"paramName": "TL", "paramValue": "RM_TXT"});
+        axparameters.parameters.push({"paramName": "LA", "paramValue": ""});
+        axparameters.parameters.push({"paramName": "model", "paramValue": ""});
+        console.log(JSON.stringify(axparameters));
+        cadviewer.cvjs_conversion_addAXconversionParameters(axparameters);		 
+
+/*      old style, insert parameters one by one
 		cadviewer.cvjs_conversion_addAXconversionParameter("RL", "RM_");		 
 		cadviewer.cvjs_conversion_addAXconversionParameter("TL", "RM_TXT");		 
 		// calculate areas of spaces
 		cadviewer.cvjs_conversion_addAXconversionParameter("LA", "");		 
-
 		// process all handles
 		// cadviewer.cvjs_conversion_addAXconversionParameter("HLALL", "");		 
-
 		// open the last saved view in the file
 		cadviewer.cvjs_conversion_addAXconversionParameter("model", "");		 
+	    // process layers for spaces  RL/TL
+		//cadviewer.cvjs_conversion_addAXconversionParameter("RL", "RM%24");		 
+		//cadviewer.cvjs_conversion_addAXconversionParameter("TL", "RM%24TXT");		 
 //		cadviewer.cvjs_conversion_addAXconversionParameter("last", "");		 
 							
+*/
+
+
+
+
+
+
 		// Load file - needs the svg div name and name and path of file to load
 
 
