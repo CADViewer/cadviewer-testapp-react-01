@@ -72,6 +72,45 @@ function hide_space_object(){
 }
 
 
+function open_node(){
+
+  var door_id = JQ('#door_id').val();    
+  cadviewer.cvjs_open_StickyNote(door_id);
+
+}
+
+
+function close_node(){
+
+  var door_id = JQ('#door_id').val();    
+  cadviewer.cvjs_close_StickyNote(door_id);
+
+}
+
+
+
+function hide_node(){
+
+  var door_id = JQ('#door_id').val();    
+  cadviewer.cvjs_hide_StickyNote(door_id);
+
+}
+
+
+
+function show_node(){
+
+  var door_id = JQ('#door_id').val();    
+  cadviewer.cvjs_show_StickyNote(door_id);
+
+}
+
+
+
+
+
+
+
 
  
 function hide_object_in_group(){
@@ -1222,7 +1261,11 @@ class CADViewerHelperMethods extends Component {
   <button className="w3-button demo" onClick={lock_all}>Lock all Doors</button>&nbsp;<button className="w3-button demo" onClick={open_all}>Open All Doors</button>&nbsp; 
   <input type="text" id="door_id" defaultValue="Door_" />&nbsp;<button className="w3-button demo" onClick={lock_single}>Lock Door</button>&nbsp;
   <button className="w3-button demo" onClick={close_single}>Close Door</button>&nbsp;<button className="w3-button demo" onClick={retrieve_redlines_stickynotes}>Retrieve Deleted Redlines</button>&nbsp;
-  <button className="w3-button demo" onClick={hide_space_object}>Hide Space Object</button>&nbsp;
+  <button className="w3-button demo" onClick={hide_space_object}>Hide Space Object</button>&nbsp;&nbsp;
+  <button className="w3-button demo" onClick={open_node}>Open StickyNote</button>&nbsp;
+  <button className="w3-button demo" onClick={close_node}>Close StickyNote</button>&nbsp;
+  <button className="w3-button demo" onClick={hide_node}>Hide StickyNote</button>&nbsp;
+  <button className="w3-button demo" onClick={show_node}>Show StickyNote</button>&nbsp;
   
   <br/>
   <br/>
