@@ -1089,7 +1089,7 @@ class CADViewer extends Component {
         try{    
             cadviewer.cvjs_resizeWindow_position("floorPlan" );
 			//window.alert("resize");
-            //cadviewer.cjs_resizeWindow_fixedSize(300, 300, "floorPlan");		
+            //cadviewer.cvjs_resizeWindow_fixedSize(400, 400, "floorPlan");		
 
         } 
         catch(err) {console.log(err);}

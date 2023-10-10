@@ -1237,6 +1237,23 @@ class CADViewerHelperMethods extends Component {
     <br/>
     <canvas id="dummy" width="5" height="22"></canvas>
 
+
+    <canvas id="dummy" width="5" height="22"></canvas>    
+    <b>Color:&nbsp; </b> <input type="text" id="input_color" defaultValue="#AAAA00" />
+		Higlight:<button className="w3-button demo" onClick={highlight_all_spaces}>All Spaces</button>
+		<button className="w3-button demo" onClick={highlight_all_borders}>All Borders</button>
+    <strong>Space Type:</strong>&nbsp; 	<input type="text" id="image_Type" defaultValue="Wifi" />
+		<button className="w3-button demo" onClick={highlight_space_type}>Space Type</button>
+    <strong>Space ID:</strong>&nbsp; 	<input type="text" id="image_ID" defaultValue="wifi_1" />
+		<button className="w3-button demo" onClick={highlight_space_id}>Space ID</button>
+    <button className="w3-button demo" onClick={clear_space_highlight}>Clear All</button>
+    <br/>
+    <canvas id="dummy" width="5" height="22"></canvas>
+
+
+
+
+
     <strong>Custom Interactive Canvas Samples:&nbsp;</strong><canvas id="dummy" width="10" height="10"></canvas>
 		<button className="w3-button demo" onClick={cadviewerCanvasMethod01}>Canvas-DRAG (console)</button>
 		<button className="w3-button demo" onClick={cadviewerCanvasMethod02}>Canvas-CLICK (console)</button>
