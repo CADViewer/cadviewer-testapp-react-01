@@ -160,7 +160,34 @@ function cvjs_graphicalObjectOnChange(type, graphicalObject, spaceID, evt){
 	if (graphicalObject.toLowerCase().indexOf("space")!==-1){
 		myobject = cadviewer.cvjs_returnSpaceObjectID(spaceID);
 		console.log("This Object "+myobject.id+" with name "+myobject.name+" has Parent: "+myobject.parent);
+
+
+		try{
+
+			if (evt!=null){
+				console.log("evt.pageX, evt.pageY ="+evt.pageX+","+evt.pageY);  // true or false
+			}
+
+			console.log("upper left screen coordinate:("+cadviewer.cvjs_SVG_x_toScreen(myobject.bbox_x)+","+ cadviewer.cvjs_SVG_y_toScreen(myobject.bbox_y)+")");
+			console.log("upper right screen coordinate:("+cadviewer.cvjs_SVG_x_toScreen(myobject.bbox_x+myobject.bbox_width)+","+ cadviewer.cvjs_SVG_y_toScreen(myobject.bbox_y)+")");
+			console.log("lower left screen coordinate:("+cadviewer.cvjs_SVG_x_toScreen(myobject.bbox_x)+","+ cadviewer.cvjs_SVG_y_toScreen(myobject.bbox_y+myobject.bbox_height)+")");
+			console.log("lower right screen coordinate:("+cadviewer.cvjs_SVG_x_toScreen(myobject.bbox_x+myobject.bbox_width)+","+ cadviewer.cvjs_SVG_y_toScreen(myobject.bbox_y+myobject.bbox_height)+")");
+	
+
+		}
+		catch(err){
+	
+			console.log("error in getting screen corrdinates:"+err);
+	
+	
+		}
+	
+
 	}
+
+
+
+
 
 
 
