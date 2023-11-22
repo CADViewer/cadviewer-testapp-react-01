@@ -165,7 +165,7 @@ function cvjs_graphicalObjectOnChange(type, graphicalObject, spaceID, evt){
 		try{
 
 			if (evt!=null){
-				console.log("evt.pageX, evt.pageY ="+evt.pageX+","+evt.pageY);  // true or false
+				console.log("evt.pageX, evt.pageY ="+evt.pageX+","+evt.pageY);
 			}
 
 			console.log("upper left screen coordinate:("+cadviewer.cvjs_SVG_x_toScreen(myobject.bbox_x)+","+ cadviewer.cvjs_SVG_y_toScreen(myobject.bbox_y)+")");

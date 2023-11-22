@@ -1,13 +1,13 @@
 {
   "name": "cadviewer-testapp-react-01",
-  "version": "9.16.10",
+  "version": "9.19.4",
   "description": "CADViewer - JavaScript CAD Viewer sample implementation for ReactJS",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",
     "@testing-library/user-event": "^12.7.1",
     "bootstrap": "^5.2.3",
-    "cadviewer": "^9.16.10",
+    "cadviewer": "^9.19.4",
     "jquery": "^3.5.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
@@ -19,6 +19,10 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
+  },
+  "overrides": {
+    "chokidar": "3.5.3",
+    "glob-parent": "6.0.2"
   },
   "eslintConfig": {
     "extends": [
