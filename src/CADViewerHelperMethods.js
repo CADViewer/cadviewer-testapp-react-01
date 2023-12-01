@@ -1183,6 +1183,27 @@ function checknumberoftypes(){
 }
 
 
+// COMPARE TWO DRAWINGS
+
+function compareTwoDrawings(){
+
+
+  cadviewer.cvjs_CompareDrawings_DisplayNameAlias("floorPlan","http://localhost:3000/content/drawings/dwg/hq17_.dwg", "http://localhost:3000/content/drawings/dwg/hq17_1space.dwg", "hq17(version1).dwg", "hq17(version2).dwg");
+
+
+}
+
+
+// COMPARE TWO DRAWINGs
+
+
+
+
+
+
+
+
+
 
 /////////  CANVAS CONTROL METHODS END
 
@@ -1234,6 +1255,7 @@ class CADViewerHelperMethods extends Component {
     <button className="w3-button demo" onClick={clear_space_highlight}>Clear All</button>
     <button className="w3-button demo" onClick={display_all_objects}>All:(id,area)</button>
     <button className="w3-button demo" onClick={customAddTextToSpaces}>Text on Spaces</button>
+    <button className="w3-button demo" onClick={compareTwoDrawings}>Compare Two Drawings</button>
     <br/>
     <canvas id="dummy" width="5" height="22"></canvas>
 
