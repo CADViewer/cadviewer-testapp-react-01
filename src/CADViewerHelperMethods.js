@@ -106,6 +106,17 @@ function show_node(){
 }
 
 
+function show_all_layers(){
+
+  cadviewer.cvjs_AllLayersOn("floorPlan");
+
+}
+
+function hide_all_layers(){
+
+  cadviewer.cvjs_AllLayersOff("floorPlan");
+
+}
 
 
 
@@ -1269,6 +1280,8 @@ class CADViewerHelperMethods extends Component {
     <strong>Space ID:</strong>&nbsp; 	<input type="text" id="image_ID" defaultValue="wifi_1" />
 		<button className="w3-button demo" onClick={highlight_space_id}>Space ID</button>
     <button className="w3-button demo" onClick={clear_space_highlight}>Clear All</button>
+    <button className="w3-button demo" onClick={hide_all_layers}>All Layers Off</button>&nbsp;
+  <button className="w3-button demo" onClick={show_all_layers}>All Layers On</button>&nbsp;
     <br/>
     <canvas id="dummy" width="5" height="22"></canvas>
 
