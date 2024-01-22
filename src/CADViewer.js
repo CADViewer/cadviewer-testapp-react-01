@@ -812,10 +812,14 @@ class CADViewer extends Component {
 		// Uncomment this, then CADViewer Conversion Server is up running. 
 //		FileName = "https://onlinedemo.cadviewer.com/cadviewer_7_0/php/load-demo-file-npm-install.php?file=base_xref_json_Mar_15_H11_8.svg";
 		//FileName = "https://onlinedemo.cadviewer.com/cadviewer_7_0/php/load-demo-file-npm-install.php?file=M0-generic-06.svg";
-		// REMOVE WHEN LOADING FROM CAD SERVER
+		//FileName = ServerBackEndUrl+ "/content/drawings/dwg/ax2024_dummy_file2.svg";
+	// REMOVE WHEN LOADING FROM CAD SERVER
 
 	    //Standard file from /content/ folder on CADViewer NodeJS Conversion Server
 		FileName = ServerBackEndUrl+ "/content/drawings/dwg/hq17_.dwg";
+
+
+	
 
 
 		cadviewer.cvjs_debugMode(true);
