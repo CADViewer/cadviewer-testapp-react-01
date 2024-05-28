@@ -962,11 +962,69 @@ class CADViewer extends Component {
 		cadviewer.cvjs_setTopMenuXML("floorPlan", "cadviewer_full_commands_01.xml", "");  //cadviewer.cvjs_setTopMenuXML("floorPlan", "cadviewer_full_commands_01.xml", "/cadviewer/app/cv/cv-pro/menu_config/");
 		//cadviewer.cvjs_setTopMenuXML("floorPlan", "cadviewer_viewonly_nofileload_01.xml", "/cadviewer/app/cv/cv-pro/menu_config/"); //, "/app/cv/cv-pro/menu_config/");
 
-
-
 		// Menu including custom commands row on last page
 		//cadviewer.cvjs_setTopMenuXML("floorPlan", "cadviewer_menu_all_items_custom_commands.xml", "cadviewer/app/cv/cv-pro/menu_config/");
 		
+
+/*
+		// 4: Users can change the number of top menu icon pages and the content of pages, based on a direct XML string
+
+		var cadviewer_minimum_viewonly_svg_02 = `
+		<cvjs>
+		<iconmenu>
+			<totalpages>1</totalpages>
+			<startpage>1</startpage>
+			<pages>
+				<page>
+					<command>cvjs_toggleBlackWhite</command>
+					<command>cvjs_setBackgroundColor</command>
+					<command>cvjs_interactiveSearchText</command>
+					<command>cvjs_calibrateMeasurement</command>
+					<command>cvjs_Measurement</command>
+					<command>cvjs_activateLineThicknessModal</command>
+					<command>cvjs_About</command>
+					<command>cvjs_Settings</command>
+					<command>cvjs_Help</command>
+				</page>
+			</pages>
+			<icons_per_row>0</icons_per_row>
+			<icon_page_left_x>0</icon_page_left_x>
+			<icon_page_left_y>0</icon_page_left_y>
+			<customcommand>
+				<tooltip>Command tooltip 1</tooltip>
+				<tooltip>Command tooltip 2</tooltip>
+				<tooltip>Command tooltip 3</tooltip>
+				<tooltip>Command tooltip 4</tooltip>
+				<tooltip>Command tooltip 5</tooltip>
+				<tooltip>Command tooltip 6</tooltip>
+				<tooltip>Command tooltip 7</tooltip>
+				<tooltip>Command tooltip 8</tooltip>
+				<tooltip>Command tooltip 9</tooltip>
+				<tooltip>Command tooltip 10</tooltip>
+				<tooltip>Command tooltip 11</tooltip>
+				<tooltip>Command tooltip 12</tooltip>
+				<tooltip>Command tooltip 13</tooltip>
+				<tooltip>Command tooltip 14</tooltip>
+				<tooltip>Command tooltip 15</tooltip>
+				<tooltip>Command tooltip 16</tooltip>
+				<tooltip>Command tooltip 17</tooltip>
+				<tooltip>Command tooltip 18</tooltip>
+				<tooltip>Command tooltip 19</tooltip>
+				<tooltip>Select Property</tooltip>
+			</customcommand>    
+		</iconmenu>
+		<zoommenu>
+			<location_left_x>2</location_left_x>
+			<location_left_y>40</location_left_y>
+		</zoommenu>
+		</cvjs>
+		`;		
+
+		cadviewer.cvjs_setTopMenuXMLDirect("floorPlan", cadviewer_minimum_viewonly_svg_02)
+		
+*/
+
+
 
 
 
