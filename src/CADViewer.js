@@ -381,7 +381,13 @@ function cvjs_popupTitleClick(roomid){
 
 var mouseover = false;
 var mouseclick = false;
-var customclickcontrol = false;
+var customclickcontrol = false;   // set to false to disable all custom click control!!!!!!!
+
+
+// 
+
+
+
 
 
 // ENABLE ALL API EVENT HANDLES FOR AUTOCAD Handles
@@ -393,10 +399,13 @@ function cvjs_mousedown(id, handle, entity){
     if (customclickcontrol){
         if (!mouseclick)
         mouseclick = true;
-    }
+
 
 	// TEST - when click move to center with 300% around block handle 
-	cadviewer.cvjs_zoomHere_Handle(handle, 3.0, "floorPlan");
+	// cadviewer.cvjs_zoomHere_Handle(handle, 3.0, "floorPlan");
+
+	}
+
 	
 	// we cannot highlight because we have moved the mouse or finger out
 	// remove cadviewer.cvjs_mouseout_handleObjectStyles(id, handle); and it will highlight
@@ -404,6 +413,27 @@ function cvjs_mousedown(id, handle, entity){
 	//cadviewer.cvjs_HighlightHandleObjectStyles("#F00", 2.0, 1.0, true, id, handle);
 
 }
+
+
+// we test the mouseup event
+
+function cvjs_mouseup(id, handle, entity){
+
+	console.log("cvjs_mouseup");
+
+	// highligt and zoom over the object
+	//cadviewer.cvjs_changeSpaceFixedLocation(id, null);
+	//cadviewer.cvjs_zoomHere_ObjectId(id, 50);
+
+
+	if (customclickcontrol){
+		mouseclick = false;
+	}
+}
+
+
+
+
 
 var insertsensor = false
 
@@ -456,6 +486,9 @@ console.log("mysql dblclick "+id+"  "+handle);
 window.alert("We have double clicked entity with AutoCAD Handle: "+handle+"\r\nThe svg id is: "+id);
 }
 
+
+
+
 function cvjs_mouseout(id, handle, entity){
 
   console.log("mysql mouseout "+id+"  "+handle);
@@ -485,20 +518,20 @@ function cvjs_mouseover(id, handle, entity){
 	
 	
 		//cvjs_mouseover_handleObjectPopUp(id, handle);	
+}
+	
+function cvjs_mouseleave(id, handle, entity){
+
+	console.log("mouseleave "+id+"  "+handle+"  "+jQuery("#"+id).css("color"));
+
+	if (customclickcontrol){
+		mouseover = false;
+		console.log("mouseleave variable mouseclick: "+mouseclick);
+		if (!mouseclick)
+			cadviewer.cvjs_hideOnlyPop();
 	}
-	
-	function cvjs_mouseleave(id, handle, entity){
-	
-		console.log("mouseleave "+id+"  "+handle+"  "+jQuery("#"+id).css("color"));
-	
-		if (customclickcontrol){
-			mouseover = false;
-			console.log("mouseleave variable mouseclick: "+mouseclick);
-			if (!mouseclick)
-				cadviewer.cvjs_hideOnlyPop();
-		}
-	
-	}
+
+}
 	
 
 
@@ -506,10 +539,8 @@ function cvjs_mouseenter(id, handle, entity){
 //	cvjs_mouseenter_handleObjectStyles("#a0a000", 4.0, 1.0, id, handle);
 //	cvjs_mouseenter_handleObjectStyles("#ffcccb", 5.0, 0.7, true, id, handle);
 
-console.log("cvjs_mouseenter");
-
-
-cadviewer.cvjs_mouseenter_handleObjectStyles("#F00", 10.0, 1.0, true, id, handle);
+	console.log("cvjs_mouseenter");
+	cadviewer.cvjs_mouseenter_handleObjectStyles("#F00", 10.0, 1.0, true, id, handle);
 
 }
 
@@ -868,6 +899,7 @@ class CADViewer extends Component {
         cadviewer.cvjs_setCallbackMethod("cvjs_popupTitleClick", cvjs_popupTitleClick);
         cadviewer.cvjs_setCallbackMethod("cvjs_mousedown", cvjs_mousedown);
         cadviewer.cvjs_setCallbackMethod("cvjs_click", cvjs_click);
+        cadviewer.cvjs_setCallbackMethod("cvjs_mouseup", cvjs_mouseup);
         cadviewer.cvjs_setCallbackMethod("cvjs_dblclick", cvjs_dblclick);
         cadviewer.cvjs_setCallbackMethod("cvjs_mouseout", cvjs_mouseout);
         cadviewer.cvjs_setCallbackMethod("cvjs_mouseover", cvjs_mouseover);
