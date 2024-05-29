@@ -422,8 +422,8 @@ function cvjs_mouseup(id, handle, entity){
 	console.log("cvjs_mouseup");
 
 	// highligt and zoom over the object
-	//cadviewer.cvjs_changeSpaceFixedLocation(id, null);
-	//cadviewer.cvjs_zoomHere_ObjectId(id, 50);
+	cadviewer.cvjs_changeSpaceFixedLocation(id, null);
+	cadviewer.cvjs_zoomHere_ObjectId(id, 50);
 
 
 	if (customclickcontrol){
