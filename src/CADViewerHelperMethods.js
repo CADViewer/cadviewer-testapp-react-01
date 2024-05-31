@@ -245,7 +245,7 @@ function customAddTextToSpaces(){
           hexColorText = new Array("#AB5500", "#66D200", "#0088DF");
   
           // here we clip the roomlables so they are inside the room polygon
-          cadviewer.cvjs_AddTextOnSpaceObject(CV.textLayer1, spaceObjectIds[spc],  0.05, textString, textStyles, scaleText, hexColorText, true, false);
+          cadviewer.cvjs_AddTextOnSpaceObject(CV.textLayer1, spaceObjectIds[spc],  0.05, textString, textStyles, scaleText, hexColorText, false, false);
   
       }
       else{
@@ -1208,6 +1208,63 @@ function compareTwoDrawings(){
 // COMPARE TWO DRAWINGs
 
 
+// INSERT A SPACE OBJECT WITH TEXT
+
+function createSampleTextSpaceObject(){
+
+  var text_style_arial_9pt_normal = {
+      'stroke': "#00539B",
+      'fill': "#00539B",
+      'font-family': "Arial",
+      'font-size': "9pt",
+      'font-weight': "normal",
+      'margin': 0,
+      'margin-top': "-10px",
+      'cursor': "pointer",
+      'text-align': "left",
+      'vertical-align': "top",
+      'width': "128px",
+      'z-index': 1980
+  };
+
+  var id = "1001";
+
+  var textArray = new Array("cctv", id);
+  var textStyles = new Array(text_style_arial_9pt_normal, text_style_arial_9pt_normal);	
+//            var textStyles = new Array(FontAwesome_9pt_normal);	
+  var scaleText = new Array(0.8, 0.5);
+  var hexColorText = new Array("#AB55BB", "#AB5500");
+//            var hexColorText = new Array("#AB5500");
+  var leftFactor = 0.05;
+
+  
+  var location = "http://localhost:3000/content/customInsertSpaceObjectMenu/images/sensor_c.svg";
+  
+  //sample01	- dwg coordinates
+  var xcor = 	117749.9320;
+  var ycor =  36536.9007;	
+  // svg coordinates
+  var xcor = 	1000;
+  var ycor =  500;	
+
+  var jsonObject = { "name": "1001", "type": "cctv", "id": id, "translate_x": xcor, "translate_y": ycor };
+  
+  // use cvjs_addSpaceObjectDirect for direct insertion of space object
+  cadviewer.cvjs_addSpaceObjectDirect("floorPlan", location, jsonObject, 0, textArray, 1.0, "none", textStyles, scaleText, hexColorText, leftFactor);
+
+  // same method with direct insertion of space object
+  // use cvjs_addSpaceObjectDirectXY for direct insertion of space object
+//  cadviewer.cvjs_addSpaceObjectDirectXY("floorPlan", location, jsonObject, 0, textArray, 1.0, "none", textStyles, scaleText, hexColorText, leftFactor);
+
+
+}
+
+
+// INSERT A SPACE OBJECT WITH TEXT
+
+
+
+
 
 
 
@@ -1267,6 +1324,7 @@ class CADViewerHelperMethods extends Component {
     <button className="w3-button demo" onClick={display_all_objects}>All:(id,area)</button>
     <button className="w3-button demo" onClick={customAddTextToSpaces}>Text on Spaces</button>
     <button className="w3-button demo" onClick={compareTwoDrawings}>Compare Two Drawings</button>
+    <button className="w3-button demo" onClick={createSampleTextSpaceObject}>Create sample SpaceObject with text</button>
     <br/>
     <canvas id="dummy" width="5" height="22"></canvas>
 
