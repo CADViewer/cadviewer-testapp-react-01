@@ -1227,7 +1227,7 @@ function createSampleTextSpaceObject(){
       'z-index': 1980
   };
 
-  var id = "1001";
+  var id = Math.floor(Math.random() * 1600).toString();
 
   var textArray = new Array("cctv", id);
   var textStyles = new Array(text_style_arial_9pt_normal, text_style_arial_9pt_normal);	
@@ -1244,8 +1244,8 @@ function createSampleTextSpaceObject(){
   var xcor = 	117749.9320;
   var ycor =  36536.9007;	
   // svg coordinates
-  var xcor = 	1000;
-  var ycor =  500;	
+  var xcor = 	Math.floor(Math.random() * 1600);
+  var ycor =  Math.floor(Math.random() * 1000);
 
   var jsonObject = { "name": "1001", "type": "cctv", "id": id, "translate_x": xcor, "translate_y": ycor };
   
@@ -1261,6 +1261,9 @@ function createSampleTextSpaceObject(){
 
 
 // INSERT A SPACE OBJECT WITH TEXT
+
+
+
 
 
 
