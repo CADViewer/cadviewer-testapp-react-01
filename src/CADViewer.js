@@ -6,12 +6,12 @@ import React, { Component }  from 'react';
 // import { View } from 'react-native';
 //import 'jquery-ui';
 import jQuery from "jquery";
-
 import './CADViewer_component.css';
-
 import * as cadviewer from "cadviewer";
+import * as Helper from './CADViewerHelperMethods.js';
 
 export var textLayer1; 
+
 
 export function clearTextLayer(){
 	textLayer1 = cadviewer.cvjs_clearLayer(textLayer1);
@@ -392,6 +392,9 @@ var customclickcontrol = false;   // set to false to disable all custom click co
 
 // ENABLE ALL API EVENT HANDLES FOR AUTOCAD Handles
 function cvjs_mousedown(id, handle, entity){
+
+	Helper.echo_cvjs_mousedown(id, handle, entity);
+
 
 	console.log("cvjs_mousedown");
 
@@ -956,6 +959,9 @@ class CADViewer extends Component {
 		  //	var ServerLocation = 
 		  //	var ServerUrl =    
 		 cadviewer.cvjs_CADViewerPro(true);
+
+
+
 		 
 		 // Pass over the location of the installation, will update the internal paths
 		 cadviewer.cvjs_PrintToPDFWindowRelativeSize(0.8);
@@ -1066,6 +1072,19 @@ class CADViewer extends Component {
 
 
 
+		var cvjs_defaultSpaceObjectColor = {
+			fill:  '#7FFFD4', 
+			"fill-opacity": "0.3",      // fill opacity set to 0.1
+			stroke: '#097969',  
+			'stroke-width': "2",
+			'stroke-linejoin': 'round',
+		};
+
+
+		cadviewer.cvjs_setDefaulSpaceObjectColor(cvjs_defaultSpaceObjectColor);
+
+
+
 
 		// Initialize CADViewer  - needs the div name on the svg element on page that contains CADViewerJS and the location of the
 		// main application "app" folder. It can be either absolute or relative
@@ -1125,7 +1144,7 @@ class CADViewer extends Component {
 		// set the location to license key, typically the js folder in main app application folder ../app/cv/
 		//cadviewer.cvjs_setLicenseKeyPath("/cadviewer/app/cv/");
 		// alternatively, set the key directly, by pasting in the cvKey portion of the cvlicense.js file, note the JSON \" around all entities 	 		
-		cadviewer.cvjs_setLicenseKeyDirect('{ "cvKey": "00110010 00110010 00110000 00110100 00110010 00110000 00110000 00110001 00110100 00111000 00110001 00110100 00110101 00110001 00110101 00110111 00110001 00110101 00111001 00110001 00110100 00111000 00110001 00110101 00110010 00110001 00110100 00110101 00110001 00110100 00110001 00110001 00110100 00110000 00110001 00111001 00111000 00110010 00110000 00110110 00110010 00110000 00111000 00110010 00110000 00110110 00110010 00110000 00110100 00110010 00110001 00110001 00110010 00110000 00111000 00110010 00110000 00110101 00110010 00110001 00110001 00110010 00110000 00110101 00110010 00110000 00110111 00110001 00111001 00111000 00110001 00110100 00110001 00110001 00110100 00110100 00110001 00110101 00111001 00110001 00110101 00110111 00110001 00110101 00110101 " }')
+		cadviewer.cvjs_setLicenseKeyDirect('{ "cvKey": "00110001 00110010 00110000 00110111 00110001 00110100 00111000 00110001 00110100 00110101 00110001 00110101 00110111 00110001 00110101 00111001 00110001 00110100 00111000 00110001 00110101 00110010 00110001 00110100 00110101 00110001 00110100 00110001 00110001 00110100 00110000 00110001 00111001 00111000 00110010 00110000 00110110 00110010 00110000 00111000 00110010 00110000 00110110 00110010 00110000 00110011 00110010 00110001 00110001 00110010 00110000 00111000 00110010 00110000 00110111 00110010 00110001 00110001 00110010 00110000 00110111 00110010 00110000 00110011 " }')
 
 		// Sets the icon interface for viewing, layerhanding, measurement, etc. only
 		//cvjs_setIconInterfaceControls_ViewingOnly();

@@ -7,7 +7,6 @@ import { render } from '@testing-library/react';
 
 // We are only accessing the functional interface of CADViewer, not the canvas, so this import is sufficient
 import * as cadviewer from "cadviewer";
-
 import * as CV from "./CADViewer.js";
 
 
@@ -21,6 +20,20 @@ import * as CV from "./CADViewer.js";
   //var loadSpaceImage_Layer = loadSpaceImage_Layer;
 
 }
+
+
+export function echo_cvjs_mousedown(id, handle, entity){
+
+// here we get the mouse down event from the canvas
+
+  
+  console.log("In CADViewerHelperMethods, with Echo from CADViewer.js: "+id+" "+handle+" "+entity);
+
+
+}
+
+
+
 
 
 /// RELAY LOCK JSON SAMPLE 
@@ -148,6 +161,23 @@ function retrieve_redlines_stickynotes(){
   CV.retrieve_redlines_stickynotes();
 
 }
+
+
+
+
+
+function text_on_layer(){
+
+  var layer = JQ('#door_id').val();    
+  var mylist = cadviewer.cvjs_getTextOnLayer("floorPlan",layer);
+
+  window.alert(JSON.stringify(mylist));
+}
+
+
+
+
+
 
 
 
@@ -545,8 +575,6 @@ function loadprocessedsvg(){
 
 }
  
-
-
 
 
 
@@ -1379,6 +1407,7 @@ class CADViewerHelperMethods extends Component {
   <button className="w3-button demo" onClick={close_node}>Close StickyNote</button>&nbsp;
   <button className="w3-button demo" onClick={hide_node}>Hide StickyNote</button>&nbsp;
   <button className="w3-button demo" onClick={show_node}>Show StickyNote</button>&nbsp;
+  <button className="w3-button demo" onClick={text_on_layer}>Get Text On Layer</button>&nbsp;
   
   <br/>
   <br/>
