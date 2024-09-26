@@ -50,13 +50,13 @@ once the [cadviewer-conversion-server](https://github.com/CADViewer/cadviewer-co
 
 ## This package does not contains
 
-1: The [back-end AutoXchange 2023 Windows](https://github.com/CADViewer/cadviewer-conversion-server-windows) ,[back-end AutoXchange 2023 Linux](https://github.com/CADViewer/cadviewer-conversion-server-linux) conversion server and connecting scripts. Install these separately!
+1: The [back-end AutoXchange 2025](https://github.com/CADViewer/cadviewer-conversion-server) conversion server and connecting scripts. Install these separately!
 
 **NOTE:** With this download, use the NodeJS CAD conversion server: https://github.com/CADViewer/cadviewer-conversion-server
 
 2: The converter folder structure contains a larger set of fonts, installed in /cadviewer/converters/ax2022/windows/fonts/, but a fuller set of fonts can be installed, found on our [download](https://cadviewer.com/download) site. 
 
-Read the sections on installing and handling [Fonts](https://tailormade.com/ax2020techdocs/installation/fonts/) in [AutoXchange 2022 TechDocs](https://tailormade.com/ax2020techdocs/) and [TroubleShooting](https://tailormade.com/ax2020techdocs/troubleshooting/).
+Read the sections on installing and handling [Fonts](https://tailormade.com/ax2020techdocs/installation/fonts/) in [AutoXchange 2025 TechDocs](https://tailormade.com/ax2020techdocs/) and [TroubleShooting](https://tailormade.com/ax2020techdocs/troubleshooting/).
 
 
 ## How to Use
@@ -88,9 +88,9 @@ Read the sections on installing and handling [Fonts](https://tailormade.com/ax20
 
 This repository should contain the latest converters, but in case you need to update any of the back-end converters please follow: 
 
-* [Download **AutoXchange**](/download/) (and other converters), install (unzip) AX2023 in **/converters/ax2023/windows** or **/converters/ax2023/linux** or in the designated folder structure.
+* [Download **AutoXchange**](/download/) (and other converters), install (unzip) AX2024/AX2025 in **/converters/ax2024/windows** or **/converters/ax2024/linux** or in the designated folder structure.
 
-* Read the sections on installing and handling [Fonts](https://tailormade.com/ax2020techdocs/installation/fonts/) in [AutoXchange 2023 TechDocs](https://tailormade.com/ax2020techdocs/) and [TroubleShooting](https://tailormade.com/ax2020techdocs/troubleshooting/).
+* Read the sections on installing and handling [Fonts](https://tailormade.com/ax2020techdocs/installation/fonts/) in [AutoXchange 2025 TechDocs](https://tailormade.com/ax2020techdocs/) and [TroubleShooting](https://tailormade.com/ax2020techdocs/troubleshooting/).
 
 * Try out the samples and build your own application!
 
