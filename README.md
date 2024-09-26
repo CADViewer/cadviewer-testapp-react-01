@@ -88,7 +88,7 @@ Read the sections on installing and handling [Fonts](https://tailormade.com/ax20
 
 This repository should contain the latest converters, but in case you need to update any of the back-end converters please follow: 
 
-* [Download **AutoXchange**](/download/) (and other converters), install (unzip) AX2024/AX2025 in **/converters/ax2024/windows** or **/converters/ax2024/linux** or in the designated folder structure.
+* [Download **AutoXchange**](https://cadviewer.com/download/) (and other converters), install (unzip) AX2024/AX2025 in **/converters/ax2024/windows** or **/converters/ax2024/linux** or in the designated folder structure.
 
 * Read the sections on installing and handling [Fonts](https://tailormade.com/ax2020techdocs/installation/fonts/) in [AutoXchange 2025 TechDocs](https://tailormade.com/ax2020techdocs/) and [TroubleShooting](https://tailormade.com/ax2020techdocs/troubleshooting/).
 
