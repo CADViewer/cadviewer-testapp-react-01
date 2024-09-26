@@ -1074,7 +1074,7 @@ class CADViewer extends Component {
 
 		var cvjs_defaultSpaceObjectColor = {
 			fill:  '#7FFFD4', 
-			"fill-opacity": "0.3",      // fill opacity set to 0.1
+			"fill-opacity": "0.3",      // fill opacity set to 0.3
 			stroke: '#097969',  
 			'stroke-width': "2",
 			'stroke-linejoin': 'round',
