@@ -34,6 +34,20 @@ export function echo_cvjs_mousedown(id, handle, entity){
 
 
 
+export function cvjs_QuickCountCallback(count){
+
+  // here we get the quick counts
+     
+    window.alert("In CADViewerHelperMethods, with Echo from CADViewer.js: QuickCount "+count);
+  
+  
+}
+  
+
+
+
+
+
 
 
 /// RELAY LOCK JSON SAMPLE 
@@ -1286,12 +1300,17 @@ function createSampleTextSpaceObject(){
 
 
 }
-
-
 // INSERT A SPACE OBJECT WITH TEXT
 
 
 
+
+// exit quickcount
+function exit_quickcount(){ 
+
+  cadviewer.cvjs_exitQuickCount();
+
+}
 
 
 
@@ -1345,8 +1364,7 @@ class CADViewerHelperMethods extends Component {
     <strong>Space Image:</strong>&nbsp; 	<input type="text" id="image_sensor_location" defaultValue="wifi_25.svg" />
     <strong>Create:</strong>&nbsp; 	<button className="w3-button demo" onClick={insert_from_type_id_image}>New Space Object</button>
     <br/>
-    <canvas id="dummy" width="5" height="22"></canvas>    
-    <b>Highlight Spaces based on Color:&nbsp; </b> <input type="text" id="input_color" defaultValue="#AAAA00" />
+    &nbsp;<b>Highlight Spaces based on Color:&nbsp; </b> <input type="text" id="input_color" defaultValue="#AAAA00" />
 		<button className="w3-button demo" onClick={highlight_all_spaces}>Spaces</button>
 		<button className="w3-button demo" onClick={highlight_all_borders}>Borders</button>
 		<button className="w3-button demo" onClick={highlight_space_type}>Space Type</button>
@@ -1357,11 +1375,7 @@ class CADViewerHelperMethods extends Component {
     <button className="w3-button demo" onClick={compareTwoDrawings}>Compare Two Drawings</button>
     <button className="w3-button demo" onClick={createSampleTextSpaceObject}>Create sample SpaceObject with text</button>
     <br/>
-    <canvas id="dummy" width="5" height="22"></canvas>
-
-
-    <canvas id="dummy" width="5" height="22"></canvas>    
-    <b>Color:&nbsp; </b> <input type="text" id="input_color" defaultValue="#AAAA00" />
+    &nbsp;<b>Color:&nbsp; </b> <input type="text" id="input_color" defaultValue="#AAAA00" />
 		Higlight:<button className="w3-button demo" onClick={highlight_all_spaces}>All Spaces</button>
 		<button className="w3-button demo" onClick={highlight_all_borders}>All Borders</button>
     <strong>Space Type:</strong>&nbsp; 	<input type="text" id="image_Type" defaultValue="Wifi" />
@@ -1371,7 +1385,8 @@ class CADViewerHelperMethods extends Component {
     <button className="w3-button demo" onClick={clear_space_highlight}>Clear All</button>
     <button className="w3-button demo" onClick={hide_all_layers}>All Layers Off</button>&nbsp;
   <button className="w3-button demo" onClick={show_all_layers}>All Layers On</button>&nbsp;
-    <br/>
+  <b>QuickCount:&nbsp; </b> <button className="w3-button demo" onClick={exit_quickcount}>Exit QuickCount</button>&nbsp;
+  <br/>
     <canvas id="dummy" width="5" height="22"></canvas>
 
 

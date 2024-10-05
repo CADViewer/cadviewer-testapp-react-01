@@ -586,7 +586,15 @@ function cvjs_SVGfileObjectMouseMove(){
 };
 function cvjs_ParseDisplayDataMaps(){
 };
-function cvjs_QuickCountCallback(){
+function cvjs_QuickCountCallback(count){
+
+	console.log("passing over to Helper.cvjs_QuickCountCallback: QuickCount "+count);
+
+
+	Helper.cvjs_QuickCountCallback(count);
+		// do something with the count	  
+	  
+
 };
 function cvjs_OnHyperlinkClick(){
 };
@@ -864,6 +872,11 @@ class CADViewer extends Component {
 
 
 		cadviewer.cvjs_debugMode(true);
+
+		// set quickcount to true to enable quickcount
+		cadviewer.cvjs_setCallbackQuickCount(true);
+
+
 	   // cadviewer.cvjs_setLeafletJS(true);
 		
 		// Set all paths, and handlers, changes these depending on back-end server
@@ -1064,7 +1077,6 @@ class CADViewer extends Component {
 		</zoommenu>
 		</cvjs>
 		`;		
-
 		cadviewer.cvjs_setTopMenuXMLDirect("floorPlan", cadviewer_minimum_viewonly_svg_02)
 		
 */
