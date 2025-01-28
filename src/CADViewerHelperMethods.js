@@ -37,8 +37,14 @@ export function echo_cvjs_mousedown(id, handle, entity){
 export function cvjs_QuickCountCallback(count){
 
   // here we get the quick counts
+
+
+  var page = cadviewer.cvjs_getCurrentPage();
+  var pagename = cadviewer.cvjs_getCurrentPageName();
+
+
      
-    window.alert("In CADViewerHelperMethods, with Echo from CADViewer.js: QuickCount "+count);
+    window.alert("In CADViewerHelperMethods, with Echo from CADViewer.js: QuickCount "+count+"  on page:"+page+" with pagename:"+pagename);
   
   
 }
@@ -1314,6 +1320,25 @@ function exit_quickcount(){
 
 
 
+function loadfile(){ 
+
+  var FileName = "http://localhost:3000" + "/content/custom/bpretail/4386-SP1.svg";		
+
+  var FileName = "http://localhost:3000" + "/content/drawings/dwg/hq17_.dwg";		
+
+
+  var FileName = "http://localhost:3000" + "/content/custom/bpretail/2352-LP1.svg";		
+
+
+
+  cadviewer.cvjs_LoadDrawing("floorPlan", FileName);
+
+}
+
+
+
+
+
 
 
 
@@ -1423,6 +1448,7 @@ class CADViewerHelperMethods extends Component {
   <button className="w3-button demo" onClick={hide_node}>Hide StickyNote</button>&nbsp;
   <button className="w3-button demo" onClick={show_node}>Show StickyNote</button>&nbsp;
   <button className="w3-button demo" onClick={text_on_layer}>Get Text On Layer</button>&nbsp;
+  <button className="w3-button demo" onClick={loadfile}>Load testfile</button>&nbsp;
   
   <br/>
   <br/>
