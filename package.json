@@ -1,6 +1,6 @@
 {
   "name": "cadviewer-testapp-react-01",
-  "version": "10.70.1",
+  "version": "10.70.9",
   "description": "CADViewer - JavaScript CAD Viewer sample implementation for ReactJS",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.9",
