@@ -2,7 +2,7 @@ import React, { Component }  from 'react';
 //import {findDOMNode } from 'react-dom';
 //import logo from './logo.svg';
 //import { render } from '@testing-library/react';
-//import  ResizeObserver from 'rc-resize-observer';
+//import  ResizeObserver from 'rc-resize-observFer';
 // import { View } from 'react-native';
 //import 'jquery-ui';
 import jQuery from "jquery";
@@ -159,6 +159,11 @@ function cvjs_graphicalObjectOnChange(type, graphicalObject, spaceID, evt){
 
 	if (graphicalObject.toLowerCase().indexOf("space")!==-1){
 		myobject = cadviewer.cvjs_returnSpaceObjectID(spaceID);
+		if (myobject == null || myobject == undefined){
+			console.log("Object with ID "+spaceID+" not found in Space Objects");
+			return;
+		}
+
 		console.log("This Object "+myobject.id+" with name "+myobject.name+" has Parent: "+myobject.parent);
 
 
@@ -868,7 +873,9 @@ class CADViewer extends Component {
 		FileName = ServerBackEndUrl+ "/content/drawings/dwg/hq17_.dwg";
 
 
+		//FileName = ServerBackEndUrl+ "/content/drawings/dwg/hq17_.dwg";
 	
+		FileName = ServerBackEndUrl + "/content/custom/hyphen.com/tests/bitmap-image-test.svg";	
 
 
 		cadviewer.cvjs_debugMode(true);
