@@ -728,6 +728,21 @@ function cvjs_customCommand_20(){
 };
 
 
+// 10.80.4
+  function cvjs_QuickCountColorSelected(fill, stroke){
+
+    window.alert("cvjs_QuickCountColorSelected fill: "+fill+" stroke: "+stroke);
+
+    var currentQuickCountID = "NEWID"; // orange, red, green, blue, purple, yellow
+    var currentQuickCountType = "NewType"; // orange, red, green, blue, purple, yellow
+    var currentQuickCountSettings = {"stroke": stroke, "stroke-width" : "0.5", "fill" : fill, "fill-opacity": "0.8"}
+
+    cadviewer.cvjs_setClickCounterActiveType(currentQuickCountType, currentQuickCountID, currentQuickCountSettings)
+
+  }
+
+
+
 function cvjs_insertSpaceObjectCustomCodePlaceholder(){
 	console.log("callback for spaceobject insertion, do custom checks here if false the insertion is aborted, if true continued as usual");
 	return true;
@@ -875,7 +890,7 @@ class CADViewer extends Component {
 
 		//FileName = ServerBackEndUrl+ "/content/drawings/dwg/hq17_.dwg";
 	
-		FileName = ServerBackEndUrl + "/content/custom/hyphen.com/tests/bitmap-image-test.svg";	
+		//FileName = ServerBackEndUrl + "/content/custom/hyphen.com/tests/bitmap-image-test.svg";	
 
 
 		cadviewer.cvjs_debugMode(true);
@@ -970,6 +985,9 @@ class CADViewer extends Component {
         cadviewer.cvjs_setCallbackMethod("cvjs_customCommand_19", cvjs_customCommand_19);
         cadviewer.cvjs_setCallbackMethod("cvjs_customCommand_20", cvjs_customCommand_20);
 
+
+		// 10.80.4
+        cadviewer.cvjs_setCallbackMethod("cvjs_QuickCountColorSelected", cvjs_QuickCountColorSelected)
 
 
 		// END set all callback methods

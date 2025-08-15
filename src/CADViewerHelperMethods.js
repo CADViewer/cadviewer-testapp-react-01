@@ -1339,6 +1339,72 @@ function loadfile(){
 
 
 
+var clickCounterCollection = [];
+
+
+function setClickTypeOrange() {
+
+var currentQuickCountType = "orange"; // orange, red, green, blue, purple, yellow
+  var currentQuickCountID = "O1";
+var currentQuickCountSettings = {"stroke": "#FF7F27", "stroke-width" : "0.5", "fill" : "#FF7F27", "fill-opacity": "0.8"}
+
+  cadviewer.cvjs_setClickCounterActiveType(currentQuickCountType, currentQuickCountID, currentQuickCountSettings)
+
+}
+
+
+function setClickTypeGreen() {
+
+  var currentQuickCountType = "green";
+  var currentQuickCountID = "G2";
+  var currentQuickCountSettings = {"stroke": "#0F0", "stroke-width" : "0.5", "fill" : "#0F0", "fill-opacity": "0.8"}
+
+  cadviewer.cvjs_setClickCounterActiveType(currentQuickCountType, currentQuickCountID, currentQuickCountSettings)
+
+}
+
+
+function setClickTypeBlue() {
+
+  var currentQuickCountType = "blue";
+  var currentQuickCountID = "B3";
+  var currentQuickCountSettings = {"stroke": "#00F", "stroke-width" : "0.5", "fill" : "#00F", "fill-opacity": "0.8"}
+
+  cadviewer.cvjs_setClickCounterActiveType(currentQuickCountType, currentQuickCountID, currentQuickCountSettings)
+
+}
+
+
+
+function getClickCollection() {
+    //console.log("getClickCollection called");
+    clickCounterCollection = cadviewer.cvjs_returnAllClickCounterObjects();
+    console.log("cvjs_clickCounterCollection:", JSON.stringify(clickCounterCollection));
+    //return cvjs_clickCounterCollection;
+}
+
+
+function setClickCollection() {
+
+
+    console.log("before set cvjs_clickCounterCollection:"+JSON.stringify(clickCounterCollection))
+
+    cadviewer.cvjs_setAllClickCounterObjects(clickCounterCollection);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1449,10 +1515,23 @@ class CADViewerHelperMethods extends Component {
   <button className="w3-button demo" onClick={show_node}>Show StickyNote</button>&nbsp;
   <button className="w3-button demo" onClick={text_on_layer}>Get Text On Layer</button>&nbsp;
   <button className="w3-button demo" onClick={loadfile}>Load testfile</button>&nbsp;
-  
+{/*  
   <br/>
   <br/>
-  
+  <button className="w3-button demo" onClick={show_node}>Show StickyNote</button>&nbsp;
+  <button className="w3-button demo" onClick={text_on_layer}>Get Text On Layer</button>&nbsp;
+  <button className="w3-button demo" onClick={loadfile}>Load testfile</button>&nbsp;
+*/}
+<br/>
+
+    <button className="w3-button demo" onClick={getClickCollection}>getClickCollection</button>
+    <button className="w3-button demo" onClick={setClickCollection}>setClickCollection</button>
+    <button className="w3-button demo" onClick={setClickTypeGreen}>setClickTypeGreen</button>
+    <button className="w3-button demo" onClick={setClickTypeBlue}>setClickTypeBlue</button>
+    <button className="w3-button demo" onClick={setClickTypeOrange}>setClickTypeOrange</button>
+
+
+
 
 {/*    remove slider, as implemented internally in CADViewer v6.9.11
   <canvas id="dummy" width="5" height="18"></canvas>
