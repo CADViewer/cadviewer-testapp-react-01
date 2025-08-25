@@ -1353,6 +1353,16 @@ var currentQuickCountSettings = {"stroke": "#FF7F27", "stroke-width" : "0.5", "f
 }
 
 
+function setDistanceMeasurement() {
+
+  cadviewer.cvjs_setMeasurementDefaultType("Distance");  // Distance, Area, Volume, Angle
+  
+}
+
+
+
+
+
 function setClickTypeGreen() {
 
   var currentQuickCountType = "green";
@@ -1529,6 +1539,7 @@ class CADViewerHelperMethods extends Component {
     <button className="w3-button demo" onClick={setClickTypeGreen}>setClickTypeGreen</button>
     <button className="w3-button demo" onClick={setClickTypeBlue}>setClickTypeBlue</button>
     <button className="w3-button demo" onClick={setClickTypeOrange}>setClickTypeOrange</button>
+    <button className="w3-button demo" onClick={setDistanceMeasurement}>setDistanceMeasurement</button>
 
 
 

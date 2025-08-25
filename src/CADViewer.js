@@ -998,6 +998,17 @@ class CADViewer extends Component {
 		  //	var ServerUrl =    
 		 cadviewer.cvjs_CADViewerPro(true);
 
+		 /*  10.82.2
+        cadviewer.cvjs_setUnitForCalibrate("feet");
+        cadviewer.cvjs_setCalibrateUnitType("imperial");  // imperial: feet and inch  , 
+        cadviewer.cvjs_setMeasurementSelectionType(2); // 2 = distance,area
+        cadviewer.cvjs_setMeasurementDefaultType("Area");  // Distance, Area, Volume, Angle
+		
+		*/
+
+
+		// 10.82.2
+
 
 
 		 
