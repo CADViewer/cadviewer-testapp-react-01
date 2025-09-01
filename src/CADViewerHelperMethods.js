@@ -1405,6 +1405,25 @@ function setClickCollection() {
 
 
 
+function getUnits(){
+    //cvjs_initAllCalibrations();
+    window.alert(JSON.stringify(cadviewer.cvjs_getCurrentMeasurementUnits("floorPlan")));
+}
+
+var calibrationCollection = [];
+
+function getCalibrations(){
+    calibrationCollection = JSON.parse(cadviewer.cvjs_returnAllCalibrations());
+    console.log("getAllCalibrations:"+JSON.stringify(calibrationCollection));
+}
+
+function setCalibrations(){
+  console.log("setAllCalibrations:"+JSON.stringify(calibrationCollection));
+  cadviewer.cvjs_setAllCalibrations(JSON.stringify(calibrationCollection));
+//  console.log("setAllCalibrations:"+JSON.stringify(calibrationCollection));
+}
+
+
 
 
 
@@ -1540,6 +1559,9 @@ class CADViewerHelperMethods extends Component {
     <button className="w3-button demo" onClick={setClickTypeBlue}>setClickTypeBlue</button>
     <button className="w3-button demo" onClick={setClickTypeOrange}>setClickTypeOrange</button>
     <button className="w3-button demo" onClick={setDistanceMeasurement}>setDistanceMeasurement</button>
+    <button className="w3-button demo" onClick={getUnits}>getUnits</button>
+    <button className="w3-button demo" onClick={getCalibrations}>getCalibrations</button>
+    <button className="w3-button demo" onClick={setCalibrations}>setCalibrations</button>
 
 
 

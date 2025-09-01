@@ -1027,6 +1027,22 @@ class CADViewer extends Component {
 
 
 
+		// control calibration and measurements
+        cadviewer.cvjs_setUnitForCalibrate("feet");
+//        cvjs_setCalibrationTypes("all", "all");  
+        cadviewer.cvjs_setCalibrationTypes("imperial", "distance", true);  // imperial, metric, all     , all or distance for parameter two, parameter to show calibratemodal before calibration
+//        cadviewer.cvjs_setCalibrationTypes("metric", "all", false);  // imperial, metric, all     , all or distance for parameter two, parameter to show calibratemodal before calibration
+        cadviewer.cvjs_setMeasurementSelectionType(2); // 2 = distance,area
+
+
+
+
+
+
+
+
+
+
 		 cadviewer.cvjs_DisplayCoordinatesMenu("floorPlan",true);
 
 		// 6.9.18
