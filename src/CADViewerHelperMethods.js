@@ -1424,10 +1424,46 @@ function setCalibrations(){
 }
 
 
+function setCalibrationModal(){
+  console.log("setCalibrationModal:");
+  cadviewer.cvjs_setSelectCalibration('floorPlan', 'cvjs_addPolygonSpaceObject', false);
+//  console.log("setAllCalibrations:"+JSON.stringify(calibrationCollection));
+}
+
+
+
+function addcircle(){
+  console.log("addcircle:");
+  cadviewer.cvjs_addSpaceObjectCircle('floorPlan', '1', 'mytype', 'first circle', 'spaceobjeclayer')
+}
 
 
 
 
+
+ var allspace = null
+
+function getallspaceobjects(){
+
+  //console.log(JSON.stringify(cvjs_returnAllSpaceObjects()))
+  allspace = cadviewer.cvjs_returnAllSpaceObjects();
+  //console.log(JSON.stringify(cvjs_returnAllSpaceObjects()))
+
+  for (var i=0; i<allspace.SpaceObjects.length; i++) { 
+  //    console.log(i+" id:"+allspace[i].id+" name:"+allspace[i].name+" layer:"+allspace[i].data("layer"));
+      console.log(" full:"+JSON.stringify(allspace.SpaceObjects[i]));  
+      console.log(" ");  
+  }
+
+}
+
+
+function setallspaceobjects(){
+
+    cadviewer.cvjs_setSpaceObjectsStructureDirect("floorPlan", JSON.stringify(allspace ) );
+    window.alert("Insert JSONSpaceObjects JSON with SPACES");
+
+}
 
 
 
@@ -1562,6 +1598,10 @@ class CADViewerHelperMethods extends Component {
     <button className="w3-button demo" onClick={getUnits}>getUnits</button>
     <button className="w3-button demo" onClick={getCalibrations}>getCalibrations</button>
     <button className="w3-button demo" onClick={setCalibrations}>setCalibrations</button>
+    <button className="w3-button demo" onClick={setCalibrationModal}>setCalibrationModal</button>
+    <button className="w3-button demo" onClick={addcircle}>addcircle</button>
+    <button className="w3-button demo" onClick={getallspaceobjects}>getallspaceobjects</button>
+    <button className="w3-button demo" onClick={setallspaceobjects}>setallspaceobjects</button>
 
 
 

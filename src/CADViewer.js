@@ -278,7 +278,21 @@ function cvjs_graphicalObjectOnChange(type, graphicalObject, spaceID, evt){
 		myobject = cadviewer.cvjs_returnSpaceObjectID(spaceID);
 
 	}
+
 	
+
+	if (type == 'Click' && graphicalObject.toLowerCase().indexOf("spaceobject")>-1 ){
+		// remove this entry from my DB
+		// fire off my own modal
+		//window.alert("This object has been Clicked: "+spaceID)		
+		// reset highlights afterwards with cadviewer.cvjs_hideOnlyPop();
+		//myobject = cadviewer.cvjs_returnSpaceObjectID(spaceID);
+
+	}
+
+
+
+
 	// REDLINE & STICKYNOTE OBJECTS
 
 
@@ -362,18 +376,21 @@ cadviewer.cvjs_openRedlineLoadModal("floorPlan");
 // this is template on all the good stuff users can add
 function my_own_clickmenu1(){
 var id = cadviewer.cvjs_idObjectClicked();
-//		var node = cvjs_NodeObjectClicked();
-window.alert("Custom menu item 1: Here developers can implement their own methods, the look and feel of the menu is controlled in the settings.  Clicked object ID is: "+id);
+	//		var node = cvjs_NodeObjectClicked();
+	window.alert("Custom menu item 1: Here developers can implement their own methods, the look and feel of the menu is controlled in the settings.  Clicked object ID is: "+id);
+	cadviewer.cvjs_hideOnlyPop();
+
 }
 
 // Here we are writing a basic function that will be used in the PopUpMenu
 // this is template on all the good stuff users can add
 function my_own_clickmenu2(){
 var id = cadviewer.cvjs_idObjectClicked();
-//var node = cvjs_NodeObjectClicked();
+	//var node = cvjs_NodeObjectClicked();
 
-window.alert("Custom menu item 2: Here developers can implement their own methods, the look and feel of the menu is controlled in the settings. Clicked object ID is: "+id);
-//window.alert("Custom menu item 2: Clicked object Node is: "+node);
+	window.alert("Custom menu item 2: Here developers can implement their own methods, the look and feel of the menu is controlled in the settings. Clicked object ID is: "+id);
+	//window.alert("Custom menu item 2: Clicked object Node is: "+node);
+	cadviewer.cvjs_hideOnlyPop();
 }
 
 function cvjs_popupTitleClick(roomid){
@@ -757,6 +774,9 @@ function cvjs_insertSpaceObjectCustomCodePlaceholder(){
 
 function myCustomPopUpBody(rmid){
 
+
+	return(myCustomPopUpBodyHyphen(rmid));
+
 	// set custom color on modal
 	//cadviewer.cvjs_styleQTip_color(true, '#3DCD5D', '#293133', '#293133', '#293133', '#293133');
 
@@ -824,6 +844,60 @@ function populateMyCustomPopUpBody(rmid, node){
 
 
 
+// SAMPLE CALLBACK
+function myCustomPopUpBodyHyphen(rmid){
+    console.log("rmid:"+rmid);
+
+	var cvjsPopUpBody = "";
+    //cvjs_styleQTip("#000", "16pt");
+    cadviewer.cvjs_setQtipLocation("top center", "center left");
+//    cvjs_setQtipLocation("bottom center", "top left");
+    cadviewer.cvjs_styleQTip_color(true, '#FFF', '#FFF', '#000', '#000', '#000');
+    //cvjs_styleQTip_color(true, '#565656', '#565656', '#000', '#000', '#000');
+//    cvjs_styleQTip_fontsize(true, '16pt', '14pt', '12pt', '5px', '11pt', "Arial, Helvetica, sans-serif");
+    cadviewer.cvjs_styleQTip_fontsize(true, '14pt', '12pt', '12pt', '5px', '11pt', "Arial, Helvetica, sans-serif");
+
+    var customcolor = "#383838";
+
+    // make a custom header that overrides the default heade
+    cadviewer.cvjs_styleQTip_setHeader(true, "Space Object Options", customcolor);
+    cadviewer.cvjs_styleQTip_processbody(false);
+	cadviewer.cvjs_styleQTip_setWidth(340);
+        // get my text information 
+
+//      jQuery(".cvjs-modal-styles").css({'width' : '300px' });
+
+      var text1 = "No cost item selected on creation.";
+
+
+      // Based on rmid and customer, set the proper AREA
+      var text2 = "Current Area :"+"236.48"+" sqft";
+
+      // NOTE: callback for buttons in my_own_clickmenu2() and my_own_clickmenu1()
+
+      cvjsPopUpBody =  "<div class=\"cvjs_modal_styles\" style=\"background-color: none; color: #000; \">";
+      cvjsPopUpBody += "<canvas id=\"dummy\" width=\"1\" height=\"20\"></canvas><span </span> <canvas id=\"dummy\" width=\"3\" height=\"18\"></canvas> <span style=\"cursor: none; color:"+customcolor+"\">"+text1+"</span><br>";
+      cvjsPopUpBody += "<canvas id=\"dummy\" width=\"1\" height=\"20\"></canvas><span </span> <canvas id=\"dummy\" width=\"3\" height=\"18\"></canvas> <span  style=\"cursor: none; color:"+customcolor+"\">"+text2+"</span><br>";
+      cvjsPopUpBody += "<hr>";
+      cvjsPopUpBody += "<canvas id=\"dummy\" width=\"130\" height=\"10\"></canvas></span> <canvas id=\"dummy\" width=\"3\" height=\"18\"></canvas>  <button onclick=\"my_own_clickmenu1()\" style=\"cursor: pointer;;background:#6C747C; color:#DEE6ED; border-radius:4px !important; left:100px\"><span class=\"fa fa-remove\"></span> Remove </button><canvas id=\"dummy\" width=\"20\" height=\"10\"></canvas> <button onclick=\"my_own_clickmenu2()\" style=\"cursor: pointer;background:#6C747C; color:#DEE6ED; border-radius:4px !important; right: 10px !important\">Close </button>";
+
+        // fa-folder-open
+      
+	return cvjsPopUpBody;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 class CADViewer extends Component {
 
 	async componentDidMount () {
@@ -870,6 +944,9 @@ class CADViewer extends Component {
 		var ServerUrl = "http://localhost:8000/";
 	
 
+
+
+		cadviewer.cvjs_setNoModalMode(false);
 
 
 //		cadviewer.cvjs_setIconImageSize("floorPlan",34, 44);  // standard sizes, no need to change these, modify if 7 skin and want to scale
@@ -1030,7 +1107,8 @@ class CADViewer extends Component {
 		// control calibration and measurements
         cadviewer.cvjs_setUnitForCalibrate("feet");
 //        cvjs_setCalibrationTypes("all", "all");  
-        cadviewer.cvjs_setCalibrationTypes("imperial", "distance", true);  // imperial, metric, all     , all or distance for parameter two, parameter to show calibratemodal before calibration
+//        cadviewer.cvjs_setCalibrationTypes("imperial", "distance", true);  // imperial, metric, all     , all or distance for parameter two, parameter to show calibratemodal before calibration
+        cadviewer.cvjs_setCalibrationTypes("all", "distance", true);  // imperial, metric, all     , all or distance for parameter two, parameter to show calibratemodal before calibration
 //        cadviewer.cvjs_setCalibrationTypes("metric", "all", false);  // imperial, metric, all     , all or distance for parameter two, parameter to show calibratemodal before calibration
         cadviewer.cvjs_setMeasurementSelectionType(2); // 2 = distance,area
 
