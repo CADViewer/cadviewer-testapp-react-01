@@ -1,6 +1,6 @@
 # cadviewer-testapp-react-01
 
-ReactJS CADViewer front-end sample
+ReactJS CADViewer front-end sample based on Function components.
 
 The repository contains a full setup of CADViewer with React.
 
