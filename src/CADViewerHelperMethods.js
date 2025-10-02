@@ -1467,7 +1467,11 @@ function setallspaceobjects(){
 
 
 
+function myclickmenu(){
 
+cadviewer.cvjs_addSpaceObjectRectangle('floorPlan', '2384023408', 'concrete wall', 'X2345', 'concreteLayer')
+
+}
 
 
 
@@ -1602,6 +1606,7 @@ class CADViewerHelperMethods extends Component {
     <button className="w3-button demo" onClick={addcircle}>addcircle</button>
     <button className="w3-button demo" onClick={getallspaceobjects}>getallspaceobjects</button>
     <button className="w3-button demo" onClick={setallspaceobjects}>setallspaceobjects</button>
+    <button className="w3-button demo" onClick={myclickmenu}>cvjs_addSpaceObjectRectangle(f_div, ID, type, name, layer)</button>
 
 
 
