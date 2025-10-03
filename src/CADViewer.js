@@ -123,6 +123,22 @@ function cvjs_OnLoadEnd(){
 	//cadviewer.cvjs_setWatermarks("Hello World-你好世界!", "这个真是好东西！2022-09-01", "#A3A3A3", true);
 
 
+	// set a base color for creating space objects
+
+
+        var colorObject = {
+            fill:  '#3CB043', 
+            "fill-opacity": "0.3",   
+            stroke: '#234F1E',  
+            'stroke-width': "1",
+            'stroke-linejoin': 'round',
+        };
+            
+        cadviewer.cvjs_setDefaulSpaceObjectColor(colorObject)
+
+
+
+
 
 }
 
@@ -1232,33 +1248,75 @@ class CADViewer extends Component {
 		// main application "app" folder. It can be either absolute or relative
 
 		
+/*
+	var BaseAttributes = {
+		fill: '#d8e1e3', //'#d8e1e3', // '#ffd7f4', //'#D3D3D3',   // #FFF   #ffd7f4
+		"fill-opacity": "0.1",
+		stroke: '#CCC',  //  #CCC
+		'stroke-width': 0.5,
+		'stroke-opacity': "0.7",
+		'stroke-linejoin': 'round'
+	};
 
-			var BaseAttributes = {
-				fill: '#d8e1e3', //'#d8e1e3', // '#ffd7f4', //'#D3D3D3',   // #FFF   #ffd7f4
-				"fill-opacity": "0.1",
-				stroke: '#CCC',  //  #CCC
-				'stroke-width': 0.5,
-				'stroke-opacity': "0.7",
-				'stroke-linejoin': 'round'
-			};
+	// Location Highlight Attribute    (no separation between location types)
+	var HighlightAttributes = {
+		fill: '#a4d7f4',
+		"fill-opacity": "0.8",
+		stroke: '#a4d7f4',
+		'stroke-width': 1,
+		'stroke-opacity': "0.8"
+	};
 
-			// Location Highlight Attribute    (no separation between location types)
-			var HighlightAttributes = {
-				fill: '#a4d7f4',
-				"fill-opacity": "0.8",
-				stroke: '#a4d7f4',
-				'stroke-width': 1,
-				'stroke-opacity': "0.8"
-			};
+	// Location Select Attribute    (no separation between location types)
+	var SelectAttributes = {   // fill: '#5BBEF6',
+		fill: '#5BBEF6',
+		"fill-opacity": "0.8",
+		stroke: '#5BBEF6',
+		'stroke-width': 1,
+		'stroke-opacity': "0.8"
+	};
 
-			// Location Select Attribute    (no separation between location types)
-			var SelectAttributes = {   // fill: '#5BBEF6',
-				fill: '#5BBEF6',
-				"fill-opacity": "0.8",
-				stroke: '#5BBEF6',
-				'stroke-width': 1,
-				'stroke-opacity': "0.8"
-			};
+*/
+		// 10.90.23
+
+	var BaseAttributes = {
+		fill: '#FFF', 
+		"fill-opacity": 0.01, 
+		stroke: '#FFF',  
+		'stroke-width': 0.1, //0.5,  // 4
+		'stroke-linejoin': 'round',
+		'stroke-opacity': 0.01,
+	};
+
+	// Location Highlight Attribute    (no separation between location types)
+	var HighlightAttributes = {
+		fill: '#Ffa500' , //'#00F', //'#F4d7f4', //'#a4d7f4',
+		"fill-opacity": 0.3,
+		stroke: '#7B3804', //'#00F', // '#a4d7f4',
+		'stroke-width': 2.5, //0.2,
+		'stroke-linejoin': 'round',
+		'stroke-opacity': 1.0,
+	};
+
+	// Location Select Attribute    (no separation between location types)
+	var SelectAttributes = {   // fill: '#5BBEF6',
+		fill: '#F00', //'#5BFEF6', //'#5BBEF6',
+		"fill-opacity": 0.3,
+		stroke: '#5B0303', //'#5BBEF6',
+		'stroke-linejoin': 'round',
+		'stroke-width': 4, //0.23,
+		'stroke-opacity': 1.0,
+	};
+
+
+
+
+
+
+
+
+
+
 
 
 
