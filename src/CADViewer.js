@@ -132,8 +132,7 @@ function cvjs_OnLoadEnd(){
             stroke: '#234F1E',  
             'stroke-width': "1",
             'stroke-linejoin': 'round',
-        };
-            
+        };            
         cadviewer.cvjs_setDefaulSpaceObjectColor(colorObject)
 
 

@@ -1322,14 +1322,12 @@ function exit_quickcount(){
 
 function loadfile(){ 
 
-  var FileName = "http://localhost:3000" + "/content/custom/bpretail/4386-SP1.svg";		
-
   var FileName = "http://localhost:3000" + "/content/drawings/dwg/hq17_.dwg";		
 
-
-  var FileName = "http://localhost:3000" + "/content/custom/bpretail/2352-LP1.svg";		
-
-
+  /*
+  var FileName = "http://localhost:3000" + "/content/custom/myfile/4386-SP1.svg";		
+  var FileName = "http://localhost:3000" + "/content/custom/myfile/2352-LP1.svg";		
+*/
 
   cadviewer.cvjs_LoadDrawing("floorPlan", FileName);
 
@@ -1476,7 +1474,68 @@ cadviewer.cvjs_addSpaceObjectRectangle('floorPlan', '2384023408', 'concrete wall
 
 
 
+  /*
+    fill: "#00FFFF", 
+    "fill-opacity": 0.2, 
+    stroke: "#00FFFF",  
+    "stroke-width": 0.5,  
+    "stroke-linejoin": 'round',
+    "stroke-opacity": 0.2,
 
+}*/
+
+
+
+var DefaultSpaceObjectAttributes = {
+
+            fill:  '#FF0000', //'#3CB043', 
+            "fill-opacity": "0.3",      // fill opacity set to 0.1
+            stroke: '#FF0000', //'#234F1E',  
+            'stroke-linejoin': 'round',
+            'stroke-width': "0.6",
+            'stroke-opacity': 1.0,
+};
+
+
+
+var		cvjsNEWBaseAttributes = {
+        fill: "#F00", 
+        "fill-opacity": 0.1, 
+        stroke: "#F00",  
+        "stroke-width": 0.1, //0.5,  // 4
+        "stroke-linejoin": 'round',
+        "stroke-opacity": 0.01,
+    };
+			
+var		cvjsNEWHighlightAttributes = {
+        fill: "#0F0" , //'#00F', //'#F4d7f4', //'#a4d7f4',
+        "fill-opacity": 0.3,
+        stroke: "#7B3804", //'#00F', // '#a4d7f4',
+        "stroke-width": 2.5, //0.2,
+        "stroke-linejoin": "round",
+        "stroke-opacity": 1.0,
+      };
+					
+var		cvjsNEWSelectAttributes = {
+          fill: "#00F", //'#5BFEF6', //'#5BBEF6',
+          "fill-opacity": 0.8,
+          stroke: "#5B0303", //'#5BBEF6',
+          "stroke-linejoin": "round",
+          "stroke-width": 4, //0.23,
+          "stroke-opacity": 1.0,
+        };
+
+
+function testdefaultattributes() {    
+    cadviewer.cvjs_setDefaultSpaceObjectColor(DefaultSpaceObjectAttributes);
+//    cvjs_setSpaceObjectHighlightStyles(cvjsNEWBaseAttributes, cvjsNEWHighlightAttributes, cvjsNEWSelectAttributes);
+}
+
+function testdefaultattributes2() {    
+    cadviewer.cvjs_setDefaultSpaceObjectColor(DefaultSpaceObjectAttributes);
+//    cvjs_setDefaultSpaceObjectColor(DefaultSpaceObjectAttributes);
+    cadviewer.cvjs_setSpaceObjectHighlightStyles(cvjsNEWBaseAttributes, cvjsNEWHighlightAttributes, cvjsNEWSelectAttributes);
+}
 
 
 
@@ -1563,8 +1622,6 @@ class CADViewerHelperMethods extends Component {
     <button className="w3-button demo" onClick={cadviewerCanvasMethod07}>Select Handles -CLICK (DblClick End) (hlall in ax2023)</button>
     <button className="w3-button demo" onClick={loadprocessedsvg}>Load processed SVG</button>
     <button className="w3-button demo" onClick={checknumberoftypes}>Check number of types</button>
-
-
 {/*
     <br/><b><i>IOT commands:</i>&nbsp; </b> 
     &nbsp;&nbsp;&nbsp;&nbsp;  <button className="w3-button demo" onClick={copy_group_object}><i>Copy Group</i></button>&nbsp;<input type="text" id="copy_org_id" defaultValue="orgid" />&nbsp;<input type="text" id="copy_new_id" defaultValue="newid" /><button className="w3-button demo" onClick={hide_object_in_group}>Hide Subgroup In Group</button>&nbsp;&nbsp;  <button className="w3-button demo" onClick={show_object_in_group}>Show Subgroup In Group</button>&nbsp;
@@ -1593,6 +1650,9 @@ class CADViewerHelperMethods extends Component {
 */}
 <br/>
 
+{/*  Lots of good testing stuff for ClickCounter and Calibrations 
+
+
     <button className="w3-button demo" onClick={getClickCollection}>getClickCollection</button>
     <button className="w3-button demo" onClick={setClickCollection}>setClickCollection</button>
     <button className="w3-button demo" onClick={setClickTypeGreen}>setClickTypeGreen</button>
@@ -1608,6 +1668,11 @@ class CADViewerHelperMethods extends Component {
     <button className="w3-button demo" onClick={setallspaceobjects}>setallspaceobjects</button>
     <button className="w3-button demo" onClick={myclickmenu}>cvjs_addSpaceObjectRectangle(f_div, ID, type, name, layer)</button>
 
+
+    <button className="w3-button demo" onClick={testdefaultattributes}>testdefaultattributes</button>
+    <button className="w3-button demo" onClick={testdefaultattributes2}>testdefaultattributes2</button>
+
+*/}
 
 
 
