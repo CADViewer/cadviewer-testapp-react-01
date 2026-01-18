@@ -1,6 +1,6 @@
 {
   "name": "cadviewer-testapp-react-01",
-  "version": "11.1.12",
+  "version": "11.9.6",
   "description": "CADViewer - JavaScript CAD Viewer sample implementation for ReactJS",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.9",
@@ -15,8 +15,8 @@
     "web-vitals": "^1.1.0"
   },
   "scripts": {
-    "start": "set PORT=8000 && react-scripts start",
-    "build": "react-scripts build",
+    "start": "set NODE_OPTIONS=--openssl-legacy-provider && set PORT=8000 && react-scripts start",
+    "build": "set NODE_OPTIONS=--openssl-legacy-provider && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
