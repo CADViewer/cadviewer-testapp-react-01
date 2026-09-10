@@ -19,7 +19,18 @@ var iconObjectCounter = 1;
 
 
 
+// Authorization gate: only users with an editor/admin role may perform CAD-modifying operations
+function isAuthorizedCadOperation(operationName){
+  var userRole = window.cvjs_userRole || jQuery('body').attr('data-user-role');
+  if (userRole !== 'admin' && userRole !== 'editor'){
+    console.warn("Unauthorized attempt to perform CAD operation: " + operationName);
+    return false;
+  }
+  return true;
+}
+
 function insert_from_type_id_image(){
+  if (!isAuthorizedCadOperation('insert_from_type_id_image')) return;
 
   var loadSpaceImage_Location = "/cadviewer/content/drawings/svg/" + jQuery('#image_sensor_location').val();
   var loadSpaceImage_ID = jQuery('#image_ID').val();
@@ -218,6 +229,7 @@ var generic_dblclick_method_01 = function(e,x,y) {
 // BLOCK CONTROL METHODS
 
 function AudioVisual(){
+  if (!isAuthorizedCadOperation('AudioVisual')) return;
 
   var spaceObjectIds = cadviewer.cvjs_getSpaceObjectIdList();
       console.log(" IDs:"+spaceObjectIds.length);
@@ -236,6 +248,7 @@ function AudioVisual(){
 
 
   function SigaPS(){
+    if (!isAuthorizedCadOperation('SigaPS')) return;
 
     var spaceObjectIds = cadviewer.cvjs_getSpaceObjectIdList();
     console.log(" IDs:"+spaceObjectIds.length);
