@@ -17,9 +17,18 @@ import * as CV from "./CADViewerBlocks01.js";
 var selectedColor = "#0000FF";
 var iconObjectCounter = 1;
 
-
+// Sensitive CAD operations (insert/modify space objects, canvas edits) must only be
+// performed by an authenticated user. Require a valid session token before proceeding.
+function isAuthenticated(){
+  return !!window.sessionStorage.getItem('cvjs_authToken');
+}
 
 function insert_from_type_id_image(){
+
+  if (!isAuthenticated()){
+    window.alert("You must be logged in to perform this action.");
+    return;
+  }
 
   var loadSpaceImage_Location = "/cadviewer/content/drawings/svg/" + jQuery('#image_sensor_location').val();
   var loadSpaceImage_ID = jQuery('#image_ID').val();
@@ -127,6 +136,11 @@ var current_selected_handle = "";
 
 function cadviewerCanvasMethod01(){
 
+  if (!isAuthenticated()){
+    window.alert("You must be logged in to perform this action.");
+    return;
+  }
+
   cadviewer.cvjs_executeCustomCanvasMethod_drag(generic_start_method_01, generic_stop_method_01, generic_move_method_01,'')
 
 }
@@ -219,6 +233,11 @@ var generic_dblclick_method_01 = function(e,x,y) {
 
 function AudioVisual(){
 
+  if (!isAuthenticated()){
+    window.alert("You must be logged in to perform this action.");
+    return;
+  }
+
   var spaceObjectIds = cadviewer.cvjs_getSpaceObjectIdList();
       console.log(" IDs:"+spaceObjectIds.length);
 
@@ -236,6 +255,11 @@ function AudioVisual(){
 
 
   function SigaPS(){
+
+    if (!isAuthenticated()){
+      window.alert("You must be logged in to perform this action.");
+      return;
+    }
 
     var spaceObjectIds = cadviewer.cvjs_getSpaceObjectIdList();
     console.log(" IDs:"+spaceObjectIds.length);
