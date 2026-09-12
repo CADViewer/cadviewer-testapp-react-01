@@ -1,10 +1,10 @@
-# CADViewer React Application (Legacy Functional Components Demo)
+# CADViewer React Application (Legacy Class Components Demo)
 
-This project is a React web application demonstrating **CADViewer** integration utilizing legacy React functional components. It serves as an API testbed and interactive sample for loading, browsing, and manipulating CAD files (DWG, DGN, PDF, SVG, etc.) dynamically via the CADViewer JS API.
+This project is a React web application demonstrating **CADViewer** integration utilizing legacy React class components. It serves as an API testbed and interactive sample for loading, browsing, and manipulating CAD files (DWG, DGN, PDF, SVG, etc.) dynamically via the CADViewer JS API.
 
 ## 🚀 Technologies Used
 
-- **Framework:** [React](https://reactjs.org/) (Functional Components)
+- **Framework:** [React](https://reactjs.org/) (Class Components)
 - **Styling:** [Bootstrap 5](https://getbootstrap.com/)
 - **CAD Engine:** [CADViewer API](https://cadviewer.com/) & AutoXchange Conversion Server
 
