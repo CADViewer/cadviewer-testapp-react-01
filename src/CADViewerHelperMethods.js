@@ -1569,129 +1569,97 @@ class CADViewerHelperMethods extends Component {
 
   render(){
     return (
-      <div className="CADViewerHelperMethods">
+      <div className="CADViewerHelperMethods container-fluid py-2 bg-light border-bottom">
 
-{/*}
-        CADViewer: Space Objects and Canvas Methods Interface  <font size="-1"> - Read more: <strong><a href="https://cadviewer.com/cadviewertechdocs/samples/spaceicons/">Tech Docs</a></strong>. Contact: <a href="mailto:developer@tailormade.com">developer@tailormade.com</a>.</font></h4>
-        New Space Type/ID/Image:&nbsp; <button className="w3-button demo" onClick="insert_from_type_id_image();">New Space Object</button>&nbsp;&nbsp; Update Group ID: &nbsp; <button className="w3-button demo" onClick="update_group_with_path();">Add Path Object to Group</button>&nbsp; 
-        <br/>Second group ID: &nbsp; &nbsp;<input type="text" id="group_2" defaultValue="NODE_xx" />&nbsp;<input type="text" id="group_2_subid" defaultValue="id_01" />&nbsp;<button className="w3-button demo" onClick="update_group_with_group();">Add Group to Group</button>&nbsp; &nbsp; <button className="w3-button demo" onClick="hide_object_in_group();">Hide Object In Group</button>&nbsp;&nbsp;  <button className="w3-button demo" onClick="show_object_in_group();">Show Object In Group</button>&nbsp;
-    */}
+        {/* Row 1: Space Object Creation */}
+        <div className="d-flex flex-wrap align-items-center gap-2 mb-2">
+          <span className="fw-bold small">Space Type:</span>
+          <input type="text" className="form-control form-control-sm w-auto" id="image_Type" defaultValue="Wifi" />
+          
+          <span className="fw-bold small ms-2">Space ID:</span>
+          <input type="text" className="form-control form-control-sm w-auto" id="image_ID" defaultValue="wifi_1" />
+          
+          <span className="fw-bold small ms-2">Space Image:</span>
+          <input type="text" className="form-control form-control-sm w-auto" id="image_sensor_location" defaultValue="wifi_25.svg" />
+          
+          <span className="fw-bold small ms-2">Create:</span>
+          <button className="btn btn-primary btn-sm" onClick={insert_from_type_id_image}>New Space Object</button>
+        </div>
 
-<canvas id="dummy" width="5" height="21"></canvas>
-	<strong>Space Type:</strong>&nbsp; 	<input type="text" id="image_Type" defaultValue="Wifi" />
-    <strong>Space ID:</strong>&nbsp; 	<input type="text" id="image_ID" defaultValue="wifi_1" />
-    <strong>Space Image:</strong>&nbsp; 	<input type="text" id="image_sensor_location" defaultValue="wifi_25.svg" />
-    <strong>Create:</strong>&nbsp; 	<button className="w3-button demo" onClick={insert_from_type_id_image}>New Space Object</button>
-    <br/>
-    &nbsp;<b>Highlight Spaces based on Color:&nbsp; </b> <input type="text" id="input_color" defaultValue="#AAAA00" />
-		<button className="w3-button demo" onClick={highlight_all_spaces}>Spaces</button>
-		<button className="w3-button demo" onClick={highlight_all_borders}>Borders</button>
-		<button className="w3-button demo" onClick={highlight_space_type}>Space Type</button>
-		<button className="w3-button demo" onClick={highlight_space_id}>Space ID</button>
-    <button className="w3-button demo" onClick={clear_space_highlight}>Clear All</button>
-    <button className="w3-button demo" onClick={display_all_objects}>All:(id,area)</button>
-    <button className="w3-button demo" onClick={customAddTextToSpaces}>Text on Spaces</button>
-    <button className="w3-button demo" onClick={compareTwoDrawings}>Compare Two Drawings</button>
-    <button className="w3-button demo" onClick={createSampleTextSpaceObject}>Create sample SpaceObject with text</button>
-    <br/>
-    &nbsp;<b>Color:&nbsp; </b> <input type="text" id="input_color" defaultValue="#AAAA00" />
-		Higlight:<button className="w3-button demo" onClick={highlight_all_spaces}>All Spaces</button>
-		<button className="w3-button demo" onClick={highlight_all_borders}>All Borders</button>
-    <strong>Space Type:</strong>&nbsp; 	<input type="text" id="image_Type" defaultValue="Wifi" />
-		<button className="w3-button demo" onClick={highlight_space_type}>Space Type</button>
-    <strong>Space ID:</strong>&nbsp; 	<input type="text" id="image_ID" defaultValue="wifi_1" />
-		<button className="w3-button demo" onClick={highlight_space_id}>Space ID</button>
-    <button className="w3-button demo" onClick={clear_space_highlight}>Clear All</button>
-    <button className="w3-button demo" onClick={hide_all_layers}>All Layers Off</button>&nbsp;
-  <button className="w3-button demo" onClick={show_all_layers}>All Layers On</button>&nbsp;
-  <b>QuickCount:&nbsp; </b> <button className="w3-button demo" onClick={exit_quickcount}>Exit QuickCount</button>&nbsp;
-  <br/>
-    <canvas id="dummy" width="5" height="22"></canvas>
+        {/* Row 2: Highlights (Color) */}
+        <div className="d-flex flex-wrap align-items-center gap-2 mb-2">
+          <span className="fw-bold small">Highlight Spaces based on Color:</span>
+          <input type="text" className="form-control form-control-sm w-auto" id="input_color" defaultValue="#AAAA00" />
+          <button className="btn btn-outline-secondary btn-sm" onClick={highlight_all_spaces}>Spaces</button>
+          <button className="btn btn-outline-secondary btn-sm" onClick={highlight_all_borders}>Borders</button>
+          <button className="btn btn-outline-secondary btn-sm" onClick={highlight_space_type}>Space Type</button>
+          <button className="btn btn-outline-secondary btn-sm" onClick={highlight_space_id}>Space ID</button>
+          <button className="btn btn-danger btn-sm" onClick={clear_space_highlight}>Clear All</button>
+          <button className="btn btn-outline-info btn-sm" onClick={display_all_objects}>All:(id,area)</button>
+          <button className="btn btn-outline-dark btn-sm" onClick={customAddTextToSpaces}>Text on Spaces</button>
+          <button className="btn btn-outline-dark btn-sm" onClick={compareTwoDrawings}>Compare Two Drawings</button>
+          <button className="btn btn-outline-dark btn-sm" onClick={createSampleTextSpaceObject}>Create sample SpaceObject with text</button>
+        </div>
 
+        {/* Row 3: Advanced Highlights & QuickCount */}
+        <div className="d-flex flex-wrap align-items-center gap-2 mb-2">
+          <span className="fw-bold small">Color:</span>
+          <input type="text" className="form-control form-control-sm w-auto" id="input_color" defaultValue="#AAAA00" />
+          <span className="small">Highlight:</span>
+          <button className="btn btn-outline-secondary btn-sm" onClick={highlight_all_spaces}>All Spaces</button>
+          <button className="btn btn-outline-secondary btn-sm" onClick={highlight_all_borders}>All Borders</button>
+          
+          <span className="fw-bold small ms-2">Space Type:</span>
+          <input type="text" className="form-control form-control-sm w-auto" id="image_Type" defaultValue="Wifi" />
+          <button className="btn btn-outline-secondary btn-sm" onClick={highlight_space_type}>Space Type</button>
+          
+          <span className="fw-bold small ms-2">Space ID:</span>
+          <input type="text" className="form-control form-control-sm w-auto" id="image_ID" defaultValue="wifi_1" />
+          <button className="btn btn-outline-secondary btn-sm" onClick={highlight_space_id}>Space ID</button>
+          <button className="btn btn-danger btn-sm" onClick={clear_space_highlight}>Clear All</button>
+          <button className="btn btn-outline-warning btn-sm" onClick={hide_all_layers}>All Layers Off</button>
+          <button className="btn btn-outline-success btn-sm" onClick={show_all_layers}>All Layers On</button>
+          
+          <span className="fw-bold small ms-2">QuickCount:</span>
+          <button className="btn btn-dark btn-sm" onClick={exit_quickcount}>Exit QuickCount</button>
+        </div>
 
+        {/* Row 4: Custom Interactive Canvas Samples */}
+        <div className="d-flex flex-wrap align-items-center gap-2 mb-2">
+          <span className="fw-bold small">Custom Interactive Canvas Samples:</span>
+          <button className="btn btn-outline-primary btn-sm" onClick={cadviewerCanvasMethod01}>Canvas-DRAG (console)</button>
+          <button className="btn btn-outline-primary btn-sm" onClick={cadviewerCanvasMethod02}>Canvas-CLICK (console)</button>
+          <button className="btn btn-outline-primary btn-sm" onClick={cadviewerCanvasMethod03}>Make Rect -CLICK</button>
+          <button className="btn btn-outline-primary btn-sm" onClick={cadviewerCanvasMethod04}>Make Rect -DRAG</button>
+          <button className="btn btn-outline-primary btn-sm" onClick={cadviewerCanvasMethod05}>Select Spaces -DRAG</button>
+          <button className="btn btn-outline-primary btn-sm" onClick={cadviewerCanvasMethod06}>Make Box/Arrow Canvas-CLICK</button>
+          <button className="btn btn-outline-primary btn-sm" onClick={cadviewerCanvasMethod07}>Select Handles -CLICK</button>
+          <button className="btn btn-outline-secondary btn-sm" onClick={loadprocessedsvg}>Load processed SVG</button>
+          <button className="btn btn-outline-secondary btn-sm" onClick={checknumberoftypes}>Check number of types</button>
+        </div>
 
-
-
-    <strong>Custom Interactive Canvas Samples:&nbsp;</strong><canvas id="dummy" width="10" height="10"></canvas>
-		<button className="w3-button demo" onClick={cadviewerCanvasMethod01}>Canvas-DRAG (console)</button>
-		<button className="w3-button demo" onClick={cadviewerCanvasMethod02}>Canvas-CLICK (console)</button>
-		<button className="w3-button demo" onClick={cadviewerCanvasMethod03}>Make Rect -CLICK</button>
-		<button className="w3-button demo" onClick={cadviewerCanvasMethod04}>Make Rect -DRAG</button>
-		<button className="w3-button demo" onClick={cadviewerCanvasMethod05}>Select Spaces -DRAG (rl/tl in ax2023)</button>
-		<button className="w3-button demo" onClick={cadviewerCanvasMethod06}>Make Box/Arrow Canvas-CLICK</button>
-    <button className="w3-button demo" onClick={cadviewerCanvasMethod07}>Select Handles -CLICK (DblClick End) (hlall in ax2023)</button>
-    <button className="w3-button demo" onClick={loadprocessedsvg}>Load processed SVG</button>
-    <button className="w3-button demo" onClick={checknumberoftypes}>Check number of types</button>
-{/*
-    <br/><b><i>IOT commands:</i>&nbsp; </b> 
-    &nbsp;&nbsp;&nbsp;&nbsp;  <button className="w3-button demo" onClick={copy_group_object}><i>Copy Group</i></button>&nbsp;<input type="text" id="copy_org_id" defaultValue="orgid" />&nbsp;<input type="text" id="copy_new_id" defaultValue="newid" /><button className="w3-button demo" onClick={hide_object_in_group}>Hide Subgroup In Group</button>&nbsp;&nbsp;  <button className="w3-button demo" onClick={show_object_in_group}>Show Subgroup In Group</button>&nbsp;
-    <br/><i>Group 1:</i> &nbsp; &nbsp;<input type="text" id="group_1" defaultValue="NODE_xx" />  <i>Group 2:</i> &nbsp; &nbsp;<input type="text" id="group_2" defaultValue="NODE_yy" />&nbsp;<button className="w3-button demo" onClick={update_group_with_group}><i>Add Group to Group</i></button>&nbsp;&nbsp;Subgroup ID:&nbsp;<input type="text" id="group_2_subid" defaultValue="id_01" />&nbsp; &nbsp; 
-*/} 
-
-  <br/>
-  <canvas id="dummy" width="5" height="22"></canvas>
-  <b>Place out Door Objects:&nbsp;</b><button className="w3-button demo" onClick={close_all}>Close all Doors</button>&nbsp;
-  <button className="w3-button demo" onClick={lock_all}>Lock all Doors</button>&nbsp;<button className="w3-button demo" onClick={open_all}>Open All Doors</button>&nbsp; 
-  <input type="text" id="door_id" defaultValue="Door_" />&nbsp;<button className="w3-button demo" onClick={lock_single}>Lock Door</button>&nbsp;
-  <button className="w3-button demo" onClick={close_single}>Close Door</button>&nbsp;<button className="w3-button demo" onClick={retrieve_redlines_stickynotes}>Retrieve Deleted Redlines</button>&nbsp;
-  <button className="w3-button demo" onClick={hide_space_object}>Hide Space Object</button>&nbsp;&nbsp;
-  <button className="w3-button demo" onClick={open_node}>Open StickyNote</button>&nbsp;
-  <button className="w3-button demo" onClick={close_node}>Close StickyNote</button>&nbsp;
-  <button className="w3-button demo" onClick={hide_node}>Hide StickyNote</button>&nbsp;
-  <button className="w3-button demo" onClick={show_node}>Show StickyNote</button>&nbsp;
-  <button className="w3-button demo" onClick={text_on_layer}>Get Text On Layer</button>&nbsp;
-  <button className="w3-button demo" onClick={loadfile}>Load testfile</button>&nbsp;
-{/*  
-  <br/>
-  <br/>
-  <button className="w3-button demo" onClick={show_node}>Show StickyNote</button>&nbsp;
-  <button className="w3-button demo" onClick={text_on_layer}>Get Text On Layer</button>&nbsp;
-  <button className="w3-button demo" onClick={loadfile}>Load testfile</button>&nbsp;
-*/}
-<br/>
-
-{/*  Lots of good testing stuff for ClickCounter and Calibrations 
-
-
-    <button className="w3-button demo" onClick={getClickCollection}>getClickCollection</button>
-    <button className="w3-button demo" onClick={setClickCollection}>setClickCollection</button>
-    <button className="w3-button demo" onClick={setClickTypeGreen}>setClickTypeGreen</button>
-    <button className="w3-button demo" onClick={setClickTypeBlue}>setClickTypeBlue</button>
-    <button className="w3-button demo" onClick={setClickTypeOrange}>setClickTypeOrange</button>
-    <button className="w3-button demo" onClick={setDistanceMeasurement}>setDistanceMeasurement</button>
-    <button className="w3-button demo" onClick={getUnits}>getUnits</button>
-    <button className="w3-button demo" onClick={getCalibrations}>getCalibrations</button>
-    <button className="w3-button demo" onClick={setCalibrations}>setCalibrations</button>
-    <button className="w3-button demo" onClick={setCalibrationModal}>setCalibrationModal</button>
-    <button className="w3-button demo" onClick={addcircle}>addcircle</button>
-    <button className="w3-button demo" onClick={getallspaceobjects}>getallspaceobjects</button>
-    <button className="w3-button demo" onClick={setallspaceobjects}>setallspaceobjects</button>
-    <button className="w3-button demo" onClick={myclickmenu}>cvjs_addSpaceObjectRectangle(f_div, ID, type, name, layer)</button>
-
-
-    <button className="w3-button demo" onClick={testdefaultattributes}>testdefaultattributes</button>
-    <button className="w3-button demo" onClick={testdefaultattributes2}>testdefaultattributes2</button>
-
-*/}
-
-
-
-{/*    remove slider, as implemented internally in CADViewer v6.9.11
-  <canvas id="dummy" width="5" height="18"></canvas>
-  <div className="slidecontainer">
-  <strong><small>SVG Icon Size at Insert: <span id="iconsize"></span></small></strong><input type="range" min="1" max="400"  className="slider" id="myRange"/>
-  </div>
-*/}
-
-
-{/*}
-          <img id ="img1" src={logo} className="CADViewerHelperMethods-logo" alt="logo" />
-          <h4>CADViewerHelperMethods</h4>
-*/} 
-
-          </div>
+        {/* Row 5: Door Objects & Sticky Notes */}
+        <div className="d-flex flex-wrap align-items-center gap-2">
+          <span className="fw-bold small">Place out Door Objects:</span>
+          <button className="btn btn-outline-dark btn-sm" onClick={close_all}>Close all Doors</button>
+          <button className="btn btn-outline-dark btn-sm" onClick={lock_all}>Lock all Doors</button>
+          <button className="btn btn-outline-dark btn-sm" onClick={open_all}>Open All Doors</button>
+          
+          <input type="text" className="form-control form-control-sm w-auto" id="door_id" defaultValue="Door_" />
+          <button className="btn btn-outline-dark btn-sm" onClick={lock_single}>Lock Door</button>
+          <button className="btn btn-outline-dark btn-sm" onClick={close_single}>Close Door</button>
+          <button className="btn btn-outline-info btn-sm" onClick={retrieve_redlines_stickynotes}>Retrieve Deleted Redlines</button>
+          <button className="btn btn-outline-warning btn-sm" onClick={hide_space_object}>Hide Space Object</button>
+          
+          <button className="btn btn-outline-info btn-sm" onClick={open_node}>Open StickyNote</button>
+          <button className="btn btn-outline-info btn-sm" onClick={close_node}>Close StickyNote</button>
+          <button className="btn btn-outline-warning btn-sm" onClick={hide_node}>Hide StickyNote</button>
+          <button className="btn btn-outline-success btn-sm" onClick={show_node}>Show StickyNote</button>
+          <button className="btn btn-outline-secondary btn-sm" onClick={text_on_layer}>Get Text On Layer</button>
+          <button className="btn btn-outline-secondary btn-sm" onClick={loadfile}>Load testfile</button>
+        </div>
+      </div>
     );
   }
 }
-
 export default CADViewerHelperMethods;

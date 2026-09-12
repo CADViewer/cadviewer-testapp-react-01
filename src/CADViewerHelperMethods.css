@@ -59,3 +59,17 @@
 
 
 
+
+/* Compact buttons by 3px top/bottom */
+.CADViewerHelperMethods .btn {
+  padding-top: 1px !important;
+  padding-bottom: 1px !important;
+  font-size: 0.8rem !important;
+}
+
+.CADViewerHelperMethods .form-control {
+  padding-top: 1px !important;
+  padding-bottom: 1px !important;
+  font-size: 0.8rem !important;
+  min-height: 24px !important;
+}
