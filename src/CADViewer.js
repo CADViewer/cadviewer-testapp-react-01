@@ -1130,10 +1130,8 @@ class CADViewer extends Component {
 
 
 
-
-
-
-
+		// 12.18.4 test default setting
+		cadviewer.cvjs_setFastDragMode(false);
 
 
 		 cadviewer.cvjs_DisplayCoordinatesMenu("floorPlan",true);

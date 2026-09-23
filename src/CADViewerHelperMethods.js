@@ -1334,6 +1334,20 @@ function loadfile(){
 }
 
 
+var dragmodeflag=false;
+
+function dragmode(){ 
+
+
+  cadviewer.cvjs_setFastDragMode(dragmodeflag);
+
+dragmodeflag=!dragmodeflag;
+
+}
+
+
+
+
 
 
 
@@ -1657,6 +1671,7 @@ class CADViewerHelperMethods extends Component {
           <button className="btn btn-outline-success btn-sm" onClick={show_node}>Show StickyNote</button>
           <button className="btn btn-outline-secondary btn-sm" onClick={text_on_layer}>Get Text On Layer</button>
           <button className="btn btn-outline-secondary btn-sm" onClick={loadfile}>Load testfile</button>
+          <button className="btn btn-outline-secondary btn-sm" onClick={dragmode}>Change Drag Mode</button>
         </div>
       </div>
     );
