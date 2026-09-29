@@ -7,6 +7,7 @@ import { render } from '@testing-library/react';
 
 // We are only accessing the functional interface of CADViewer, not the canvas, so this import is sufficient
 import * as cadviewer from "cadviewer";
+import { serverContentUrl } from "./serverConfig";
 
 import * as CV from "./CADViewerBlocks01.js";
 
@@ -241,7 +242,7 @@ function AudioVisual(){
     console.log(" IDs:"+spaceObjectIds.length);
   
 //    var loadSpaceImage_Location = "http://localhost:3000/content/customInsertSpaceObjectMenu/images/76-Smoke-detector.svg";
-    var loadSpaceImage_Location = "http://localhost:3000/content/customInsertSpaceObjectMenu/images/76-Smoke-detector-bg-white.svg";
+    var loadSpaceImage_Location = serverContentUrl("/content/customInsertSpaceObjectMenu/images/76-Smoke-detector-bg-white.svg");
     var id;
     var myobject;
     var attribute_tag;

@@ -30,6 +30,23 @@ Run the project locally. Open [http://localhost:8005](http://localhost:8005) to 
 npm start
 ```
 
+### Conversion Server Configuration
+The conversion server URL and the drawing loaded on start are set in `src/serverConfig.js`. They can also be given at build time as environment variables (read by Create React App):
+
+| Variable | Default | Purpose |
+|---|---|---|
+| `REACT_APP_SERVER_BACKEND_URL` | `http://localhost:3000/` | CADViewer conversion server |
+| `REACT_APP_SERVER_URL` | URL the app is served from | Front end server |
+| `REACT_APP_INIT_FILE_NAME` | `/content/drawings/dwg/hq17_.dwg` | Drawing loaded on start, as a path on the conversion server |
+
+### Docker / Coolify
+The `Dockerfile` builds the app and serves the static build with nginx on port 80:
+```bash
+docker build -t cadviewer-testapp-react-01 --build-arg REACT_APP_SERVER_BACKEND_URL=https://server.demo.cadviewer.com/ .
+docker run -p 8005:80 cadviewer-testapp-react-01
+```
+On Coolify: create a resource from this repository with the **Dockerfile** build pack (port `80`) and add the `REACT_APP_*` variables as **build variables**.
+
 ## Documentation & Guides
 
 For a deep dive into the available configuration parameters, API calls, and workflows, please reference the official CADViewer developer documentation:

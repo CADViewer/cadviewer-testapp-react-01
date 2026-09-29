@@ -7,6 +7,7 @@ import { render } from '@testing-library/react';
 
 // We are only accessing the functional interface of CADViewer, not the canvas, so this import is sufficient
 import * as cadviewer from "cadviewer";
+import { serverContentUrl } from "./serverConfig";
 import * as CV from "./CADViewer.js";
 
 
@@ -513,7 +514,7 @@ function update_group_with_group(){
 
 function insert_from_type_id_image(){
 
-    var loadSpaceImage_Location = "http://localhost:3000/content/drawings/svg/" + JQ('#image_sensor_location').val();
+    var loadSpaceImage_Location = serverContentUrl("/content/drawings/svg/") + JQ('#image_sensor_location').val();
     var loadSpaceImage_ID = JQ('#image_ID').val();
     var loadSpaceImage_Type = JQ('#image_Type').val();
     var loadSpaceImage_Layer = "cvjs_SpaceLayer";
@@ -588,7 +589,7 @@ function loadprocessedsvg(){
 
 
     CV.setOnloadEndFlag(false);
-    var FileName = "http://localhost:3000"+ "/content/drawings/svg/testSVGnotprocessed.svg";
+    var FileName = serverContentUrl("/content/drawings/svg/testSVGnotprocessed.svg");
 		cadviewer.cvjs_setCustomConversionEndpointExtension(false);
 		cadviewer.cvjs_setSpaceObjectProcessing(false);
 		cadviewer.cvjs_LoadDrawing("floorPlan", FileName);
@@ -1247,7 +1248,7 @@ function checknumberoftypes(){
 function compareTwoDrawings(){
 
 
-  cadviewer.cvjs_CompareDrawings_DisplayNameAlias("floorPlan","http://localhost:3000/content/drawings/dwg/hq17_.dwg", "http://localhost:3000/content/drawings/dwg/hq17_1space.dwg", "hq17(version1).dwg", "hq17(version2).dwg");
+  cadviewer.cvjs_CompareDrawings_DisplayNameAlias("floorPlan",serverContentUrl("/content/drawings/dwg/hq17_.dwg"), serverContentUrl("/content/drawings/dwg/hq17_1space.dwg"), "hq17(version1).dwg", "hq17(version2).dwg");
 
 
 }
@@ -1286,7 +1287,7 @@ function createSampleTextSpaceObject(){
   var leftFactor = 0.05;
 
   
-  var location = "http://localhost:3000/content/customInsertSpaceObjectMenu/images/sensor_c.svg";
+  var location = serverContentUrl("/content/customInsertSpaceObjectMenu/images/sensor_c.svg");
   
   //sample01	- dwg coordinates
   var xcor = 	117749.9320;
@@ -1322,11 +1323,11 @@ function exit_quickcount(){
 
 function loadfile(){ 
 
-  var FileName = "http://localhost:3000" + "/content/drawings/dwg/hq17_.dwg";		
+  var FileName = serverContentUrl("/content/drawings/dwg/hq17_.dwg");		
 
   /*
-  var FileName = "http://localhost:3000" + "/content/custom/myfile/4386-SP1.svg";		
-  var FileName = "http://localhost:3000" + "/content/custom/myfile/2352-LP1.svg";		
+  var FileName = serverContentUrl("/content/custom/myfile/4386-SP1.svg");		
+  var FileName = serverContentUrl("/content/custom/myfile/2352-LP1.svg");		
 */
 
   cadviewer.cvjs_LoadDrawing("floorPlan", FileName);
