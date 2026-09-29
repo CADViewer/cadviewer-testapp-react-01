@@ -10,6 +10,7 @@ import jQuery from "jquery";
 import './CADViewer_component.css';
 
 import * as cadviewer from "cadviewer";
+import { ServerBackEndUrl as ConfiguredServerBackEndUrl, ServerUrl as ConfiguredServerUrl } from "./serverConfig";
 
 export var textLayer1; 
 
@@ -412,7 +413,7 @@ class CADViewerBlocks01 extends Component {
 
 
 		// Standard NodeJS Server
-		var ServerBackEndUrl = "http://localhost:3000/";
+		var ServerBackEndUrl = ConfiguredServerBackEndUrl;   // see serverConfig.js
 		var ServerLocation = "";    // leave blank
 
 
@@ -422,7 +423,7 @@ class CADViewerBlocks01 extends Component {
 
 
 		// Standard Front-end
-		var ServerUrl = "http://localhost:8000/";
+		var ServerUrl = ConfiguredServerUrl;   // see serverConfig.js
 		
 	    //var FileName = ServerBackEndUrl+ "/content/drawings/dwg/hq17_2spaces.dwg";		
 		//var FileName = ServerBackEndUrl+ "/content/drawings/dwg/hq17_.dwg";
